@@ -6,9 +6,11 @@ interface CardProps {
     radius?: number
     borderWidth?: number
     bg?: string
-    w?: number | 'auto' | '100vw'
-    h?: number | 'auto' | '100%'
+    w?: number | 'fit-content' | '100%'
+    h?: number | 'fit-content' | '100%'
     padding?: number | [number, number, number, number] // [top, right, bottom, left]
+    horizon?: 'flex-start' | 'center' | 'flex-end'
+    vertical?: 'flex-start' | 'center' | 'flex-end'
 }
 
 const Card = ({
@@ -17,9 +19,11 @@ const Card = ({
     borderColor = 'transparent',
     borderWidth = 0,
     bg = 'transparent',
-    w = 'auto',
-    h = 'auto',
+    w = 'fit-content',
+    h = 'fit-content',
     padding = 0,
+    horizon = 'center',
+    vertical = 'center',
 }: CardProps) => {
 
     // Add "px" after the width and height
@@ -50,6 +54,8 @@ const Card = ({
                 overflow: 'hidden',
                 boxSizing: 'border-box',
                 padding: finalPadding,
+                justifyContent: horizon,
+                alignItems: vertical,
             }}
         >
             {children}
