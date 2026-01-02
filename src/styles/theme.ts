@@ -9,6 +9,7 @@ export const colors = {
     secondary: "#001FFF",
     secondaryLight: "#00B7FF",
     neon: "#66FFFF",
+    white: "#FFFFFF",
 };
 
 export const fontSizes = {

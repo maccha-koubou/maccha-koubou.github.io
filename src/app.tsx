@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Router from './router/Router'
-import MainNavigation from "./components/MainNavigation";
+import MainNav from "./components/MainNav";
 import {ScalingContainer} from "./components/ScalingContainer";
 import {Language} from "./config/Language";
 import {fonts} from "./styles/theme";
@@ -27,7 +27,7 @@ const App = () => {
                     <div style={{ flex: 1, position: 'relative' }}>
                         <Router />
                     </div>
-                    <MainNavigation />
+                    <MainNav />
                 </div>
             </ScalingContainer>
         </BrowserRouter>
