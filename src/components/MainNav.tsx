@@ -2,8 +2,11 @@ import React from 'react'
 import {NAV_HEIGHT} from "../config/Size";
 import NavBar from "./NavBar";
 import {NavButtonProps} from "./NavButton";
+import { useNavigate } from 'react-router-dom'
 
 const MainNav = () => {
+    const navigate = useNavigate()
+
     const buttons:NavButtonProps[] = [
         {
             id: 'home',
@@ -14,6 +17,9 @@ const MainNav = () => {
                     HOME
                 </div>
             ),
+            onClick: () => {
+                navigate('/')
+            }
         },
         {
             id: 'work',
@@ -24,6 +30,9 @@ const MainNav = () => {
                     WORK
                 </div>
             ),
+            onClick: () => {
+                navigate('/work')
+            }
         },
         {
             id: 'about',
@@ -34,6 +43,9 @@ const MainNav = () => {
                     ABOUT
                 </div>
             ),
+            onClick: () => {
+                navigate('/about')
+            }
         }
     ]
     return (

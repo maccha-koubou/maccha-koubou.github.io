@@ -3,29 +3,34 @@ import {colors} from "../styles/theme";
 
 export interface NavButtonProps {
     id: string;
-    firstChildren: React.ReactNode
-    secondChildren: React.ReactNode
     h: number
     padding: number
+    firstChildren: React.ReactNode
+    secondChildren: React.ReactNode
     gap?: number
     firstColor?: string
     secondColor?: string
     bgColor?: string
-    highlightColor?: string
     highlighted?: boolean
+    onClick?: () => void
+    onMouseEnter?: () => void
+    onMouseLeave?: () => void
 }
 
 export const NavButton = ({
                   id,
-                  firstChildren,
-                  secondChildren,
                   h,
                   padding,
+                  firstChildren,
+                  secondChildren,
                   firstColor = colors.primary,
                   secondColor = colors.primary,
                   gap = '0px',
                   bgColor = colors.white,
                   highlighted = false,
+                  onClick,
+                  onMouseEnter,
+                  onMouseLeave,
               }: NavButtonProps) => {
 
     const bg = highlighted ? firstColor : bgColor;
@@ -44,7 +49,12 @@ export const NavButton = ({
                 padding: `0px ${padding}px 0px ${padding}px`,
                 justifyContent: 'center',
                 alignItems: 'center',
+                gap: `${gap}px`,
+                cursor: 'pointer',
             }}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
         >
             <div style={{color: `${finalFirstColor}`,}}>
                 {firstChildren}
