@@ -1,3 +1,4 @@
+import React from 'react'
 import { CanvasItem, CanvasItemProps } from "./CanvasItem";
 import {CANVAS_HEIGHT} from "../config/Size";
 
