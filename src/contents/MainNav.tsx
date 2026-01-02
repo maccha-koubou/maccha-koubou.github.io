@@ -1,7 +1,7 @@
 import React from 'react'
 import {NAV_HEIGHT} from "../config/Size";
-import NavBar from "./NavBar";
-import {NavButtonProps} from "./NavButton";
+import NavBar from "../components/NavBar";
+import {NavButtonProps} from "../components/NavButton";
 import { useNavigate } from 'react-router-dom'
 
 const MainNav = () => {

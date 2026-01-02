@@ -2,6 +2,7 @@ export const ORIGINAL_HEIGHT = 960
 export const ORIGINAL_WIDTH = 1920
 
 export const NAV_HEIGHT = 88
+export const CANVAS_MIN_WIDTH = 1200
 export const CANVAS_HEIGHT = ORIGINAL_HEIGHT - NAV_HEIGHT
 
 export const PROJECT_WIDTH = 1200

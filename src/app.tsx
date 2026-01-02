@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import Router from './router/Router'
-import MainNav from "./components/MainNav";
+import MainNav from "./contents/MainNav";
 import {ScalingContainer} from "./components/ScalingContainer";
 import {Language} from "./config/Language";
 import {fonts} from "./styles/theme";

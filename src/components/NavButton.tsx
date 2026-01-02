@@ -6,7 +6,7 @@ export interface NavButtonProps {
     h: number
     padding: number
     firstChildren: React.ReactNode
-    secondChildren: React.ReactNode
+    secondChildren?: React.ReactNode
     gap?: number
     firstColor?: string
     secondColor?: string
@@ -25,7 +25,7 @@ export const NavButton = ({
                   secondChildren,
                   firstColor = colors.primary,
                   secondColor = colors.primary,
-                  gap = '0px',
+                  gap = 0,
                   bgColor = colors.white,
                   highlighted = false,
                   onClick,
@@ -56,10 +56,11 @@ export const NavButton = ({
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
-            <div style={{color: `${finalFirstColor}`,}}>
+            {/* Separated children for separated colors */}
+            <div style={{color: finalFirstColor,}}>
                 {firstChildren}
             </div>
-            <div style={{color: `${finalSecondColor}`,}}>
+            <div style={{color: finalSecondColor,}}>
                 {secondChildren}
             </div>
         </div>

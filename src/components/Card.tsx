@@ -6,8 +6,8 @@ interface CardProps {
     radius?: number
     borderWidth?: number
     bg?: string
-    w?: number | 'fit-content' | '100%'
-    h?: number | 'fit-content' | '100%'
+    w?: number | 'fit-content' | string
+    h?: number | 'fit-content' | string
     padding?: number | [number, number, number, number] // [top, right, bottom, left]
     horizon?: 'flex-start' | 'center' | 'flex-end'
     vertical?: 'flex-start' | 'center' | 'flex-end'
