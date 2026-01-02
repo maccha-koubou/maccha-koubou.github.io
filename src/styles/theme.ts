@@ -1,6 +1,6 @@
 export const fonts = {
-    alphabet: "'Plus Jakarta Sans'",
-    chineseCharacterKanji: "'Source Han Sans'",
+    alphabet: "'Plus Jakarta Sans', sans-serif",
+    chineseCharacterKanji: "'Source Han Sans', sans-serif",
 };
 
 export const colors = {
