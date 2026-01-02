@@ -4,16 +4,15 @@ import {CANVAS_HEIGHT} from "../config/Size";
 
 interface MainCanvasProps {
     items: CanvasItemProps[]
-    width: number;
 }
 
-const MainCanvas: React.FC<MainCanvasProps> = ({ items, width }) => {
+const MainCanvas: React.FC<MainCanvasProps> = ({ items }) => {
     return (
         <div
             data-component="MainCanvas"
             style={{
                 position: 'relative',
-                width: `${width}px`,
+                width: `100%`,
                 height: `${CANVAS_HEIGHT}px`
         }}>
             {items.map(item => (

@@ -1,31 +1,31 @@
-import React, {useEffect, useState} from 'react'
-import Card from "../components/Card";
+import React, {useEffect, useRef, useState} from 'react'
 import MainCanvas from "../components/MainCanvas";
 import { CanvasItemProps } from "../components/CanvasItem";
-import {ORIGINAL_HEIGHT} from "../config/Size";
 import IntroCard from "../contents/Home/IntroCard";
+import ellipseDistribution from "../utils/Home/ellipseDistribution";
 
 const Home = () => {
 
-    // Responsive width of canvas
-    const [canvasWidth, setCanvasWidth] = useState(window.innerWidth);
+    // Responsive width of canvas for the ellipse distribution
+    const ref = useRef<HTMLDivElement>(null)
+    const [canvasHeight, setCanvasHeight] = useState(0)
+    const [canvasWidth, setCanvasWidth] = useState(0)
 
     useEffect(() => {
-        console.log(window.innerWidth)
-        const handleResize = () => {
-            setCanvasWidth(Math.max(window.innerWidth / (window.innerHeight / ORIGINAL_HEIGHT) - 1, 1200))
-        }
+        if (!ref.current) return
 
-        window.addEventListener('resize', handleResize)
-        handleResize();
-        return () => {
-            window.removeEventListener('resize', handleResize)
-        }
-    }, []);
+        const observer = new ResizeObserver(entries => {
+            setCanvasWidth(entries[0].contentRect.width)
+            setCanvasHeight(entries[0].contentRect.height)
+        })
 
-    const items: CanvasItemProps[] = [
+        observer.observe(ref.current)
+        return () => observer.disconnect()
+    }, [])
+
+    const itemWithoutEllipse: CanvasItemProps[] = [
         {
-            id: 'home-info-card',
+            id: 'home-intro-card',
             x: 0,
             y: 0,
             z: 1,
@@ -34,21 +34,18 @@ const Home = () => {
             children: (
                 <IntroCard />
             ),
-        },
-        {
-            id: 'home-project-1',
-            x: 0,
-            y: 220,
-            z: 2,
-            children: (
-                <Card w={400} h={300} bg={"#fff"} borderWidth={1} borderColor={"#33ff44"} radius={16} padding={24}>
-                    456
-                </Card>
-            ),
-        },
+        }
+    ]
+    const ellipseItems = ellipseDistribution(canvasWidth, canvasHeight)
+
+    const items: CanvasItemProps[] = [
+        ...itemWithoutEllipse,
+        ...ellipseItems,
     ]
     return (
-        <MainCanvas items={items} width={canvasWidth} data-component="Home" />
+        <div ref={ref}>
+            <MainCanvas items={items} data-component="Home" />
+        </div>
     )
 }
 
