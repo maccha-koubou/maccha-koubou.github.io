@@ -13,13 +13,13 @@ const IntroCard = () => {
             padding: '0px 0px 40px 0px'
         }}>
             <Card
-                w={'40%'}
+                w={'36%'}
                 h={"fit-content"}
                 bg={colors.white}
                 borderWidth={2}
                 borderColor={colors.primary}
                 radius={24}
-                padding={[40, 60, 48, 60]}
+                padding={[40, 56, 48, 56]}
             >
                 <div style={{
                     display: 'flex',
@@ -49,7 +49,7 @@ const IntroCard = () => {
                         fontSize: '20px',
                         textAlign: 'center'
                     }}>
-                        Products  /  Spaces  /  Visualizations
+                        Products  /  Spaces
                     </span>
                 </div>
             </Card>

@@ -1,7 +1,7 @@
 import {Project} from "../../config/ProjectType";
 import campusCorridor from "./campusCorridor";
 import exploreInVirtualLight from "./exploreInVirtualLight";
-import gamifiedNonlinearExhibitionHall from "./gamifiedNonlinearExhibitionHall";
+import choiceSpace from "./choiceSpace";
 import houseWithGlassYard from "./houseWithGlassYard";
 import queerRadar from "./queerRadar";
 import transitionGuidepost from "./transitionGuidepost";
@@ -9,7 +9,7 @@ import transitionGuidepost from "./transitionGuidepost";
 const projects: Project[] = [
     campusCorridor,
     exploreInVirtualLight,
-    gamifiedNonlinearExhibitionHall,
+    choiceSpace,
     houseWithGlassYard,
     queerRadar,
     transitionGuidepost,

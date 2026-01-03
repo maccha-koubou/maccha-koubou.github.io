@@ -13,9 +13,15 @@ const MainNav = () => {
             h: 28,
             padding: 8,
             firstChildren: (
-                <div style={{display: "flex", width: "fit-content", height: "fit-content"}}>
+                <span style={{
+                    display: "flex",
+                    width: "fit-content",
+                    height: "fit-content",
+                    fontWeight: 400,
+                    fontSize: '16px',
+                }}>
                     HOME
-                </div>
+                </span>
             ),
             onClick: () => {
                 navigate('/')
@@ -26,9 +32,15 @@ const MainNav = () => {
             h: 28,
             padding: 8,
             firstChildren: (
-                <div style={{display: "flex", width: "fit-content", height: "fit-content"}}>
+                <span style={{
+                    display: "flex",
+                    width: "fit-content",
+                    height: "fit-content",
+                    fontWeight: 400,
+                    fontSize: '16px',
+                }}>
                     WORK
-                </div>
+                </span>
             ),
             onClick: () => {
                 navigate('/work')
@@ -39,9 +51,15 @@ const MainNav = () => {
             h: 28,
             padding: 8,
             firstChildren: (
-                <div style={{display: "flex", width: "fit-content", height: "fit-content"}}>
+                <span style={{
+                    display: "flex",
+                    width: "fit-content",
+                    height: "fit-content",
+                    fontWeight: 400,
+                    fontSize: '16px',
+                }}>
                     ABOUT
-                </div>
+                </span>
             ),
             onClick: () => {
                 navigate('/about')

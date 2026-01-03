@@ -55,7 +55,7 @@ const ellipseDistribution = (
     const randomProjects = randomizeProjects(count)
 
     // Calculate the radius of the ellipse distribution
-    const ellipseRadiusX = canvasWidth * 2.5 / 7;
+    const ellipseRadiusX = canvasWidth * 2.3 / 7;
     const ellipseRadiusY = canvasHeight * 1.5 / 5;
 
     return Array.from({ length: count }, (_, i) => {
@@ -72,7 +72,13 @@ const ellipseDistribution = (
             y: ellipseRadiusY * Math.sin(angle) + canvasHeight / 2 + offsetY - size.height / 2,
             z: z,
             children: (
-                <ProjectCard project={randomProjects[i]} isLabelSecondary={false} w={size.width} h={size.height}/>
+                <ProjectCard
+                    project={randomProjects[i]}
+                    isLabelSecondary={false}
+                    w={size.width}
+                    h={size.height}
+                    index={i}
+                />
             ),
         }
     })
