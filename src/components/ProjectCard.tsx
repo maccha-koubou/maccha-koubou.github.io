@@ -85,7 +85,7 @@ const ProjectCard = ({
             overflow: 'visible',
         }}>
             <Card
-                borderColor={colors.primary}
+                borderColor={colors.primaryLight}
                 borderWidth={2}
                 w={w}
                 h={h}

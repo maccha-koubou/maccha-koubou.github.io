@@ -17,7 +17,7 @@ const IntroCard = () => {
                 h={"fit-content"}
                 bg={colors.white}
                 borderWidth={2}
-                borderColor={colors.primary}
+                borderColor={colors.primaryLight}
                 radius={24}
                 padding={[40, 56, 48, 56]}
             >

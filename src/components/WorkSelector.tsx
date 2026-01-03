@@ -1,0 +1,162 @@
+import React, {useEffect, useRef} from 'react'
+import {subProjectTypes} from "../config/ProjectType";
+import {colors} from "../styles/theme";
+import Card from "./Card";
+
+interface WorkSelectorProps {
+    title1: string
+    title2: string
+    subTypes1: subProjectTypes
+    subTypes2: subProjectTypes
+    w: number,
+    h: number,
+    gap: number,
+}
+
+const WorkSelector = ({
+    title1,
+    title2,
+    subTypes1,
+    subTypes2,
+    w,
+    h,
+    gap
+}: WorkSelectorProps) => {
+    const hoverMovingDistance = 50
+
+    // Get the size of the label
+    const ref = useRef<HTMLDivElement>(null)
+    const cardSizeRef = useRef<{ width: number; height: number } | null>(null)
+    useEffect(() => {
+        if (ref.current) {
+            const { width, height } = ref.current.getBoundingClientRect()
+            cardSizeRef.current = { width, height }
+        }
+    }, [])
+
+    return (
+        <div style={{
+            width:`${w + gap * 2}px`,
+            height:`${h + gap * 2 + hoverMovingDistance * 2}px`,
+        }}>
+            <div style={{
+                display: "flex",
+                position: "absolute",
+                left: '0px',
+                top: '0px',
+                width: 'fit-content',
+                height: 'fit-content',
+                zIndex: 3,
+            }}>
+                <Card
+                    borderColor={colors.primaryLight}
+                    borderWidth={2}
+                    bg={colors.white}
+                    w={w}
+                    h={h}
+                    radius={24}
+                    horizon={'flex-start'}
+                    vertical={'center'}
+                    padding={[0, 0, 4, 36]}
+                >
+                    <div style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-start",
+                        alignItems: "flex-start",
+                    }}>
+                        <span style={{
+                            color: colors.primary,
+                            fontWeight: 500,
+                            fontSize: '36px',
+                            textAlign: 'left'
+                        }}>
+                            {title1}
+                        </span>
+                        <span style={{
+                            color: colors.secondary,
+                            fontWeight: 200,
+                            fontSize: '36px',
+                            textAlign: 'left'
+                        }}>
+                            &
+                        </span>
+                        <span style={{
+                            color: colors.primary,
+                            fontWeight: 500,
+                            fontSize: '36px',
+                            textAlign: 'left'
+                        }}>
+                            {title2}
+                        </span>
+                    </div>
+                </Card>
+            </div>
+
+            <div style={{
+                display: "flex",
+                position: "absolute",
+                left: `${gap}px`,
+                top: `${gap}px`,
+                width: 'fit-content',
+                height: 'fit-content',
+                zIndex: 2,
+            }}>
+                <Card
+                    borderColor={colors.white}
+                    borderWidth={2}
+                    bg={colors.primary}
+                    w={w}
+                    h={h}
+                    radius={24}
+                    horizon={'flex-start'}
+                    vertical={'flex-end'}
+                    padding={[0, 0, 20, 36]}
+                >
+                    <span style={{
+                        color: colors.white,
+                        fontWeight: 300,
+                        fontSize: '20px',
+                        textAlign: 'left'
+                    }}>
+                        {subTypes1}
+                    </span>
+                </Card>
+            </div>
+
+            <div style={{
+                display: "flex",
+                position: "absolute",
+                left: `${gap * 2}px`,
+                top: `${gap * 2}px`,
+                width: 'fit-content',
+                height: 'fit-content',
+                zIndex: 1,
+            }}>
+                <Card
+                    borderColor={colors.white}
+                    borderWidth={2}
+                    bg={colors.primary}
+                    w={w}
+                    h={h}
+                    radius={24}
+                    horizon={'flex-start'}
+                    vertical={'flex-end'}
+                    padding={[0, 0, 20, 36]}
+                >
+                    <span style={{
+                        color: colors.white,
+                        fontWeight: 300,
+                        fontSize: '20px',
+                        textAlign: 'left'
+                    }}>
+                        {subTypes2}
+                    </span>
+                </Card>
+            </div>
+
+        </div>
+    )
+}
+
+export default WorkSelector

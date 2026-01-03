@@ -16,6 +16,17 @@ export enum ProjectType {
     VISUALIZATION = 'visualization',
 }
 
+export enum subProjectTypes {
+    DIGITAL_PRODUCTS = 'Digital products',
+    PHYSICAL_PRODUCTS = 'Physical products',
+
+    ARCHITECTURE_SPACES = 'Architecture spaces',
+    URBAN_SPACES = 'Urban spaces',
+
+    VISUAL_COMMUNICATION = 'Visual communication',
+    RESEARCH_VISUALIZATIONS = 'Research visualizations',
+}
+
 export const createProject = (input: {
     title: string
     subtitle: string
