@@ -1,6 +1,5 @@
 import React, {useRef} from "react";
 import {CanvasItemProps} from "../../components/CanvasItem";
-import Card from "../../components/Card";
 import {Project} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import ProjectCard from "../../components/ProjectCard";
@@ -65,7 +64,7 @@ const ellipseDistribution = (
         const offsetY = -20
         const z = randomizeZ()
 
-        const size = getFinalImgSize(randomProjects[i].id)
+        const size = getFinalImgSize(randomProjects[i].cover)
 
         return {
             id: `home-project-${i}`,

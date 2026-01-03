@@ -31,7 +31,7 @@ const ProjectCard = ({
             radius={24}
         >
             <img
-                src={`/src/contents/projects/${project.id}/cover.png`}
+                src={`/src/contents/projects/${project.url}/cover.png`}
                 width={w}
                 height={h}
                 alt={project.title}

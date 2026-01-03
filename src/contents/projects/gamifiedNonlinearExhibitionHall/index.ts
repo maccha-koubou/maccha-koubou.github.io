@@ -1,14 +1,12 @@
-import {Project, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType} from "../../../config/ProjectType";
+import cover from "./cover.png";
 
-const gamifiedNonlinearExhibitionHall: Project = {
-    id: 'gamifiedNonlinearExhibitionHall',
+const gamifiedNonlinearExhibitionHall = createProject({
     title: 'Gamified Nonlinear Exhibition Hall',
-    cover: '/cover.png',
+    subtitle: 'Gamified Nonlinear Exhibition Hall',
+    cover: cover,
     types: [ProjectType.SPACE],
-
-    // To-do: the slides
-    slides: [
-    ],
-}
+    slides: []
+})
 
 export default gamifiedNonlinearExhibitionHall

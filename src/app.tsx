@@ -6,8 +6,13 @@ import {ScalingContainer} from "./components/ScalingContainer";
 import {Language} from "./config/Language";
 import {fonts} from "./styles/theme";
 import {ORIGINAL_HEIGHT} from "./config/Size";
+import projects from './contents/projects'
 
 const App = () => {
+
+    // Import and use the projects once to make them initialized
+    console.log(projects.length)
+
     const [language, setLanguage] = useState(Language.EN)
 
     const fontFamily =

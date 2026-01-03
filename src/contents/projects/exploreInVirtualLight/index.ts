@@ -1,14 +1,12 @@
-import {Project, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType} from "../../../config/ProjectType";
+import cover from "./cover.png";
 
-const exploreInVirtualLight: Project = {
-    id: 'exploreInVirtualLight',
+const exploreInVirtualLight = createProject({
     title: 'Explore in Virtual Light',
-    cover: '/cover.png',
+    subtitle: 'Explore in Virtual Light',
+    cover: cover,
     types: [ProjectType.PRODUCT],
-
-    // To-do: the slides
-    slides: [
-    ],
-}
+    slides: []
+})
 
 export default exploreInVirtualLight

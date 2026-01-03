@@ -1,14 +1,12 @@
-import {Project, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType} from "../../../config/ProjectType";
+import cover from "./cover.png";
 
-const transitionGuidepost: Project = {
-    id: 'transitionGuidepost',
+const transitionGuidepost = createProject({
     title: 'Transition Guidepost',
-    cover: '/cover.png',
+    subtitle: 'Transition Guidepost',
+    cover: cover,
     types: [ProjectType.PRODUCT],
-
-    // To-do: the slides
-    slides: [
-    ],
-}
+    slides: []
+})
 
 export default transitionGuidepost

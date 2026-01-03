@@ -3,9 +3,9 @@ import {PROJECT_CARD_LONGER_SIDE} from "../config/Size";
 
 
 
-export const getImgSize = (id: string) => {
+export const getImgSize = (url: string) => {
     const img = new Image()
-    img.src = `/src/contents/projects/${id}/cover.png`
+    img.src = url
     return {
         width: img.naturalWidth,
         height: img.naturalHeight,
@@ -26,8 +26,8 @@ export const randomizeSize = () => {
 
 
 // Calculate the final size of the img
-export const getFinalImgSize = (id: string) => {
-    const originalSize = getImgSize(id)
+export const getFinalImgSize = (url: string) => {
+    const originalSize = getImgSize(url)
     const longerSideLength = PROJECT_CARD_LONGER_SIDE * randomizeSize()
     let width: number
     let height: number

@@ -1,14 +1,12 @@
-import {Project, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType} from "../../../config/ProjectType";
+import cover from "./cover.png";
 
-const houseWithGlassYard: Project = {
-    id: 'houseWithGlassYard',
+const houseWithGlassYard = createProject({
     title: 'House with Glass Yard',
-    cover: '/cover.png',
+    subtitle: 'House with Glass Yard',
+    cover: cover,
     types: [ProjectType.SPACE],
-
-    // To-do: the slides
-    slides: [
-    ],
-}
+    slides: []
+})
 
 export default houseWithGlassYard

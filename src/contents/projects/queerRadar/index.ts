@@ -1,14 +1,12 @@
-import {Project, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType} from "../../../config/ProjectType";
+import cover from "./cover.png";
 
-const queerRadar: Project = {
-    id: 'queerRadar',
+const queerRadar = createProject({
     title: 'Queer Radar',
-    cover: '/cover.png',
+    subtitle: 'Queer Radar',
+    cover: cover,
     types: [ProjectType.PRODUCT],
-
-    // To-do: the slides
-    slides: [
-    ],
-}
+    slides: []
+})
 
 export default queerRadar
