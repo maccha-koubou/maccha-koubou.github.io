@@ -1,9 +1,60 @@
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
+import {CanvasItemProps} from "../components/CanvasItem";
+import AboutNav from "../contents/About/AboutNav";
+import AboutCanvas from "../components/About/AboutCanvas";
+import TabCanvas from "../components/About/TabCanvas";
 
 const About = () => {
+
+    // Responsive width of canvas for the ellipse distribution
+    const ref = useRef<HTMLDivElement>(null)
+    const [canvasHeight, setCanvasHeight] = useState(0)
+    const [canvasWidth, setCanvasWidth] = useState(0)
+
+    useEffect(() => {
+        if (!ref.current) return
+        const observer = new ResizeObserver(entries => {
+            setCanvasWidth(entries[0].contentRect.width)
+            setCanvasHeight(entries[0].contentRect.height)
+        })
+        observer.observe(ref.current)
+        return () => observer.disconnect()
+    }, [])
+
+    const items: CanvasItemProps[] = [
+        {
+            id: 'work-product-entrance',
+            x: 0,
+            y: 200,
+            z: 2,
+            children: (
+                <AboutNav />
+            )
+        },
+        {
+            id: 'work-product-entrance',
+            x: 280,
+            y: 0,
+            z: 2,
+            children: (
+                <TabCanvas items={
+                    [{
+                        id: 'a',
+                        x: 0,
+                        y: 200,
+                        z: 2,
+                        children: (
+                            <></>
+                        )
+                    }]
+                } />
+            )
+        }
+    ]
+
     return (
-        <div>
-            About
+        <div ref={ref}>
+            <AboutCanvas items={items} width={canvasWidth} data-component="About" />
         </div>
     )
 }

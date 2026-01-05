@@ -16,8 +16,8 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap }) => {
                 display: "flex",
                 width: 'fit-content',
                 height: 'fit-content',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-end',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-start',
                 flexDirection: `${direction}`,
                 gap: `${gap}px`
             }}>
@@ -35,8 +35,8 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap }) => {
                 display: "flex",
                 width: 'fit-content',
                 height: 'fit-content',
-                justifyContent: 'flex-start',
-                alignItems: 'flex-end',
+                justifyContent: 'flex-end',
+                alignItems: 'flex-start',
                 flexDirection: `${direction}`,
                 gap: `${gap}px`
             }}>

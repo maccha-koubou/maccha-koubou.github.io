@@ -15,6 +15,7 @@ export interface NavButtonProps {
     onClick?: () => void
     onMouseEnter?: () => void
     onMouseLeave?: () => void
+    isGap?: boolean
 }
 
 export const NavButton = ({
@@ -31,6 +32,7 @@ export const NavButton = ({
                   onClick,
                   onMouseEnter,
                   onMouseLeave,
+                  isGap = false,
               }: NavButtonProps) => {
 
     const bg = highlighted ? firstColor : bgColor;
@@ -50,7 +52,7 @@ export const NavButton = ({
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: `${gap}px`,
-                cursor: 'pointer',
+                cursor: `${isGap ? 'default' : 'pointer'}`,
             }}
             onClick={onClick}
             onMouseEnter={onMouseEnter}

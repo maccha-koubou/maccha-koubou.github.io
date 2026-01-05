@@ -13,12 +13,10 @@ const Home = () => {
 
     useEffect(() => {
         if (!ref.current) return
-
         const observer = new ResizeObserver(entries => {
             setCanvasWidth(entries[0].contentRect.width)
             setCanvasHeight(entries[0].contentRect.height)
         })
-
         observer.observe(ref.current)
         return () => observer.disconnect()
     }, [])

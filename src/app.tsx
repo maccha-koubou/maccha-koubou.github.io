@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import Router from './router/Router'
 import MainNav from "./contents/MainNav";
 import {ScalingContainer} from "./components/ScalingContainer";
@@ -21,7 +21,7 @@ const App = () => {
             : fonts.chineseCharacterKanji
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <ScalingContainer>
                 <div style={{
                     height: `${ORIGINAL_HEIGHT}px`,
@@ -35,7 +35,7 @@ const App = () => {
                     <MainNav />
                 </div>
             </ScalingContainer>
-        </BrowserRouter>
+        </HashRouter>
     )
 }
 

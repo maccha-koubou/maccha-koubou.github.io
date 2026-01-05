@@ -1,0 +1,19 @@
+.selector {
+
+}
+
+.card1 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card2 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.selector:hover .card1 {
+    transform: translate(0px, 50px);
+}
+
+.selector:hover .card2 {
+    transform: translate(0px, 100px);
+}

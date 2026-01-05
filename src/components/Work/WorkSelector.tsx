@@ -1,7 +1,8 @@
 import React, {useEffect, useRef} from 'react'
-import {subProjectTypes} from "../config/ProjectType";
-import {colors} from "../styles/theme";
-import Card from "./Card";
+import {subProjectTypes} from "../../config/ProjectType";
+import {colors} from "../../styles/theme";
+import Card from "../Card";
+import styles from './WorkSelector.module.css'
 
 interface WorkSelectorProps {
     title1: string
@@ -38,7 +39,9 @@ const WorkSelector = ({
         <div style={{
             width:`${w + gap * 2}px`,
             height:`${h + gap * 2 + hoverMovingDistance * 2}px`,
-        }}>
+            }}
+            className={styles.selector}
+        >
             <div style={{
                 display: "flex",
                 position: "absolute",
@@ -101,7 +104,9 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 2,
-            }}>
+            }}
+                 className={styles.card1}
+            >
                 <Card
                     borderColor={colors.white}
                     borderWidth={2}
@@ -132,7 +137,9 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 1,
-            }}>
+            }}
+                 className={styles.card2}
+            >
                 <Card
                     borderColor={colors.white}
                     borderWidth={2}

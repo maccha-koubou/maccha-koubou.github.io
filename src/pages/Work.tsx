@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react'
 import MainCanvas from "../components/MainCanvas";
 import {CanvasItemProps} from "../components/CanvasItem";
-import WorkSelector from "../components/WorkSelector";
+import WorkSelector from "../components/Work/WorkSelector";
 import {subProjectTypes} from "../config/ProjectType";
 import TextMatrix from "../contents/Work/TextMatrix";
 
@@ -14,12 +14,10 @@ const Work = () => {
 
     useEffect(() => {
         if (!ref.current) return
-
         const observer = new ResizeObserver(entries => {
             setCanvasWidth(entries[0].contentRect.width)
             setCanvasHeight(entries[0].contentRect.height)
         })
-
         observer.observe(ref.current)
         return () => observer.disconnect()
     }, [])
