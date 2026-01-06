@@ -3,6 +3,10 @@ import {CanvasItemProps} from "../components/CanvasItem";
 import AboutNav from "../contents/About/AboutNav";
 import AboutCanvas from "../components/About/AboutCanvas";
 import IntroTab from "../contents/About/IntroTab";
+import UXTab from "../contents/About/UXTab";
+import ArchTab from "../contents/About/ArchTab";
+
+export type aboutTab = 'intro' | 'ux' | 'arch' | 'by' | 'for'
 
 const About = () => {
 
@@ -10,6 +14,9 @@ const About = () => {
     const ref = useRef<HTMLDivElement>(null)
     const [canvasHeight, setCanvasHeight] = useState(0)
     const [canvasWidth, setCanvasWidth] = useState(0)
+
+    // Control the tab switching
+    const [activeTab, setActiveTab] = useState<aboutTab>('intro')
 
     useEffect(() => {
         if (!ref.current) return
@@ -21,6 +28,26 @@ const About = () => {
         return () => observer.disconnect()
     }, [])
 
+    let tabContent = <IntroTab />
+    switch (activeTab) {
+        case 'intro':
+            tabContent = <IntroTab />
+            break;
+        case 'ux':
+            tabContent = <UXTab />
+            break;
+        case 'arch':
+            tabContent = <ArchTab />
+            break;
+        case 'by':
+            tabContent = <UXTab />
+            break;
+        case 'for':
+            tabContent = <UXTab />
+            break;
+    }
+
+
     const items: CanvasItemProps[] = [
         {
             id: 'about-nav',
@@ -28,7 +55,7 @@ const About = () => {
             y: 200,
             z: 2,
             children: (
-                <AboutNav />
+                <AboutNav setActiveTab={setActiveTab}/>
             )
         },
         {
@@ -36,9 +63,7 @@ const About = () => {
             x: 280,
             y: 0,
             z: 1,
-            children: (
-                <IntroTab />
-            )
+            children: tabContent,
         }
     ]
 

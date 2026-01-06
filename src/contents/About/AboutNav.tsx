@@ -2,11 +2,14 @@ import React from 'react'
 import {NAV_HEIGHT} from "../../config/Size";
 import NavBar from "../../components/NavBar";
 import {NavButtonProps} from "../../components/NavButton";
-import { useNavigate } from 'react-router-dom'
 import {colors} from "../../styles/theme";
+import {aboutTab} from "../../pages/About";
 
-const AboutNav = () => {
-    const navigate = useNavigate()
+interface AboutNavProps {
+    setActiveTab: (aboutTab: aboutTab) => void;
+}
+
+const AboutNav = ({ setActiveTab}: AboutNavProps) => {
 
     const buttons:NavButtonProps[] = [
         {
@@ -40,7 +43,7 @@ const AboutNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                setActiveTab('intro')
             }
         },
         {
@@ -69,7 +72,7 @@ const AboutNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                setActiveTab('ux')
             }
         },
         {
@@ -88,7 +91,7 @@ const AboutNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                setActiveTab('arch')
             }
         },
         {
@@ -118,7 +121,7 @@ const AboutNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                setActiveTab('by')
             }
         },
         {
@@ -138,7 +141,7 @@ const AboutNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                setActiveTab('for')
             }
         }
     ]
