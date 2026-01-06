@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import {CanvasItemProps} from "../components/CanvasItem";
 import AboutNav from "../contents/About/AboutNav";
 import AboutCanvas from "../components/About/AboutCanvas";
-import TabCanvas from "../components/About/TabCanvas";
+import IntroTab from "../contents/About/IntroTab";
 
 const About = () => {
 
@@ -23,7 +23,7 @@ const About = () => {
 
     const items: CanvasItemProps[] = [
         {
-            id: 'work-product-entrance',
+            id: 'about-nav',
             x: 0,
             y: 200,
             z: 2,
@@ -32,22 +32,12 @@ const About = () => {
             )
         },
         {
-            id: 'work-product-entrance',
+            id: 'about-tab',
             x: 280,
             y: 0,
-            z: 2,
+            z: 1,
             children: (
-                <TabCanvas items={
-                    [{
-                        id: 'a',
-                        x: 0,
-                        y: 200,
-                        z: 2,
-                        children: (
-                            <></>
-                        )
-                    }]
-                } />
+                <IntroTab />
             )
         }
     ]

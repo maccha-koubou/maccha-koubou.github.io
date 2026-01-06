@@ -1,8 +1,9 @@
-import React, {useEffect, useRef} from 'react'
+import React from 'react'
 import {Project} from "../config/ProjectType";
 import {colors} from "../styles/theme";
 import Card from "./Card";
 import {genCardLabelCoord} from "../utils/genCardLabelCoord";
+import measureSize from "../utils/measureSize";
 
 interface ProjectCardProps {
     project: Project
@@ -26,14 +27,7 @@ const ProjectCard = ({
               }: ProjectCardProps) => {
 
     // Get the size of the label
-    const ref = useRef<HTMLDivElement>(null)
-    const labelSizeRef = useRef<{ width: number; height: number } | null>(null)
-    useEffect(() => {
-        if (ref.current) {
-            const { width, height } = ref.current.getBoundingClientRect()
-            labelSizeRef.current = { width, height }
-        }
-    }, [])
+    const { ref, size: labelSize } = measureSize<HTMLDivElement>()
 
     // Randomize the coordination of the label
     let horizontalPos: 'left' | 'right' | 'both' = 'both'
@@ -71,8 +65,8 @@ const ProjectCard = ({
     const labelCoord = genCardLabelCoord(
         horizontalPos,
         verticalPos,
-        labelSizeRef.current ? labelSizeRef.current.width : 0,
-        labelSizeRef.current ? labelSizeRef.current.height : 0,
+        labelSize ? labelSize.width : 0,
+        labelSize ? labelSize.height : 0,
         w,
         h
     )
@@ -95,7 +89,7 @@ const ProjectCard = ({
                     src={project.cover}
                     width={w}
                     height={h}
-                    alt={project.title}
+                    alt={project.subtitle}
                 />
             </Card>
 

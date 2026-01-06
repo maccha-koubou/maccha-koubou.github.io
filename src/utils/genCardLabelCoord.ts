@@ -61,7 +61,7 @@ export const genCardLabelCoord = (
     const offsetX = 40
     const coordScale = randomizeCoordScale(horizontalPos, verticalPos)
 
-    const labelX = imgWidth * coordScale.x + offsetX * (coordScale.x * -2 + 0.6) - labelWidth / 2
+    const labelX = imgWidth * coordScale.x + offsetX * (coordScale.x * -2 + 1) - labelWidth / 2
     const labelY = imgHeight * coordScale.y - labelHeight / 2
 
     return { x: labelX, y: labelY }

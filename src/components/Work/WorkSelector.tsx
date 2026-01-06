@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react'
+import React from 'react'
 import {subProjectTypes} from "../../config/ProjectType";
 import {colors} from "../../styles/theme";
 import Card from "../Card";
@@ -24,16 +24,6 @@ const WorkSelector = ({
     gap
 }: WorkSelectorProps) => {
     const hoverMovingDistance = 50
-
-    // Get the size of the label
-    const ref = useRef<HTMLDivElement>(null)
-    const cardSizeRef = useRef<{ width: number; height: number } | null>(null)
-    useEffect(() => {
-        if (ref.current) {
-            const { width, height } = ref.current.getBoundingClientRect()
-            cardSizeRef.current = { width, height }
-        }
-    }, [])
 
     return (
         <div style={{
