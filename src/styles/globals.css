@@ -16,20 +16,6 @@ body {
     align-items: flex-start;
 }
 
-.textMatrix {
-    width: 100%;
-    max-width: 1700px;
-    height: 100%;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 15;
-    overflow: hidden;
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: 24px;
-    line-height: 2.5;
-}
-
 @font-face {
     font-family: 'Plus Jakarta Sans';
     src: url('../assets/fonts/PlusJakartaSans-ExtraLight.ttf') format('truetype');

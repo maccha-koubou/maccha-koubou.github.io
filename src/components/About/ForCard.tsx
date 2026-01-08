@@ -40,7 +40,7 @@ const ForCard = ({
             width:`${entireWidth}px`,
             position: 'relative',
             }  as React.CSSProperties}
-            className={styles.selector}
+            className={styles.entire}
         >
 
             <div style={{

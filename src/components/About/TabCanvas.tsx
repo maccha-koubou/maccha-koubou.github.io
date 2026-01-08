@@ -14,7 +14,6 @@ const TabCanvas: React.FC<TabCanvasProps> = ({ items }) => {
                 position: 'relative',
                 width: `960px`,
                 height: `${CANVAS_HEIGHT}px`,
-                background: '#eee'
             }}>
             {items.map(item => (
                 <CanvasItem key={item.id} {...item} />

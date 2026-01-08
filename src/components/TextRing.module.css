@@ -1,0 +1,22 @@
+.rotator {
+    position: absolute;
+    inset: 0;
+    animation: rotate 24s linear infinite;
+}
+
+.char {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: 0 0;
+    white-space: pre;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
