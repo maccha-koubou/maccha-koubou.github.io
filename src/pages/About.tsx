@@ -5,6 +5,8 @@ import AboutCanvas from "../components/About/AboutCanvas";
 import IntroTab from "../contents/About/IntroTab";
 import UXTab from "../contents/About/UXTab";
 import ArchTab from "../contents/About/ArchTab";
+import ByTab from "../contents/About/ByTab";
+import ForTab from "../contents/About/ForTab";
 
 export type aboutTab = 'intro' | 'ux' | 'arch' | 'by' | 'for'
 
@@ -40,10 +42,10 @@ const About = () => {
             tabContent = <ArchTab />
             break;
         case 'by':
-            tabContent = <UXTab />
+            tabContent = <ByTab />
             break;
         case 'for':
-            tabContent = <UXTab />
+            tabContent = <ForTab />
             break;
     }
 

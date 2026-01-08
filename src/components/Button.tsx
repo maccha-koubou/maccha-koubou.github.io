@@ -77,7 +77,7 @@ const Button = ({
                 position: 'absolute',
                 left: '0px',
                 top: '0px',
-                zIndex: 0,
+                zIndex: 1,
             }}>
                 <Card
                     radius={radius}
