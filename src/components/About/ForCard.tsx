@@ -27,7 +27,7 @@ const ForCard = ({
     const titleWidth = titleSize ? titleSize.width : 0
     const card1Width = card1Size ? card1Size.width : 0
     const card2Width = card2Size ? card2Size.width : 0
-    const entireWidth = entireSize ? entireSize.width + 72 : 0
+    const entireWidth = entireSize ? entireSize.width + 16 : 0
 
     console.log(titleWidth, card1Width, card2Width)
 

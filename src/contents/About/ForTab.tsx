@@ -9,7 +9,7 @@ const ForTab = () => {
         {
             id: 'about-by-list',
             x: 0,
-            y: 296,
+            y: 300,
             z: 1,
             children: (
                 <div style={{
@@ -19,7 +19,7 @@ const ForTab = () => {
                     alignItems: 'center',
                     width: '960px',
                     height: 'fit-content',
-                    gap: '36px'
+                    gap: '48px'
                 }}>
                     <ForCard
                         title={'Queer-feminism'}

@@ -1,5 +1,5 @@
 import React from 'react'
-import {subProjectTypes} from "../../config/ProjectType";
+import {ProjectType, subProjectTypes} from "../../config/ProjectType";
 import {colors} from "../../styles/theme";
 import Card from "../Card";
 import styles from './WorkSelector.module.css'
@@ -7,21 +7,27 @@ import styles from './WorkSelector.module.css'
 interface WorkSelectorProps {
     title1: string
     title2: string
+    type: ProjectType
     subTypes1: subProjectTypes
     subTypes2: subProjectTypes
     w: number,
     h: number,
     gap: number,
+    setRingText: (text: string) => void
+    setSlide: (type: ProjectType | null) => void
 }
 
 const WorkSelector = ({
     title1,
     title2,
+    type,
     subTypes1,
     subTypes2,
     w,
     h,
-    gap
+    gap,
+    setRingText,
+    setSlide,
 }: WorkSelectorProps) => {
     const hoverMovingDistance = 50
 
@@ -31,6 +37,14 @@ const WorkSelector = ({
             height:`${h + gap * 2 + hoverMovingDistance * 2}px`,
             }}
             className={styles.selector}
+            onMouseEnter={() => {
+                setRingText(`${title1} & ${title2} - `)
+                    setSlide(type)
+            }}
+            onMouseLeave={() => {
+                setRingText('Evelyn\'s Work - ')
+                setSlide(null)
+            }}
         >
             <div style={{
                 display: "flex",

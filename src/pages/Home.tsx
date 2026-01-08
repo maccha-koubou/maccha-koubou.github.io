@@ -1,25 +1,16 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React from 'react'
 import MainCanvas from "../components/MainCanvas";
 import { CanvasItemProps } from "../components/CanvasItem";
 import IntroCard from "../contents/Home/IntroCard";
 import ellipseDistribution from "../utils/Home/ellipseDistribution";
+import measureSize from "../utils/measureSize";
 
 const Home = () => {
 
     // Responsive width of canvas for the ellipse distribution
-    const ref = useRef<HTMLDivElement>(null)
-    const [canvasHeight, setCanvasHeight] = useState(0)
-    const [canvasWidth, setCanvasWidth] = useState(0)
-
-    useEffect(() => {
-        if (!ref.current) return
-        const observer = new ResizeObserver(entries => {
-            setCanvasWidth(entries[0].contentRect.width)
-            setCanvasHeight(entries[0].contentRect.height)
-        })
-        observer.observe(ref.current)
-        return () => observer.disconnect()
-    }, [])
+    const { ref, size: canvasSize } = measureSize<HTMLDivElement>()
+    const canvasWidth = canvasSize ? canvasSize.width : 0
+    const canvasHeight = canvasSize ? canvasSize.height : 0
 
     const itemWithoutEllipse: CanvasItemProps[] = [
         {

@@ -2,10 +2,11 @@ import React, {useState} from 'react'
 import MainCanvas from "../components/MainCanvas";
 import {CanvasItemProps} from "../components/CanvasItem";
 import WorkSelector from "../components/Work/WorkSelector";
-import {subProjectTypes} from "../config/ProjectType";
+import {ProjectType, subProjectTypes} from "../config/ProjectType";
 import TextMatrix from "../contents/Work/TextMatrix";
 import TextRing from "../components/TextRing";
 import measureSize from "../utils/measureSize";
+import ProjectSlide from "../components/Work/ProjectSlide";
 
 const Work = () => {
 
@@ -22,8 +23,9 @@ const Work = () => {
     const centerCardCoord = (canvasWidth - cardWidth) / 2 - subCardGap
     const cardCoordDistance = cardWidth + subCardGap + cardGap
 
-    // Change the text of the text ring based on mouse hovering
-    const [ringText, setRingText] = useState('Evelyn\'s Work - ')
+    // Change the bg elements based on mouse hovering
+    const [ringText, setRingText] = useState<string>('Evelyn\'s Work - ')
+    const [slide, setSlide] = useState<ProjectType | null>(null)
 
 
     const items: CanvasItemProps[] = [
@@ -36,11 +38,14 @@ const Work = () => {
                 <WorkSelector
                     title1={'Product'}
                     title2={'Service'}
+                    type={ProjectType.PRODUCT}
                     subTypes1={subProjectTypes.DIGITAL_PRODUCTS}
                     subTypes2={subProjectTypes.PHYSICAL_PRODUCTS}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
+                    setRingText={setRingText}
+                    setSlide={setSlide}
                 />
             )
         },
@@ -53,11 +58,14 @@ const Work = () => {
                 <WorkSelector
                     title1={'Space'}
                     title2={'Public life'}
+                    type={ProjectType.SPACE}
                     subTypes1={subProjectTypes.ARCHITECTURE_SPACES}
                     subTypes2={subProjectTypes.URBAN_SPACES}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
+                    setRingText={setRingText}
+                    setSlide={setSlide}
                 />
             )
         },
@@ -70,11 +78,14 @@ const Work = () => {
                 <WorkSelector
                     title1={'Visualizations'}
                     title2={'Thinking'}
+                    type={ProjectType.VISUALIZATION}
                     subTypes1={subProjectTypes.RESEARCH_VISUALIZATIONS}
                     subTypes2={subProjectTypes.VISUAL_COMMUNICATION}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
+                    setRingText={setRingText}
+                    setSlide={setSlide}
                 />
             )
         },
@@ -90,6 +101,19 @@ const Work = () => {
                     text={ringText}
                     width={canvasWidth}
                     height={canvasHeight - 20}
+                />
+            )
+        },
+        {
+            id: 'work-bg-project-slide',
+            x: 0,
+            y: 0,
+            z: 1,
+            children: (
+                <ProjectSlide
+                    width={canvasWidth}
+                    height={canvasHeight - 20}
+                    type={slide}
                 />
             )
         },

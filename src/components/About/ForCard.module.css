@@ -12,10 +12,10 @@
     transition: width 0.3s ease-in-out;
 }
 
-.selector:hover .card1 {
+.entire:hover .card1 {
     width: calc(var(--title-width) + var(--card-1-width) + 36px);
 }
 
-.selector:hover .card2 {
+.entire:hover .card2 {
     width: calc(var(--title-width) + var(--card-1-width) + var(--card-2-width) + 72px);
 }

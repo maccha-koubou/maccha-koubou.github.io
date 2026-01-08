@@ -7,6 +7,8 @@ import UXTab from "../contents/About/UXTab";
 import ArchTab from "../contents/About/ArchTab";
 import ByTab from "../contents/About/ByTab";
 import ForTab from "../contents/About/ForTab";
+import TextRing from "../components/TextRing";
+import {CANVAS_HEIGHT} from "../config/Size";
 
 export type aboutTab = 'intro' | 'ux' | 'arch' | 'by' | 'for'
 
@@ -66,6 +68,19 @@ const About = () => {
             y: 0,
             z: 1,
             children: tabContent,
+        },
+        {
+            id: 'about-bg-text-ring',
+            x: 280,
+            y: 0,
+            z: 0,
+            children: <TextRing
+                radius={280}
+                fontSize={20}
+                text={'About Evelyn - '}
+                width={960}
+                height={CANVAS_HEIGHT - 32}
+            />,
         }
     ]
 
