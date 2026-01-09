@@ -7,6 +7,7 @@ import {Language} from "./config/Language";
 import {fonts} from "./styles/theme";
 import {ORIGINAL_HEIGHT} from "./config/Size";
 import projects from './contents/projects'
+import {HistoryContainer} from "./router/HistoryContainer";
 
 const App = () => {
 
@@ -22,19 +23,21 @@ const App = () => {
 
     return (
         <HashRouter>
-            <ScalingContainer>
-                <div style={{
-                    height: `${ORIGINAL_HEIGHT}px`,
-                    fontFamily: `${fontFamily}`,
-                    display: 'flex',
-                    flexDirection: 'column',
-                }}>
-                    <div style={{ flex: 1, position: 'relative' }}>
-                        <Router />
+            <HistoryContainer>
+                <ScalingContainer>
+                    <div style={{
+                        height: `${ORIGINAL_HEIGHT}px`,
+                        fontFamily: `${fontFamily}`,
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}>
+                        <div style={{ flex: 1, position: 'relative' }}>
+                            <Router />
+                        </div>
+                        <MainNav />
                     </div>
-                    <MainNav />
-                </div>
-            </ScalingContainer>
+                </ScalingContainer>
+            </HistoryContainer>
         </HashRouter>
     )
 }

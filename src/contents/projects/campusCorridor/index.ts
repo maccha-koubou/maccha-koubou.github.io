@@ -1,4 +1,4 @@
-import {createProject, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType, SubProjectType} from "../../../config/ProjectType";
 import cover from './cover.png'
 
 const campusCorridor = createProject({
@@ -6,6 +6,7 @@ const campusCorridor = createProject({
     subtitle: 'Campus Corridor',
     cover: cover,
     types: [ProjectType.SPACE],
+    subtypes: [SubProjectType.URBAN_SPACES],
     slides: []
 })
 

@@ -1,4 +1,4 @@
-import {createProject, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType, SubProjectType} from "../../../config/ProjectType";
 import cover from "./cover.png";
 
 const exploreInVirtualLight = createProject({
@@ -6,6 +6,7 @@ const exploreInVirtualLight = createProject({
     subtitle: 'Explore in Virtual Light',
     cover: cover,
     types: [ProjectType.PRODUCT],
+    subtypes: [SubProjectType.DIGITAL_PRODUCTS],
     slides: []
 })
 

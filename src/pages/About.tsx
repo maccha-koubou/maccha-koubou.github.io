@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useState} from 'react'
 import {CanvasItemProps} from "../components/CanvasItem";
 import AboutNav from "../contents/About/AboutNav";
 import AboutCanvas from "../components/About/AboutCanvas";
@@ -9,28 +9,18 @@ import ByTab from "../contents/About/ByTab";
 import ForTab from "../contents/About/ForTab";
 import TextRing from "../components/TextRing";
 import {CANVAS_HEIGHT} from "../config/Size";
+import measureSize from "../utils/measureSize";
 
 export type aboutTab = 'intro' | 'ux' | 'arch' | 'by' | 'for'
 
 const About = () => {
 
     // Responsive width of canvas for the ellipse distribution
-    const ref = useRef<HTMLDivElement>(null)
-    const [canvasHeight, setCanvasHeight] = useState(0)
-    const [canvasWidth, setCanvasWidth] = useState(0)
+    const { ref, size: canvasSize } = measureSize<HTMLDivElement>()
+    const canvasWidth = canvasSize ? canvasSize.width : 0
 
     // Control the tab switching
     const [activeTab, setActiveTab] = useState<aboutTab>('intro')
-
-    useEffect(() => {
-        if (!ref.current) return
-        const observer = new ResizeObserver(entries => {
-            setCanvasWidth(entries[0].contentRect.width)
-            setCanvasHeight(entries[0].contentRect.height)
-        })
-        observer.observe(ref.current)
-        return () => observer.disconnect()
-    }, [])
 
     let tabContent = <IntroTab />
     switch (activeTab) {

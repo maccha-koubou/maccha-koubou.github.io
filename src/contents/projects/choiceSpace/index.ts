@@ -1,4 +1,4 @@
-import {createProject, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType, SubProjectType} from "../../../config/ProjectType";
 import cover from "./cover.png";
 
 const choiceSpace = createProject({
@@ -6,6 +6,7 @@ const choiceSpace = createProject({
     subtitle: 'Gamified Nonlinear Exhibition Hall',
     cover: cover,
     types: [ProjectType.SPACE],
+    subtypes: [SubProjectType.ARCHITECTURE_SPACES, SubProjectType.URBAN_SPACES],
     slides: []
 })
 

@@ -1,4 +1,4 @@
-import {createProject, ProjectType} from "../../../config/ProjectType";
+import {createProject, ProjectType, SubProjectType} from "../../../config/ProjectType";
 import cover from "./cover.png";
 
 const queerRadar = createProject({
@@ -6,6 +6,7 @@ const queerRadar = createProject({
     subtitle: 'Queer Radar',
     cover: cover,
     types: [ProjectType.PRODUCT],
+    subtypes: [SubProjectType.PHYSICAL_PRODUCTS],
     slides: []
 })
 

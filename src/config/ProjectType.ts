@@ -4,6 +4,7 @@ export interface Project {
     title: string,
     subtitle: string,
     types: ProjectType[],
+    subtypes: SubProjectType[],
     cover: string,
 
     // To-do: add the slide type
@@ -16,7 +17,7 @@ export enum ProjectType {
     VISUALIZATION = 'visualization',
 }
 
-export enum subProjectTypes {
+export enum SubProjectType {
     DIGITAL_PRODUCTS = 'Digital products',
     PHYSICAL_PRODUCTS = 'Physical products',
 
@@ -31,6 +32,7 @@ export const createProject = (input: {
     title: string
     subtitle: string
     types: ProjectType[]
+    subtypes: SubProjectType[]
     cover: string
     slides: any[] // <- To be updated
 }) => {
@@ -61,6 +63,7 @@ export const createProject = (input: {
         subtitle: input.subtitle,
         cover: input.cover,
         types: input.types,
+        subtypes: input.subtypes,
         slides: input.slides
     }
 

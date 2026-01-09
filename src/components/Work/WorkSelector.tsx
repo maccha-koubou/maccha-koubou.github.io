@@ -1,15 +1,17 @@
 import React from 'react'
-import {ProjectType, subProjectTypes} from "../../config/ProjectType";
+import {ProjectType, SubProjectType} from "../../config/ProjectType";
 import {colors} from "../../styles/theme";
 import Card from "../Card";
 import styles from './WorkSelector.module.css'
+import {useLocation, useNavigate} from "react-router-dom";
+import {useHistory} from "../../router/HistoryContainer";
 
 interface WorkSelectorProps {
     title1: string
     title2: string
     type: ProjectType
-    subTypes1: subProjectTypes
-    subTypes2: subProjectTypes
+    subTypes1: SubProjectType
+    subTypes2: SubProjectType
     w: number,
     h: number,
     gap: number,
@@ -29,6 +31,9 @@ const WorkSelector = ({
     setRingText,
     setSlide,
 }: WorkSelectorProps) => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const { push } = useHistory()
     const hoverMovingDistance = 50
 
     return (
@@ -54,7 +59,13 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 3,
-            }}>
+                cursor: 'pointer',
+                }}
+                onClick={() => {
+                    push(location.pathname)
+                    navigate(`/work/${type}`)
+                }}
+            >
                 <Card
                     borderColor={colors.primaryLight}
                     borderWidth={2}

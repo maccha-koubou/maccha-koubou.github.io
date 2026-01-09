@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import MainCanvas from "../components/MainCanvas";
 import {CanvasItemProps} from "../components/CanvasItem";
 import WorkSelector from "../components/Work/WorkSelector";
-import {ProjectType, subProjectTypes} from "../config/ProjectType";
+import {ProjectType, SubProjectType} from "../config/ProjectType";
 import TextMatrix from "../contents/Work/TextMatrix";
 import TextRing from "../components/TextRing";
 import measureSize from "../utils/measureSize";
@@ -39,8 +39,8 @@ const Work = () => {
                     title1={'Product'}
                     title2={'Service'}
                     type={ProjectType.PRODUCT}
-                    subTypes1={subProjectTypes.DIGITAL_PRODUCTS}
-                    subTypes2={subProjectTypes.PHYSICAL_PRODUCTS}
+                    subTypes1={SubProjectType.DIGITAL_PRODUCTS}
+                    subTypes2={SubProjectType.PHYSICAL_PRODUCTS}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
@@ -59,8 +59,8 @@ const Work = () => {
                     title1={'Space'}
                     title2={'Public life'}
                     type={ProjectType.SPACE}
-                    subTypes1={subProjectTypes.ARCHITECTURE_SPACES}
-                    subTypes2={subProjectTypes.URBAN_SPACES}
+                    subTypes1={SubProjectType.ARCHITECTURE_SPACES}
+                    subTypes2={SubProjectType.URBAN_SPACES}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
@@ -79,8 +79,8 @@ const Work = () => {
                     title1={'Visualizations'}
                     title2={'Thinking'}
                     type={ProjectType.VISUALIZATION}
-                    subTypes1={subProjectTypes.RESEARCH_VISUALIZATIONS}
-                    subTypes2={subProjectTypes.VISUAL_COMMUNICATION}
+                    subTypes1={SubProjectType.RESEARCH_VISUALIZATIONS}
+                    subTypes2={SubProjectType.VISUAL_COMMUNICATION}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}
