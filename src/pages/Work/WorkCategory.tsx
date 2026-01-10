@@ -5,6 +5,7 @@ import WorkCategoryCanvas from "../../components/Work/WorkCategoryCanvas";
 import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
+import workCategoryDistribution from "../../utils/Work/workCategoryDistribution";
 
 interface WorkCategoryProps {
     type: ProjectType
@@ -52,8 +53,19 @@ const WorkCategory = ({
         }
     ]
 
+    const projectCards = workCategoryDistribution(
+        canvasWidth,
+        canvasHeight,
+        filteredProjects,
+        activeProject,
+        setActiveProject,
+    )
+
+
+
     const items: CanvasItemProps[] = [
         ...itemWithoutProject,
+        projectCards,
     ]
     return (
         <div ref={ref}>

@@ -7,30 +7,34 @@ import measureSize from "../utils/measureSize";
 
 interface ProjectCardProps {
     project: Project
-    isLabelSecondary: boolean
+    isLabelSecondary?: boolean
     onClick?: () => void
     onMouseEnter?: () => void
     onMouseLeave?: () => void
     h: number
     w: number
     index?: number
+    horizontalPosLimitation?: 'left' | 'right' | 'both'
 }
 
 const ProjectCard = ({
                 project,
+                isLabelSecondary = false,
                 onClick,
                 onMouseEnter,
                 onMouseLeave,
                 h,
                 w,
                 index,
+                horizontalPosLimitation
               }: ProjectCardProps) => {
 
     // Get the size of the label
     const { ref, size: labelSize } = measureSize<HTMLDivElement>()
 
     // Randomize the coordination of the label
-    let horizontalPos: 'left' | 'right' | 'both' = 'both'
+    let horizontalPos: 'left' | 'right' | 'both' =
+        horizontalPosLimitation ? horizontalPosLimitation : 'both'
     let verticalPos: 'upper' | 'lower' | 'both' = 'both'
 
     if (index !== undefined) {
@@ -71,6 +75,11 @@ const ProjectCard = ({
         h
     )
 
+    let labelBg = colors.primary
+    if (isLabelSecondary) {
+        labelBg = colors.secondary
+    }
+
 
     return (
         <div style={{
@@ -104,7 +113,7 @@ const ProjectCard = ({
                 }}
                 ref={ref}
             >
-                <Card bg={colors.primary} radius={14} h={28} padding={[0, 8, 0, 8]}>
+                <Card bg={labelBg} radius={14} h={28} padding={[0, 8, 0, 8]}>
                     <span style={{
                         display: "flex",
                         width: "fit-content",

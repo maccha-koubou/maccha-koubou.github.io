@@ -18,12 +18,12 @@ const WorkCategoryTitle = ({
 
     // Determine the text of the title
     let titleBeginning: string
-    let titleMiddle: string
+    let titleMiddle = '&'
     let titleEnd: string
     let toggle1: string
     let toggle2: string
+    let titleGap = 16
 
-    titleMiddle = ' & '
     switch (type) {
         case ProjectType.PRODUCT:
             titleBeginning = 'Project'
@@ -48,6 +48,7 @@ const WorkCategoryTitle = ({
         titleBeginning = activeProject.title
         titleMiddle = ''
         titleEnd = ''
+        titleGap = 0
     }
 
     // Shows toggles when no project is active, show the project's subtitle when it's active
@@ -108,13 +109,14 @@ const WorkCategoryTitle = ({
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            padding: '0px 0px 40px 0px',
+            padding: '0px 0px 80px 0px',
             gap: '24px',
         }}>
             <Card>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'row',
+                    gap: `${titleGap}px`,
                 }}>
                     <span style={{
                         color: colors.primary,
