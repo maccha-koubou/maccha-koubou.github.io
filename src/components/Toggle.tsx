@@ -15,6 +15,7 @@ interface ToggleProps {
     horizon?: 'flex-start' | 'center' | 'flex-end'
     vertical?: 'flex-start' | 'center' | 'flex-end'
     onClick?: () => void
+    isActive: boolean
 }
 
 const Toggle = ({
@@ -30,13 +31,17 @@ const Toggle = ({
     horizon = 'flex-start',
     vertical = 'center',
     onClick,
+    isActive,
 }: ToggleProps) => {
 
     return (
         <div style={{
             position: 'relative',
             width: 'fit-content'
-        }}>
+
+            }}
+            onClick={onClick}
+        >
 
             {/* Off layer of button */}
             <div style={{

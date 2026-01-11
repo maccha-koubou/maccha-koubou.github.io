@@ -9,19 +9,23 @@ import Toggle from "../../components/Toggle";
 interface WorkCategoryTitleProps {
     activeProject: Project | null;
     type: ProjectType;
+    activeSubType: SubProjectType[];
+    setActiveSubType: (activeSubType: SubProjectType[]) => void;
 }
 
 const WorkCategoryTitle = ({
                                activeProject,
                                type,
+                               activeSubType,
+                               setActiveSubType,
                            }: WorkCategoryTitleProps) => {
 
     // Determine the text of the title
     let titleBeginning: string
     let titleMiddle = '&'
     let titleEnd: string
-    let toggle1: string
-    let toggle2: string
+    let toggle1: SubProjectType
+    let toggle2: SubProjectType
     let titleGap = 16
 
     switch (type) {
@@ -49,6 +53,15 @@ const WorkCategoryTitle = ({
         titleMiddle = ''
         titleEnd = ''
         titleGap = 0
+    }
+
+    let isToggle1Active = true
+    let isToggle2Active = true
+    if (!activeSubType || !activeSubType.includes(toggle1)) {
+        isToggle1Active = false
+    }
+    if (!activeSubType || !activeSubType.includes(toggle2)) {
+        isToggle2Active = false
     }
 
     // Shows toggles when no project is active, show the project's subtitle when it's active
@@ -79,6 +92,7 @@ const WorkCategoryTitle = ({
                 height: '48px'
             }}>
                 <Toggle
+                    isActive={isToggle1Active}
                     text={toggle1}
                     offIcon={
                         <img width="28" height="28" src={rightArrowIcon}/>
@@ -86,8 +100,17 @@ const WorkCategoryTitle = ({
                     onIcon={
                         <img width="28" height="28" src={rightArrowIcon}/>
                     }
+                    onClick={
+                        () => {
+                            if (activeSubType.includes(toggle1)) {
+                                setActiveSubType(activeSubType.filter(type => type !== toggle1))
+                            } else {
+                                setActiveSubType([...activeSubType, toggle1])
+                            }
+                    }}
                 />
                 <Toggle
+                    isActive={isToggle2Active}
                     text={toggle2}
                     offIcon={
                         <img width="28" height="28" src={rightArrowIcon}/>
@@ -95,6 +118,14 @@ const WorkCategoryTitle = ({
                     onIcon={
                         <img width="28" height="28" src={rightArrowIcon}/>
                     }
+                    onClick={
+                        () => {
+                            if (activeSubType.includes(toggle2)) {
+                                setActiveSubType(activeSubType.filter(type => type !== toggle2))
+                            } else {
+                                setActiveSubType([...activeSubType, toggle2])
+                            }
+                        }}
                 />
             </div>
         )

@@ -10,7 +10,7 @@ import ScrollWrapper from "../../components/ScrollWrapper";
 
 
 // Create random offsets that don't change during the whole lifecycle of the components
-const randomizeOffsets = (
+export const useRandomizeOffsets = (
     count: number,
     maxXOffset: number,
     maxYOffset: number
@@ -91,6 +91,8 @@ const workCategoryDistribution = (
     projects: Project[],
     activeProject: Project | null,
     setActiveProject: (project: Project) => void,
+    randomOffsets: {x: number[], y: number[]},
+    maxYOffset: number,
 ): CanvasItemProps => {
 
     // Calculate how wide area does all projects occupy
@@ -101,10 +103,6 @@ const workCategoryDistribution = (
 
     const baselineGap = Math.max(280, 1000 - projects.length * 200)
     const overallWidth = projects.length * baselineGap
-    const maxXOffset = 200
-    const maxYOffset = 80
-
-    const randomOffsets = randomizeOffsets(projects.length, maxXOffset, maxYOffset)
 
     const projectCards =
         genProjectCards(projects, baselineGap, randomOffsets, maxYOffset)
