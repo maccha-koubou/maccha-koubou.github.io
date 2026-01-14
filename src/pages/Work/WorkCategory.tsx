@@ -5,7 +5,7 @@ import WorkCategoryCanvas from "../../components/Work/WorkCategoryCanvas";
 import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
-import workCategoryDistribution, {useRandomizeOffsets} from "../../utils/Work/workCategoryDistribution";
+import WorkCategoryProjectCanvas from "../../components/Work/WorkCategoryProjectCanvas";
 
 interface WorkCategoryProps {
     type: ProjectType
@@ -40,7 +40,7 @@ const WorkCategory = ({
             break
     }
 
-    const [activeSubType, setActiveSubType] = useState<SubProjectType[]>(subType ? [subType] : [subType2])
+    const [activeSubType, setActiveSubType] = useState<SubProjectType[]>(subType ? [subType] : [subType1, subType2])
     const [activeProject, setActiveProject] = useState<Project | null>(null)
 
 
@@ -60,7 +60,11 @@ const WorkCategory = ({
     )
 
 
-    const itemWithoutProject: CanvasItemProps[] = [
+    const maxXOffset = 200
+    const maxYOffset = 80
+
+
+    const items: CanvasItemProps[] = [
         {
             id: 'work-category-title',
             x: 0,
@@ -76,33 +80,35 @@ const WorkCategory = ({
                     setActiveSubType={setActiveSubType}
                 />
             ),
-        }
+        },
+        {
+            id: 'work-category-projects',
+            x: 0,
+            y: 0,
+            z: 2,
+            w: '100%',
+            h: '100%',
+            children: (
+                <div key={subType ? subType : type}>
+                    <WorkCategoryProjectCanvas
+                        projects={filteredProjects}
+                        activeProject={activeProject}
+                        setActiveProject={setActiveProject}
+                        canvasWidth={canvasWidth}
+                        canvasHeight={canvasHeight}
+                        maxXOffset={maxXOffset}
+                        maxYOffset={maxYOffset}
+                        key={activeSubType ? activeSubType.toString() : type}
+                    />
+                </div>
+            ),
+        },
     ]
 
-    const maxXOffset = 200
-    const maxYOffset = 80
-    const randomOffsets = useRandomizeOffsets(projects.filter(project => project.types.includes(type)).length, maxXOffset, maxYOffset)
 
-    const projectCards = workCategoryDistribution(
-        canvasWidth,
-        canvasHeight,
-        filteredProjects,
-        activeProject,
-        setActiveProject,
-        randomOffsets,
-        maxYOffset,
-    )
-
-
-
-    const items: CanvasItemProps[] = [
-        ...itemWithoutProject,
-        projectCards,
-    ]
     return (
         <div ref={ref}>
             <WorkCategoryCanvas
-                key={subType ? subType : type}
                 items={items}
                 data-component="Work category" />
         </div>
