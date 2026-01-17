@@ -2,7 +2,8 @@ import Card from "../../components/Card";
 import {colors} from "../../styles/theme";
 import React from "react";
 import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
-import rightArrowIcon from "../../assets/icons/rightArrow.svg";
+import selectedIcon from "../../assets/icons/selected.svg";
+import unselectedIcon from "../../assets/icons/unselected.svg";
 import Button from "../../components/Button";
 import Toggle from "../../components/Toggle";
 
@@ -95,10 +96,10 @@ const WorkCategoryTitle = ({
                     isActive={isToggle1Active}
                     text={toggle1}
                     offIcon={
-                        <img width="28" height="28" src={rightArrowIcon}/>
+                        <img width="28" height="28" src={unselectedIcon}/>
                     }
                     onIcon={
-                        <img width="28" height="28" src={rightArrowIcon}/>
+                        <img width="28" height="28" src={selectedIcon}/>
                     }
                     onClick={
                         () => {
@@ -113,10 +114,10 @@ const WorkCategoryTitle = ({
                     isActive={isToggle2Active}
                     text={toggle2}
                     offIcon={
-                        <img width="28" height="28" src={rightArrowIcon}/>
+                        <img width="28" height="28" src={unselectedIcon}/>
                     }
                     onIcon={
-                        <img width="28" height="28" src={rightArrowIcon}/>
+                        <img width="28" height="28" src={selectedIcon}/>
                     }
                     onClick={
                         () => {

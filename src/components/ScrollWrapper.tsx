@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useRef} from "react";
 import styles from './ScrollWrapper.module.css'
 
 interface ScrollWrapperProps {
@@ -7,26 +7,25 @@ interface ScrollWrapperProps {
     canvasHeight: number,
 }
 
-const ScrollWrapper = ({
-    children,
-    canvasWidth,
-    canvasHeight,
-}: ScrollWrapperProps) => {
-    const ref = useRef<HTMLDivElement>(null)
+export interface ScrollWrapperHandle {
+    scrollByDelta: (deltaY: number) => void
+}
 
-    useEffect(() => {
-        const element = ref.current
-        if (!element) return
-        const onWheel = (e: WheelEvent) => {
-            // Control the wheel action when the content is wider than the container
+const ScrollWrapper = React.forwardRef<ScrollWrapperHandle, ScrollWrapperProps>(
+    ({ children, canvasWidth, canvasHeight }, ref) => {
+        const internalRef = useRef<HTMLDivElement>(null)
+
+        const scrollByDelta = (deltaY: number) => {
+            const element = internalRef.current
+            if (!element) return
             if (element.scrollWidth > element.clientWidth) {
-                e.preventDefault()
-                element.scrollLeft += e.deltaY
+                element.scrollLeft += deltaY
             }
         }
-        element.addEventListener('wheel', onWheel, { passive: false })
-        return () => element.removeEventListener('wheel', onWheel)
-    }, [])
+
+        React.useImperativeHandle(ref, () => ({
+            scrollByDelta
+        }))
 
     return (
         <div style={{
@@ -34,11 +33,11 @@ const ScrollWrapper = ({
             height: `${canvasHeight}px`,
             }}
             className={styles.scrollWrapper}
-            ref={ref}
+            ref={internalRef}
         >
             {children}
         </div>
     )
-}
+})
 
 export default ScrollWrapper;

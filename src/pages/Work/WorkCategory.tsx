@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react'
+import React, {useEffect, useMemo, useRef, useState} from 'react'
 import {CanvasItemProps} from "../../components/CanvasItem";
 import measureSize from "../../utils/measureSize";
 import WorkCategoryCanvas from "../../components/Work/WorkCategoryCanvas";
@@ -6,6 +6,7 @@ import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
 import WorkCategoryProjectCanvas from "../../components/Work/WorkCategoryProjectCanvas";
+import ScrollWrapper, {ScrollWrapperHandle} from "../../components/ScrollWrapper";
 
 interface WorkCategoryProps {
     type: ProjectType
@@ -60,6 +61,24 @@ const WorkCategory = ({
     )
 
 
+    // Scroll the project card canvas on the bottom layer
+
+    const parentRef = useRef<HTMLDivElement>(null)
+    const scrollWrapperRef = useRef<ScrollWrapperHandle>(null)
+
+    useEffect(() => {
+        const onWheel = (e: WheelEvent) => {
+            e.preventDefault()
+            scrollWrapperRef.current?.scrollByDelta(e.deltaY)
+        }
+
+        const parent = parentRef.current
+        parent?.addEventListener('wheel', onWheel, { passive: false })
+        return () => parent?.removeEventListener('wheel', onWheel)
+    }, [])
+
+
+
     const maxXOffset = 200
     const maxYOffset = 80
 
@@ -90,16 +109,18 @@ const WorkCategory = ({
             h: '100%',
             children: (
                 <div key={subType ? subType : type}>
-                    <WorkCategoryProjectCanvas
-                        projects={filteredProjects}
-                        activeProject={activeProject}
-                        setActiveProject={setActiveProject}
-                        canvasWidth={canvasWidth}
-                        canvasHeight={canvasHeight}
-                        maxXOffset={maxXOffset}
-                        maxYOffset={maxYOffset}
-                        key={activeSubType ? activeSubType.toString() : type}
-                    />
+                    <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight}>
+                        <WorkCategoryProjectCanvas
+                            projects={filteredProjects}
+                            activeProject={activeProject}
+                            setActiveProject={setActiveProject}
+                            canvasWidth={canvasWidth}
+                            canvasHeight={canvasHeight}
+                            maxXOffset={maxXOffset}
+                            maxYOffset={maxYOffset}
+                            key={activeSubType ? activeSubType.toString() : type}
+                        />
+                    </ScrollWrapper>
                 </div>
             ),
         },
@@ -108,9 +129,11 @@ const WorkCategory = ({
 
     return (
         <div ref={ref}>
-            <WorkCategoryCanvas
-                items={items}
-                data-component="Work category" />
+            <div ref={parentRef}>
+                <WorkCategoryCanvas
+                    items={items}
+                    data-component="Work category" />
+            </div>
         </div>
     )
 }

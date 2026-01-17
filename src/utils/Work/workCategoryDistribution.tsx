@@ -5,7 +5,6 @@ import React, {useRef} from "react";
 import {Project} from "../../config/ProjectType";
 import {CANVAS_HEIGHT, NAV_HEIGHT, PROJECT_CARD_LONGER_SIDE} from "../../config/Size";
 import WorkCategoryCanvas from "../../components/Work/WorkCategoryCanvas";
-import ScrollWrapper from "../../components/ScrollWrapper";
 
 
 
@@ -35,7 +34,7 @@ export const useRandomizeOffsets = (
 
 
 // Generate the project cards
-const genProjectCards = (
+export const genProjectCards = (
     projects: Project[],
     baselineGap: number,
     offsets: {x: number[], y: number[]},
@@ -113,9 +112,7 @@ const workCategoryDistribution = (
         y: 0,
         z: 2,
         children: (
-            <ScrollWrapper canvasWidth={canvasWidth} canvasHeight={canvasHeight}>
                 <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>
-            </ScrollWrapper>
         ),
     }
 }

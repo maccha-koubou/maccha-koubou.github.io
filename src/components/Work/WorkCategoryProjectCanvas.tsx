@@ -1,6 +1,9 @@
 import React from "react";
 import {Project} from "../../config/ProjectType";
-import workCategoryDistribution, {useRandomizeOffsets} from "../../utils/Work/workCategoryDistribution";
+import {
+    genProjectCards,
+    useRandomizeOffsets
+} from "../../utils/Work/workCategoryDistribution";
 import WorkCategoryCanvas from "./WorkCategoryCanvas";
 
 interface WorkCategoryProjectCanvasProps {
@@ -25,21 +28,22 @@ const WorkCategoryProjectCanvas = ({
 
     const randomOffsets = useRandomizeOffsets(projects.length, maxXOffset, maxYOffset)
 
-    const projectCards = workCategoryDistribution(
-        canvasWidth,
-        canvasHeight,
-        projects,
-        activeProject,
-        setActiveProject,
-        randomOffsets,
-        maxYOffset
-    )
+
+
+    // Calculate how wide area does all projects occupy
+    // The overall width from the left side of the first project, to the right side of the last project
+
+    // Every project are evenly distributed, then have random offsets to the right
+    // The last project don't get offsets
+
+    const baselineGap = Math.max(280, 1000 - projects.length * 200)
+    const overallWidth = projects.length * baselineGap
+
+    const projectCards =
+        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset)
 
     return (
-        <WorkCategoryCanvas
-            items={[projectCards]}
-            data-component="Work category"
-        />
+        <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>
     )
 }
 
