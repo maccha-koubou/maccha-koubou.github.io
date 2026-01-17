@@ -14,6 +14,9 @@ interface CardStackProps {
     padding?: number | [number, number, number, number] // [top, right, bottom, left]
     horizon?: 'flex-start' | 'center' | 'flex-end'
     vertical?: 'flex-start' | 'center' | 'flex-end'
+    animateIn?: boolean
+    animateOut?: boolean
+    onAnimationComplete?: () => void
 }
 
 const CardStack = ({
@@ -27,6 +30,9 @@ const CardStack = ({
                   padding = 0,
                   horizon = 'center',
                   vertical = 'center',
+                  animateIn,
+                  animateOut,
+                  onAnimationComplete,
               }: CardStackProps) => {
 
     // Get the size of the main card
@@ -65,6 +71,9 @@ const CardStack = ({
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
                 />
             </div>
             <div
@@ -86,6 +95,8 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
                 />
             </div>
             <div
@@ -107,6 +118,8 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
                 />
             </div>
             <div
@@ -128,6 +141,8 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
                 />
             </div>
         </div>

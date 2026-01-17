@@ -3,7 +3,17 @@ import TabCanvas from "../../components/About/TabCanvas"
 import {CanvasItemProps} from "../../components/CanvasItem";
 import ByCard from "../../components/About/ByCard";
 
-const ByTab = () => {
+interface ByTabProps {
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete: () => void;
+}
+
+const ByTab = ({
+                   animateIn,
+                   animateOut,
+                   onAnimationComplete,
+               }: ByTabProps) => {
 
     const items: CanvasItemProps[] = [
         {
@@ -20,14 +30,21 @@ const ByTab = () => {
                     gap: '24px'
                 }}>
                     <ByCard
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onAnimationComplete={onAnimationComplete}
                         title={'Empathy'}
                         text={'I design from users\' behaviors and perspectives, coordinating diverse needs, especially for marginalized groups.'}
                     />
                     <ByCard
+                        animateIn={animateIn}
+                        animateOut={animateOut}
                         title={'Ethic sensitivity'}
                         text={'To be finished'}
                     />
                     <ByCard
+                        animateIn={animateIn}
+                        animateOut={animateOut}
                         title={'Systematic thinking'}
                         text={'I don\'t just focus on the happy path, but think systematically about edge cases and long-term challenges.'}
                     />

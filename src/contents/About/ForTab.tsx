@@ -3,7 +3,17 @@ import TabCanvas from "../../components/About/TabCanvas"
 import {CanvasItemProps} from "../../components/CanvasItem";
 import ForCard from "../../components/About/ForCard";
 
-const ForTab = () => {
+interface ForTabProps {
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete: () => void;
+}
+
+const ForTab = ({
+                    animateIn,
+                    animateOut,
+                    onAnimationComplete,
+                }: ForTabProps) => {
 
     const items: CanvasItemProps[] = [
         {
@@ -25,11 +35,16 @@ const ForTab = () => {
                         title={'Queer-feminism'}
                         subtitle1={'Intersectionality'}
                         subtitle2={'Care'}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onAnimationComplete={onAnimationComplete}
                     />
                     <ForCard
                         title={'Anti-ableism'}
                         subtitle1={'Neurodiversity'}
                         subtitle2={'Accessibility'}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
                     />
                 </div>
             )

@@ -7,7 +7,17 @@ import Button from "../../components/Button";
 import rightArrowIcon from '../../assets/icons/rightArrow.svg'
 import measureSize from "../../utils/measureSize";
 
-const UXTab = () => {
+interface UXTabProps {
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete: () => void;
+}
+
+const UXTab = ({
+                   animateIn,
+                   animateOut,
+                   onAnimationComplete,
+               }: UXTabProps) => {
 
     // Get the size of the button and cards
     const { ref: refCard1, size: card1Size } = measureSize<HTMLDivElement>()
@@ -26,7 +36,12 @@ const UXTab = () => {
             z: 1,
             children: (
                 <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard1}>
-                    <CardStack w={720}>
+                    <CardStack
+                        w={720}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onAnimationComplete={onAnimationComplete}
+                    >
                         <span style={{
                             padding: '40px',
                             fontWeight: '300',
@@ -46,7 +61,11 @@ const UXTab = () => {
             z: 1,
             children: (
                 <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard2}>
-                    <CardStack w={720}>
+                    <CardStack
+                        w={720}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                    >
                         <span style={{
                             padding: '40px',
                             fontWeight: '300',
@@ -78,6 +97,8 @@ const UXTab = () => {
                             icon={
                                 <img width="28" height="28" src={rightArrowIcon}/>
                             }
+                            animateIn={animateIn}
+                            animateOut={animateOut}
                         />
                     </div>
                 </div>

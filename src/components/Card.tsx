@@ -15,9 +15,8 @@ interface CardProps {
     vertical?: 'flex-start' | 'center' | 'flex-end'
     animateIn?: boolean
     animateOut?: boolean
-    defaultAnimateIn?: boolean
-    defaultAnimateOut?: boolean
     embodiedBorder?: boolean
+    onAnimationComplete?: () => void
 }
 
 const Card = ({
@@ -31,11 +30,10 @@ const Card = ({
     padding = 0,
     horizon = 'center',
     vertical = 'center',
-    animateIn,
-    animateOut,
-    defaultAnimateIn = true,
-    defaultAnimateOut = true,
-    embodiedBorder = false
+    animateIn = false,
+    animateOut = false,
+    embodiedBorder = false,
+    onAnimationComplete
 }: CardProps) => {
 
     // Add "px" after the width and height
@@ -67,31 +65,9 @@ const Card = ({
     const bodyBorderRadius = embodiedBorder ? radius : 0
 
 
-    // Determine weather the animation is shown
-    let enterAnimate: "enter" | undefined = undefined;
-    let exitAnimate: "exit" | undefined = undefined;
+    // Determine weather the border animation is shown
+    const borderInitialWidth = animateIn ? 0 : cardWidth;
 
-    if (animateIn !== undefined) {
-        enterAnimate = animateIn ? "enter" : undefined;
-    } else if (defaultAnimateIn) {
-        enterAnimate = "enter";
-    }
-    if (animateOut !== undefined) {
-        exitAnimate = animateOut ? "exit" : undefined;
-    } else if (defaultAnimateOut) {
-        exitAnimate = "exit";
-    }
-
-    const maskVariants = {
-        initial: { clipPath: `inset(0 100% 0 0 round ${radius}px)` },
-        enter: { clipPath: `inset(0 0 0 0 round ${radius}px)` },
-        exit: { clipPath: `inset(0 0 0 100% round ${radius}px)` }
-    }
-
-    const maskClipInitial = enterAnimate ? `inset(0 100% 0 0 round ${radius}px)` : `inset(0 0 0 0 round ${radius}px)`;
-    const borderInitialWidth = enterAnimate ? 0 : cardWidth;
-
-    if (!enterAnimate) {console.log(borderInitialWidth)}
 
     return (
         <div style={{
@@ -103,16 +79,27 @@ const Card = ({
         >
             {/* Mask layer */}
             <motion.div
-                initial={{ clipPath: maskClipInitial }}
-                animate={enterAnimate}
-                exit={exitAnimate}
-                variants={maskVariants}
+                initial={{
+                    clipPath:
+                        animateIn
+                            ? `inset(0 100% 0 0 round ${radius}px)`
+                            : `inset(0 0 0 0 round ${radius}px)`
+                }}
+                animate={{
+                    clipPath:
+                        animateOut
+                            ? `inset(0 0 0 100% round ${radius}px)`
+                            : `inset(0 0 0 0 round ${radius}px)`
+                }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{
                     width: '100%',
                     height: '100%',
                     overflow: 'hidden',
                 }}
+                onAnimationComplete={() => { if (animateOut) {
+                    onAnimationComplete?.()
+                } }}
             >
                 {/* Main content */}
                 <div
@@ -138,18 +125,20 @@ const Card = ({
             <motion.div
                 key={cardWidth}
                 initial={{ width: borderInitialWidth }}
-                animate={enterAnimate === "enter" ? { width: cardWidth } : undefined}
-                exit={exitAnimate === "exit" ? { width: 0, originX: 1 } : undefined}
+                animate={{
+                    width: animateOut ? 0 : cardWidth,
+                    left: animateOut ? cardWidth : 0
+                }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 style={{
                     position: 'absolute',
                     inset: 0,
                     border: `${borderWidth}px solid ${borderColor}`,
                     borderRadius: `${radius}px`,
-                    transformOrigin: 'left',
+                    transformOrigin: animateOut ? 'right' : 'left',
                     pointerEvents: 'none',
                     height: `${cardHeight}px`,
-                    visibility: embodiedBorder ? 'hidden' : 'visible'
+                    visibility: embodiedBorder ? 'hidden' : 'visible',
                 }}
             />
         </div>

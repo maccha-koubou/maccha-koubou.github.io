@@ -8,12 +8,18 @@ interface ForCardProps {
     title:string
     subtitle1: string
     subtitle2: string
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete?: () => void;
 }
 
 const ForCard = ({
     title,
     subtitle1,
-    subtitle2
+    subtitle2,
+    animateIn,
+    animateOut,
+    onAnimationComplete,
 }: ForCardProps) => {
     const height = 72
     const padding = 24
@@ -28,8 +34,6 @@ const ForCard = ({
     const card1Width = card1Size ? card1Size.width : 0
     const card2Width = card2Size ? card2Size.width : 0
     const entireWidth = entireSize ? entireSize.width + 16 : 0
-
-    console.log(titleWidth, card1Width, card2Width)
 
     return (
         <div style={{
@@ -64,6 +68,9 @@ const ForCard = ({
                     horizon={'flex-start'}
                     vertical={'center'}
                     padding={padding}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
                 >
                     <span style={{
                         color: colors.primary,
@@ -97,9 +104,8 @@ const ForCard = ({
                     horizon={'flex-end'}
                     vertical={'flex-end'}
                     padding={padding}
-                    defaultAnimateIn={false}
-                    defaultAnimateOut={false}
                     embodiedBorder={true}
+                    animateOut={animateOut}
                 >
                     <span style={{
                         color: colors.white,
@@ -135,9 +141,8 @@ const ForCard = ({
                     horizon={'flex-end'}
                     vertical={'flex-end'}
                     padding={padding}
-                    defaultAnimateIn={false}
-                    defaultAnimateOut={false}
                     embodiedBorder={true}
+                    animateOut={animateOut}
                 >
                     <span style={{
                         color: colors.white,

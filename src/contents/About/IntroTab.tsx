@@ -10,7 +10,17 @@ import githubIcon from '../../assets/icons/github.svg'
 import mailIcon from '../../assets/icons/mail.svg'
 import measureSize from "../../utils/measureSize";
 
-const IntroTab = () => {
+interface IntroTabProps {
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete: () => void;
+}
+
+const IntroTab = ({
+    animateIn,
+    animateOut,
+    onAnimationComplete,
+                  }: IntroTabProps) => {
 
     // Get the size of the button
     const { ref, size: buttonSize } = measureSize<HTMLDivElement>()
@@ -37,8 +47,9 @@ const IntroTab = () => {
                         w={256}
                         h={256}
                         radius={128}
-                        defaultAnimateIn={false}
-                        defaultAnimateOut={false}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onAnimationComplete={onAnimationComplete}
                     >
                         <img src={avatar} width={'100%'} height={'100%'} alt="My avatar" />
                     </Card>
@@ -48,6 +59,8 @@ const IntroTab = () => {
                             icon={
                                 <img width="28" height="28" src={githubIcon}/>
                             }
+                            animateIn={animateIn}
+                            animateOut={animateOut}
                         />
                     </div>
                     <Button
@@ -55,6 +68,8 @@ const IntroTab = () => {
                         icon={
                             <img width="28" height="28" src={mailIcon}/>
                         }
+                        animateIn={animateIn}
+                        animateOut={animateOut}
                     />
                 </div>
             )
@@ -65,7 +80,11 @@ const IntroTab = () => {
             y: 240,
             z: 1,
             children: (
-                <CardStack w={520}>
+                <CardStack
+                    w={520}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                >
                     <span style={{
                         padding: '40px 40px 40px 160px',
                         fontWeight: '300',

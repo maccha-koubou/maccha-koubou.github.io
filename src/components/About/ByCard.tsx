@@ -5,11 +5,17 @@ import Card from "../Card";
 interface ByCardProps {
     text: string
     title: string
+    animateIn: boolean;
+    animateOut: boolean;
+    onAnimationComplete?: () => void;
 }
 
 const ByCard = ({
                     text,
                     title,
+                    animateIn,
+                    animateOut,
+                    onAnimationComplete,
                 }: ByCardProps) => {
 
     return (
@@ -35,6 +41,9 @@ const ByCard = ({
                     padding={36}
                     horizon={'flex-start'}
                     vertical={'center'}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
                 >
                     <span style={{
                         display: 'flex',
@@ -66,6 +75,8 @@ const ByCard = ({
                     padding={36}
                     horizon={'flex-start'}
                     vertical={'center'}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
                 >
                     <span style={{
                         display: 'flex',

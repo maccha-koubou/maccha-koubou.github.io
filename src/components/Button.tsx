@@ -15,6 +15,9 @@ interface ButtonProps {
     horizon?: 'flex-start' | 'center' | 'flex-end'
     vertical?: 'flex-start' | 'center' | 'flex-end'
     onClick?: () => void
+    animateIn?: boolean
+    animateOut?: boolean
+    onAnimationComplete?: () => void
 }
 
 const Button = ({
@@ -30,6 +33,9 @@ const Button = ({
     horizon = 'flex-start',
     vertical = 'center',
     onClick,
+    animateIn,
+    animateOut,
+    onAnimationComplete,
 }: ButtonProps) => {
 
     return (
@@ -53,6 +59,9 @@ const Button = ({
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
                 >
                     <span style={{
                         display: 'flex',
@@ -87,6 +96,8 @@ const Button = ({
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
                 >
                     <span style={{
                         display: 'flex',

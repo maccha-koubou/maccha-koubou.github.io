@@ -22,22 +22,49 @@ const About = () => {
     // Control the tab switching
     const [activeTab, setActiveTab] = useState<aboutTab>('intro')
 
-    let tabContent = <IntroTab />
+    const [nextTab, setNextTab] = useState<aboutTab | null>(null)
+    const [isExiting, setIsExiting] = useState(false) // For the exit animation
+
+    const handleTabChange = (tab: aboutTab) => {
+        if (tab === activeTab || isExiting) return
+        setNextTab(tab)
+        console.log('1')
+        setIsExiting(true)
+        console.log('2')
+    }
+
+    const resetTabStatus = () => {
+        setActiveTab(nextTab!)
+        console.log('3')
+        setNextTab(null)
+        console.log('4')
+        setIsExiting(false)
+        console.log('5')
+    }
+
+
+    let tabContent =
+        <IntroTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
     switch (activeTab) {
         case 'intro':
-            tabContent = <IntroTab />
+            tabContent =
+                <IntroTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
             break;
         case 'ux':
-            tabContent = <UXTab />
+            tabContent =
+                <UXTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
             break;
         case 'arch':
-            tabContent = <ArchTab />
+            tabContent =
+                <ArchTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
             break;
         case 'by':
-            tabContent = <ByTab />
+            tabContent =
+                <ByTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
             break;
         case 'for':
-            tabContent = <ForTab />
+            tabContent =
+                <ForTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
             break;
     }
 
@@ -49,7 +76,7 @@ const About = () => {
             y: 200,
             z: 2,
             children: (
-                <AboutNav setActiveTab={setActiveTab}/>
+                <AboutNav setActiveTab={handleTabChange}/>
             )
         },
         {
