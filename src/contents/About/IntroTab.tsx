@@ -6,9 +6,9 @@ import {colors} from "../../styles/theme";
 import Card from "../../components/Card";
 import CardStack from "../../components/CardStack";
 import Button from "../../components/Button";
-import githubIcon from '../../assets/icons/github.svg'
-import mailIcon from '../../assets/icons/mail.svg'
 import measureSize from "../../utils/measureSize";
+import {MailIcon} from "../../assets/icons/MailIcon";
+import {GithubIcon} from "../../assets/icons/GithubIcon";
 
 interface IntroTabProps {
     animateIn: boolean;
@@ -57,19 +57,21 @@ const IntroTab = ({
                         <Button
                             text={'github.com/maccha-koubou'}
                             icon={
-                                <img width="28" height="28" src={githubIcon}/>
+                                <GithubIcon />
                             }
                             animateIn={animateIn}
                             animateOut={animateOut}
+                            onClick={() => window.open('https://github.com/maccha-koubou', '_blank')}
                         />
                     </div>
                     <Button
                         text={'evelyn.koubou@gmail.com'}
                         icon={
-                            <img width="28" height="28" src={mailIcon}/>
+                            <MailIcon />
                         }
                         animateIn={animateIn}
                         animateOut={animateOut}
+                        onClick={() => window.location.href = 'mailto:evelyn.koubou@gmail.com'}
                     />
                 </div>
             )

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {motion} from 'framer-motion'
 import measureSize from "../utils/measureSize";
 
@@ -17,6 +17,7 @@ interface CardProps {
     animateOut?: boolean
     embodiedBorder?: boolean
     onAnimationComplete?: () => void
+    initialHiding?: boolean
 }
 
 const Card = ({
@@ -33,7 +34,8 @@ const Card = ({
     animateIn = false,
     animateOut = false,
     embodiedBorder = false,
-    onAnimationComplete
+    onAnimationComplete,
+    initialHiding = false,
 }: CardProps) => {
 
     // Add "px" after the width and height
@@ -68,12 +70,20 @@ const Card = ({
     // Determine weather the border animation is shown
     const borderInitialWidth = animateIn ? 0 : cardWidth;
 
+    const [isActivated, setIsActivated] = useState(!initialHiding);
+    useEffect(() => {
+        if (initialHiding && animateIn) {
+            setIsActivated(true);
+        }
+    }, [initialHiding, animateIn]);
+
 
     return (
         <div style={{
             width: finalWidth,
             height: finalHeight,
             position: 'relative',
+            visibility: isActivated ? 'visible' : 'hidden',
             }}
             ref={maskRef}
         >

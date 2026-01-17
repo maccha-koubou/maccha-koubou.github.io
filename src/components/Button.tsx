@@ -1,4 +1,4 @@
-import React, {JSX} from 'react'
+import React, {JSX, useState} from 'react'
 import {colors} from "../styles/theme";
 import Card from "./Card";
 
@@ -38,11 +38,28 @@ const Button = ({
     onAnimationComplete,
 }: ButtonProps) => {
 
+    const [isHover, setIsHover] = useState(false);
+    const [isLeave, setIsLeave] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0)
+
     return (
-        <div style={{
-            position: 'relative',
-            width: 'fit-content'
-        }}>
+        <div
+            style={{
+                position: 'relative',
+                width: 'fit-content',
+                cursor: 'pointer',
+            }}
+            onClick={onClick}
+            onMouseEnter={() => {
+                setRefreshKey(refreshKey + 1)
+                setIsLeave(false)
+                setIsHover(true)
+            }}
+            onMouseLeave={() => {
+                setIsHover(false)
+                setIsLeave(true)
+            }}
+        >
 
             {/* Basic layer of button */}
             <div style={{
@@ -72,7 +89,7 @@ const Button = ({
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        {icon ? React.cloneElement(icon, { fill: secondaryColor }) : ''}
+                        {icon ? React.cloneElement(icon) : ''}
                         {text}
                     </span>
                 </Card>
@@ -89,26 +106,31 @@ const Button = ({
                 zIndex: 1,
             }}>
                 <Card
+                    key={refreshKey}
                     radius={radius}
-                    bg={primaryColor}
+                    bg={secondaryColor}
                     w={w}
                     h={h}
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
-                    animateIn={animateIn}
-                    animateOut={animateOut}
+                    animateIn={isHover}
+                    animateOut={isLeave}
+                    borderColor={primaryColor}
+                    borderWidth={2}
+                    initialHiding={true}
+                    embodiedBorder={true}
                 >
                     <span style={{
                         display: 'flex',
                         fontSize: `${textSize}px`,
                         fontWeight: 300,
-                        color: secondaryColor,
+                        color: primaryColor,
                         whiteSpace: 'nowrap',
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        {icon ? React.cloneElement(icon, { fill: secondaryColor }) : ''}
+                        {icon ? React.cloneElement(icon) : ''}
                         {text}
                     </span>
                 </Card>

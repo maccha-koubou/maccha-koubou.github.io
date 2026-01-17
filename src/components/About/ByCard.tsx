@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {colors} from "../../styles/theme";
 import Card from "../Card";
 
@@ -18,11 +18,23 @@ const ByCard = ({
                     onAnimationComplete,
                 }: ByCardProps) => {
 
+    const [isHover, setIsHover] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0)
+    const finalAnimateOut = animateOut || isHover
+
     return (
         <div style={{
-            position: 'relative',
-            width: 'fit-content'
-        }}>
+                position: 'relative',
+                width: 'fit-content'
+            }}
+            onMouseEnter={() => {
+                setIsHover(true)
+            }}
+            onMouseLeave={() => {
+                setIsHover(false)
+                setRefreshKey(refreshKey + 1)
+            }}
+        >
 
             {/* Basic layer of button */}
             <div style={{
@@ -68,6 +80,7 @@ const ByCard = ({
                 zIndex: 1,
             }}>
                 <Card
+                    key={refreshKey}
                     radius={44}
                     bg={colors.primary}
                     w={800}
@@ -76,7 +89,7 @@ const ByCard = ({
                     horizon={'flex-start'}
                     vertical={'center'}
                     animateIn={animateIn}
-                    animateOut={animateOut}
+                    animateOut={finalAnimateOut}
                 >
                     <span style={{
                         display: 'flex',

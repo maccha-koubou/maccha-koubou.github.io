@@ -4,8 +4,9 @@ import {CanvasItemProps} from "../../components/CanvasItem";
 import {colors} from "../../styles/theme";
 import CardStack from "../../components/CardStack";
 import Button from "../../components/Button";
-import rightArrowIcon from '../../assets/icons/rightArrow.svg'
 import measureSize from "../../utils/measureSize";
+import {RightArrowIcon} from "../../assets/icons/RightArrowIcon";
+import {useNavigate} from "react-router-dom";
 
 interface UXTabProps {
     animateIn: boolean;
@@ -18,6 +19,7 @@ const UXTab = ({
                    animateOut,
                    onAnimationComplete,
                }: UXTabProps) => {
+    const navigate = useNavigate()
 
     // Get the size of the button and cards
     const { ref: refCard1, size: card1Size } = measureSize<HTMLDivElement>()
@@ -94,11 +96,10 @@ const UXTab = ({
                     <div style={{width: 'fit-content', height: 'fit-content'}}>
                         <Button
                             text={'My product works'}
-                            icon={
-                                <img width="28" height="28" src={rightArrowIcon}/>
-                            }
+                            icon={<RightArrowIcon />}
                             animateIn={animateIn}
                             animateOut={animateOut}
+                            onClick={() => navigate('/work/product')}
                         />
                     </div>
                 </div>

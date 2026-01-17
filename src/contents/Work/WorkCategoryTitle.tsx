@@ -2,10 +2,10 @@ import Card from "../../components/Card";
 import {colors} from "../../styles/theme";
 import React from "react";
 import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
-import selectedIcon from "../../assets/icons/selected.svg";
-import unselectedIcon from "../../assets/icons/unselected.svg";
 import Button from "../../components/Button";
 import Toggle from "../../components/Toggle";
+import {SelectedIcon} from "../../assets/icons/SelectedIcon";
+import {UnselectedIcon} from "../../assets/icons/UnselectedIcon";
 
 interface WorkCategoryTitleProps {
     activeProject: Project | null;
@@ -96,10 +96,10 @@ const WorkCategoryTitle = ({
                     isActive={isToggle1Active}
                     text={toggle1}
                     offIcon={
-                        <img width="28" height="28" src={unselectedIcon}/>
+                        <UnselectedIcon />
                     }
                     onIcon={
-                        <img width="28" height="28" src={selectedIcon}/>
+                        <SelectedIcon />
                     }
                     onClick={
                         () => {
@@ -114,10 +114,10 @@ const WorkCategoryTitle = ({
                     isActive={isToggle2Active}
                     text={toggle2}
                     offIcon={
-                        <img width="28" height="28" src={unselectedIcon}/>
+                        <UnselectedIcon />
                     }
                     onIcon={
-                        <img width="28" height="28" src={selectedIcon}/>
+                        <SelectedIcon />
                     }
                     onClick={
                         () => {
