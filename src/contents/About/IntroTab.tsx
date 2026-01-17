@@ -37,6 +37,8 @@ const IntroTab = () => {
                         w={256}
                         h={256}
                         radius={128}
+                        defaultAnimateIn={false}
+                        defaultAnimateOut={false}
                     >
                         <img src={avatar} width={'100%'} height={'100%'} alt="My avatar" />
                     </Card>

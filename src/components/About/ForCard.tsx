@@ -97,6 +97,9 @@ const ForCard = ({
                     horizon={'flex-end'}
                     vertical={'flex-end'}
                     padding={padding}
+                    defaultAnimateIn={false}
+                    defaultAnimateOut={false}
+                    embodiedBorder={true}
                 >
                     <span style={{
                         color: colors.white,
@@ -132,6 +135,9 @@ const ForCard = ({
                     horizon={'flex-end'}
                     vertical={'flex-end'}
                     padding={padding}
+                    defaultAnimateIn={false}
+                    defaultAnimateOut={false}
+                    embodiedBorder={true}
                 >
                     <span style={{
                         color: colors.white,
