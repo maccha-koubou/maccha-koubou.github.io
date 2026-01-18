@@ -1,6 +1,6 @@
 import Card from "../../components/Card";
 import {colors} from "../../styles/theme";
-import React from "react";
+import React, {useState} from "react";
 import {Project, ProjectType, SubProjectType} from "../../config/ProjectType";
 import Button from "../../components/Button";
 import Toggle from "../../components/Toggle";
@@ -56,14 +56,12 @@ const WorkCategoryTitle = ({
         titleGap = 0
     }
 
-    let isToggle1Active = true
-    let isToggle2Active = true
-    if (!activeSubType || !activeSubType.includes(toggle1)) {
-        isToggle1Active = false
-    }
-    if (!activeSubType || !activeSubType.includes(toggle2)) {
-        isToggle2Active = false
-    }
+    const [isToggle1Active, setIsToggle1Active] = useState(
+        activeSubType && activeSubType.includes(toggle1)
+    );
+    const [isToggle2Active, setIsToggle2Active] = useState(
+        activeSubType && activeSubType.includes(toggle2)
+    );
 
     // Shows toggles when no project is active, show the project's subtitle when it's active
     let bottomItem: React.ReactNode
@@ -103,6 +101,7 @@ const WorkCategoryTitle = ({
                     }
                     onClick={
                         () => {
+                            setIsToggle1Active(!isToggle1Active)
                             if (activeSubType.includes(toggle1)) {
                                 setActiveSubType(activeSubType.filter(type => type !== toggle1))
                             } else {
@@ -121,6 +120,7 @@ const WorkCategoryTitle = ({
                     }
                     onClick={
                         () => {
+                            setIsToggle2Active(!isToggle2Active)
                             if (activeSubType.includes(toggle2)) {
                                 setActiveSubType(activeSubType.filter(type => type !== toggle2))
                             } else {

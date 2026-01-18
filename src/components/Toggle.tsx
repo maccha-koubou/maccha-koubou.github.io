@@ -1,4 +1,4 @@
-import React, {JSX} from 'react'
+import React, {JSX, useState} from 'react'
 import {colors} from "../styles/theme";
 import Card from "./Card";
 
@@ -16,6 +16,9 @@ interface ToggleProps {
     vertical?: 'flex-start' | 'center' | 'flex-end'
     onClick?: () => void
     isActive: boolean
+    animateIn?: boolean
+    animateOut?: boolean
+    onAnimationComplete?: () => void
 }
 
 const Toggle = ({
@@ -32,15 +35,33 @@ const Toggle = ({
     vertical = 'center',
     onClick,
     isActive,
+    animateIn,
+    animateOut,
+    onAnimationComplete,
 }: ToggleProps) => {
 
-    return (
-        <div style={{
-            position: 'relative',
-            width: 'fit-content'
+    const [isHover, setIsHover] = useState(false);
+    const [isLeave, setIsLeave] = useState(false);
+    const [refreshKey, setRefreshKey] = useState(0)
 
+    return (
+        <div
+            style={{
+                position: 'relative',
+                width: 'fit-content',
+                cursor: 'pointer',
             }}
             onClick={onClick}
+            onMouseEnter={() => {
+                console.log(isActive)
+                setRefreshKey(refreshKey + 1)
+                setIsLeave(false)
+                setIsHover(true)
+            }}
+            onMouseLeave={() => {
+                setIsHover(false)
+                setIsLeave(true)
+            }}
         >
 
             {/* Off layer of button */}
@@ -58,6 +79,9 @@ const Toggle = ({
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
+                    animateIn={animateIn}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
                 >
                     <span style={{
                         display: 'flex',
@@ -68,13 +92,13 @@ const Toggle = ({
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        {offIcon ? React.cloneElement(offIcon, { fill: color }) : ''}
+                        {offIcon}
                         {text}
                     </span>
                 </Card>
             </div>
 
-            {/* Highlight layer of button */}
+            {/* On layer of button */}
             <div style={{
                 display: 'flex',
                 width: 'fit-content',
@@ -83,6 +107,7 @@ const Toggle = ({
                 left: '0px',
                 top: '0px',
                 zIndex: 1,
+                opacity: isActive ? 1 : 0,
             }}>
                 <Card
                     radius={radius}
@@ -102,7 +127,48 @@ const Toggle = ({
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        {onIcon ? React.cloneElement(onIcon, { fill: colors.white }) : ''}
+                        {onIcon}
+                        {text}
+                    </span>
+                </Card>
+            </div>
+
+            {/* Highlight layer of button */}
+            <div style={{
+                display: 'flex',
+                width: 'fit-content',
+                height: 'fit-content',
+                position: 'absolute',
+                left: '0px',
+                top: '0px',
+                zIndex: 2,
+            }}>
+                <Card
+                    key={refreshKey}
+                    radius={radius}
+                    bg={colors.white}
+                    w={w}
+                    h={h}
+                    padding={padding}
+                    horizon={horizon}
+                    vertical={vertical}
+                    borderColor={color}
+                    borderWidth={2}
+                    animateIn={isHover}
+                    animateOut={isLeave}
+                    initialHiding={true}
+                    embodiedBorder={true}
+                >
+                    <span style={{
+                        display: 'flex',
+                        fontSize: `${textSize}px`,
+                        fontWeight: 300,
+                        color: color,
+                        whiteSpace: 'nowrap',
+                        justifyContent: 'center',
+                        gap: '8px'
+                    }}>
+                        {isActive ? onIcon : offIcon}
                         {text}
                     </span>
                 </Card>
