@@ -14,13 +14,27 @@ export const getImgSize = (url: string) => {
 }
 
 
+// Create random scaling factor of img size
+export const useRandomizeSize = (count: number) => {
+    const ref = useRef<number[]>([])
+    if (ref.current.length === 0) {
+        ref.current = Array.from({ length: count }, () =>
+            Math.random() * 0.2 + 0.9
+        )
+    }
+    return ref.current
+}
+
+
 
 // Create random ratio for the img frame
 export const useRandomizeRatio = (count: number) => {
     const ref = useRef<number[]>([])
     if (ref.current.length === 0) {
         ref.current = Array.from({ length: count }, () =>
-            Math.random()
+            Math.random() < 0.5
+                ? Math.random() * 0.4
+                : 0.6 + Math.random() * 0.4
         )
     }
     return ref.current
@@ -29,11 +43,11 @@ export const useRandomizeRatio = (count: number) => {
 
 
 // Calculate the img frame size based on the ratio
-export const calculateImgFrameSize = (ratio: number) => {
+export const calculateImgFrameSize = (ratio: number, size: number) => {
     const inter = (PROJECT_CARD_LONGER_SIDE - PROJECT_CARD_SHORTER_SIDE) * ratio
     return {
-        width: PROJECT_CARD_LONGER_SIDE - inter,
-        height: PROJECT_CARD_SHORTER_SIDE + inter
+        width: (PROJECT_CARD_LONGER_SIDE - inter) * size,
+        height: (PROJECT_CARD_SHORTER_SIDE + inter) * size
     }
 }
 

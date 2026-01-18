@@ -37,11 +37,12 @@ export const genProjectCards = (
     baselineGap: number,
     offsets: {x: number[], y: number[]},
     maxYOffset: number,
+    randomSize: number[],
     randomRatio: number[]
 ) => {
     return Array.from({ length: projects.length }, (_, i) => {
 
-        const size = calculateImgFrameSize(randomRatio[i])
+        const size = calculateImgFrameSize(randomRatio[i], randomSize[i])
         const focusPoint = calculateImgFocus(projects[i], randomRatio[i])
         const bottomProjectBaseOffset = CANVAS_HEIGHT - NAV_HEIGHT - 50 - PROJECT_CARD_LONGER_SIDE - maxYOffset
 

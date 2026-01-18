@@ -54,6 +54,7 @@ const ellipseDistribution = (
     randomOffsets: number[],
     randomProjects: Project[],
     randomZ: number[],
+    randomSize: number[],
     randomRatio: number[]
 ): CanvasItemProps[] => {
 
@@ -69,7 +70,7 @@ const ellipseDistribution = (
         const offsetY = -20
         const z = randomZ[i]
 
-        const size = calculateImgFrameSize(randomRatio[i])
+        const size = calculateImgFrameSize(randomRatio[i], randomSize[i])
         const focusPoint = calculateImgFocus(randomProjects[i], randomRatio[i])
 
         //const size = getFinalImgSize(randomProjects[i].cover, randomSize[i])

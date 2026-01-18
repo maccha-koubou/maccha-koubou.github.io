@@ -8,7 +8,7 @@ import ellipseDistribution, {
     useRandomizeZ
 } from "../utils/Home/ellipseDistribution";
 import measureSize from "../utils/measureSize";
-import {useRandomizeRatio} from "../utils/getImgSize";
+import {useRandomizeRatio, useRandomizeSize} from "../utils/getImgSize";
 
 const Home = () => {
 
@@ -36,10 +36,11 @@ const Home = () => {
     const randomOffsets = useRandomizeOffsets(COUNT)
     const randomProjects = useRandomizeProjects(COUNT)
     const randomZ = useRandomizeZ(COUNT)
+    const randomSize = useRandomizeSize(COUNT)
     const randomRatio = useRandomizeRatio(COUNT)
 
     const ellipseItems =
-        ellipseDistribution(canvasWidth, canvasHeight, randomOffsets, randomProjects, randomZ, randomRatio)
+        ellipseDistribution(canvasWidth, canvasHeight, randomOffsets, randomProjects, randomZ, randomSize, randomRatio)
 
     const items: CanvasItemProps[] = [
         ...itemWithoutEllipse,
