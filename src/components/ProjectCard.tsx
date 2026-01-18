@@ -15,6 +15,7 @@ interface ProjectCardProps {
     w: number
     index?: number
     horizontalPosLimitation?: 'left' | 'right' | 'both'
+    focusPoint: {x: number; y: number}
 }
 
 const ProjectCard = ({
@@ -26,7 +27,8 @@ const ProjectCard = ({
                 h,
                 w,
                 index,
-                horizontalPosLimitation
+                horizontalPosLimitation,
+                focusPoint
               }: ProjectCardProps) => {
 
     // Get the size of the label
@@ -94,12 +96,24 @@ const ProjectCard = ({
                 h={h}
                 radius={24}
             >
-                <img
-                    src={project.cover}
-                    width={w}
-                    height={h}
-                    alt={project.subtitle}
-                />
+                <div style={{
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: w,
+                    height: h
+                }}>
+                    <img
+                        src={project.cover}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            display: 'block',
+                            objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
+                        }}
+                        alt={project.subtitle}
+                    />
+                </div>
             </Card>
 
             {/* The label of card */}

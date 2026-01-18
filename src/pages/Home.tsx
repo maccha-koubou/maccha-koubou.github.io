@@ -2,8 +2,13 @@ import React from 'react'
 import MainCanvas from "../components/MainCanvas";
 import { CanvasItemProps } from "../components/CanvasItem";
 import IntroCard from "../contents/Home/IntroCard";
-import ellipseDistribution from "../utils/Home/ellipseDistribution";
+import ellipseDistribution, {
+    useRandomizeOffsets,
+    useRandomizeProjects,
+    useRandomizeZ
+} from "../utils/Home/ellipseDistribution";
 import measureSize from "../utils/measureSize";
+import {useRandomizeRatio} from "../utils/getImgSize";
 
 const Home = () => {
 
@@ -25,7 +30,16 @@ const Home = () => {
             ),
         }
     ]
-    const ellipseItems = ellipseDistribution(canvasWidth, canvasHeight)
+
+
+    const COUNT = 6
+    const randomOffsets = useRandomizeOffsets(COUNT)
+    const randomProjects = useRandomizeProjects(COUNT)
+    const randomZ = useRandomizeZ(COUNT)
+    const randomRatio = useRandomizeRatio(COUNT)
+
+    const ellipseItems =
+        ellipseDistribution(canvasWidth, canvasHeight, randomOffsets, randomProjects, randomZ, randomRatio)
 
     const items: CanvasItemProps[] = [
         ...itemWithoutEllipse,

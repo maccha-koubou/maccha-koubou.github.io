@@ -3,43 +3,46 @@ import {CanvasItemProps} from "../../components/CanvasItem";
 import {Project} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import ProjectCard from "../../components/ProjectCard";
-import {getFinalImgSize} from "../getImgSize";
+import {calculateImgFocus, calculateImgFrameSize} from "../getImgSize";
 
 
 
 // Create random ellipse distribution offsets that don't change during the whole lifecycle of the components
-const randomizeOffsets = ( count: number ) => {
-    const randomOffsetsRef = useRef<number[] | null>(null)
-    if (!randomOffsetsRef.current) {
-        randomOffsetsRef.current = Array.from(
+export const useRandomizeOffsets = ( count: number ) => {
+    const ref = useRef<number[]>([])
+    if (ref.current.length === 0) {
+        ref.current = Array.from(
             { length: count },
             () => Math.random() * 1.5 - 0.75
         )
     }
-    return randomOffsetsRef.current
+    return ref.current
 }
 
 
 
 // Select random projects
-const randomizeProjects = ( count: number ) => {
-    const randomProjectsRef = useRef<Project[] | null>(null)
-    if (!randomProjectsRef.current) {
-        const shuffled = [...projects].sort(() => Math.random() - 0.5)
-        randomProjectsRef.current = shuffled.slice(0, count)
+export const useRandomizeProjects = ( count: number ) => {
+    const ref = useRef<Project[]>([])
+    if (ref.current.length === 0) {
+        ref.current = [...projects]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, count)
     }
-    return randomProjectsRef.current
+    return ref.current
 }
 
 
 
 // Create random z-index
-export const randomizeZ = () => {
-    const randomZRef = useRef<number | null>(null)
-    if (!randomZRef.current) {
-        randomZRef.current = Math.random() < 0.5 ? 0 : 2
+export const useRandomizeZ = (count: number) => {
+    const ref = useRef<number[]>([])
+    if (ref.current.length === 0) {
+        ref.current = Array.from({ length: count }, () =>
+            Math.random() < 0.5 ? 0 : 2
+        )
     }
-    return randomZRef.current
+    return ref.current
 }
 
 
@@ -48,11 +51,13 @@ export const randomizeZ = () => {
 const ellipseDistribution = (
     canvasWidth: number,
     canvasHeight: number,
+    randomOffsets: number[],
+    randomProjects: Project[],
+    randomZ: number[],
+    randomRatio: number[]
 ): CanvasItemProps[] => {
 
     const count = 6
-    const randomOffsets = randomizeOffsets(count)
-    const randomProjects = randomizeProjects(count)
 
     // Calculate the radius of the ellipse distribution
     const ellipseRadiusX = canvasWidth * 2.3 / 7;
@@ -62,9 +67,12 @@ const ellipseDistribution = (
         const angle = (2 * Math.PI * i + randomOffsets[i]) / count
 
         const offsetY = -20
-        const z = randomizeZ()
+        const z = randomZ[i]
 
-        const size = getFinalImgSize(randomProjects[i].cover)
+        const size = calculateImgFrameSize(randomRatio[i])
+        const focusPoint = calculateImgFocus(randomProjects[i], randomRatio[i])
+
+        //const size = getFinalImgSize(randomProjects[i].cover, randomSize[i])
         //console.log(`${i}, size: ${size}, x: ${ellipseRadiusX}, y: ${ellipseRadiusY}`)
 
         return {
@@ -78,6 +86,7 @@ const ellipseDistribution = (
                     isLabelSecondary={false}
                     w={size.width}
                     h={size.height}
+                    focusPoint={focusPoint}
                     index={i}
                 />
             ),

@@ -5,6 +5,9 @@ const transitionGuidepost = createProject({
     title: 'Transition Guidepost',
     subtitle: 'Transition Guidepost',
     cover: cover,
+    coverColored: cover,
+    landscape: {x: 0.5, y: 0.5},
+    portrait: {x: 0.5, y: 0.5},
     types: [ProjectType.PRODUCT],
     subtypes: [SubProjectType.DIGITAL_PRODUCTS],
     slides: []

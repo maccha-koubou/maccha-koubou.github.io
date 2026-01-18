@@ -1,10 +1,8 @@
-import {CanvasItemProps} from "../../components/CanvasItem";
-import {getFinalImgSize} from "../getImgSize";
+import {calculateImgFocus, calculateImgFrameSize} from "../getImgSize";
 import ProjectCard from "../../components/ProjectCard";
 import React, {useRef} from "react";
 import {Project} from "../../config/ProjectType";
 import {CANVAS_HEIGHT, NAV_HEIGHT, PROJECT_CARD_LONGER_SIDE} from "../../config/Size";
-import WorkCategoryCanvas from "../../components/Work/WorkCategoryCanvas";
 
 
 
@@ -39,10 +37,12 @@ export const genProjectCards = (
     baselineGap: number,
     offsets: {x: number[], y: number[]},
     maxYOffset: number,
+    randomRatio: number[]
 ) => {
     return Array.from({ length: projects.length }, (_, i) => {
 
-        const size = getFinalImgSize(projects[i].cover)
+        const size = calculateImgFrameSize(randomRatio[i])
+        const focusPoint = calculateImgFocus(projects[i], randomRatio[i])
         const bottomProjectBaseOffset = CANVAS_HEIGHT - NAV_HEIGHT - 50 - PROJECT_CARD_LONGER_SIDE - maxYOffset
 
         let finalOffsets = {x: offsets.x[i], y: offsets.y[i]}
@@ -74,6 +74,7 @@ export const genProjectCards = (
                     isLabelSecondary={true}
                     w={size.width}
                     h={size.height}
+                    focusPoint={focusPoint}
                     horizontalPosLimitation={labelPosition}
                 />
             ),
@@ -84,7 +85,7 @@ export const genProjectCards = (
 
 
 
-const workCategoryDistribution = (
+/*const workCategoryDistribution = (
     canvasWidth: number,
     canvasHeight: number,
     projects: Project[],
@@ -117,4 +118,4 @@ const workCategoryDistribution = (
     }
 }
 
-export default workCategoryDistribution;
+export default workCategoryDistribution;*/

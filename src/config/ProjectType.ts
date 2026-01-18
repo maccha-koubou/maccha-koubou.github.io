@@ -6,6 +6,9 @@ export interface Project {
     types: ProjectType[],
     subtypes: SubProjectType[],
     cover: string,
+    coverColored: string,
+    landscape: {x: number, y: number},
+    portrait: {x: number, y: number},
 
     // To-do: add the slide type
     slides: any[],
@@ -34,6 +37,9 @@ export const createProject = (input: {
     types: ProjectType[]
     subtypes: SubProjectType[]
     cover: string
+    coverColored: string,
+    landscape: {x: number, y: number},
+    portrait: {x: number, y: number},
     slides: any[] // <- To be updated
 }) => {
 
@@ -56,16 +62,7 @@ export const createProject = (input: {
         )
         .join('')
 
-    const project: Project = {
-        id: id,
-        url: url,
-        title: input.title,
-        subtitle: input.subtitle,
-        cover: input.cover,
-        types: input.types,
-        subtypes: input.subtypes,
-        slides: input.slides
-    }
+    const project: Project = {id, url, ...input}
 
     return project
 }

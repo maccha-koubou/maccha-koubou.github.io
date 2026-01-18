@@ -5,6 +5,7 @@ import {
     useRandomizeOffsets
 } from "../../utils/Work/workCategoryDistribution";
 import WorkCategoryCanvas from "./WorkCategoryCanvas";
+import {useRandomizeRatio} from "../../utils/getImgSize";
 
 interface WorkCategoryProjectCanvasProps {
     projects: Project[]
@@ -27,6 +28,7 @@ const WorkCategoryProjectCanvas = ({
                                    }: WorkCategoryProjectCanvasProps) => {
 
     const randomOffsets = useRandomizeOffsets(projects.length, maxXOffset, maxYOffset)
+    const randomSize = useRandomizeRatio(projects.length)
 
 
 
@@ -40,7 +42,7 @@ const WorkCategoryProjectCanvas = ({
     const overallWidth = projects.length * baselineGap
 
     const projectCards =
-        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset)
+        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize)
 
     return (
         <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>

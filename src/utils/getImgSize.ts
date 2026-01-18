@@ -1,5 +1,6 @@
 import {useRef} from "react";
-import {PROJECT_CARD_LONGER_SIDE} from "../config/Size";
+import {PROJECT_CARD_LONGER_SIDE, PROJECT_CARD_SHORTER_SIDE} from "../config/Size";
+import {Project} from "../config/ProjectType";
 
 
 
@@ -14,21 +15,52 @@ export const getImgSize = (url: string) => {
 
 
 
-// Create random scaling factor of img size
-export const randomizeSize = () => {
-    const randomSizeRef = useRef<number | null>(null)
-    if (!randomSizeRef.current) {
-        randomSizeRef.current = Math.random() * 0.2 + 0.9
+// Create random ratio for the img frame
+export const useRandomizeRatio = (count: number) => {
+    const ref = useRef<number[]>([])
+    if (ref.current.length === 0) {
+        ref.current = Array.from({ length: count }, () =>
+            Math.random()
+        )
     }
-    return randomSizeRef.current
+    return ref.current
+}
+
+
+
+// Calculate the img frame size based on the ratio
+export const calculateImgFrameSize = (ratio: number) => {
+    const inter = (PROJECT_CARD_LONGER_SIDE - PROJECT_CARD_SHORTER_SIDE) * ratio
+    return {
+        width: PROJECT_CARD_LONGER_SIDE - inter,
+        height: PROJECT_CARD_SHORTER_SIDE + inter
+    }
+}
+
+
+
+// Calculate the focus point based on the ratio
+export const calculateImgFocus = (
+    project: Project,
+    ratio: number
+) => {
+    const landscape = project.landscape
+    const portrait = project.portrait
+    return {
+        x: landscape.x + (portrait.x - landscape.x) * ratio,
+        y: landscape.y + (portrait.y - landscape.y) * ratio,
+    }
 }
 
 
 
 // Calculate the final size of the img
-export const getFinalImgSize = (url: string) => {
+export const getFinalImgSize = (
+    url: string,
+    randomizeSize: number
+) => {
     const originalSize = getImgSize(url)
-    const longerSideLength = PROJECT_CARD_LONGER_SIDE * randomizeSize()
+    const longerSideLength = PROJECT_CARD_LONGER_SIDE * randomizeSize
     let width: number
     let height: number
 
