@@ -101,7 +101,7 @@ const Card = ({
                             ? `inset(0 0 0 100% round ${radius}px)`
                             : `inset(0 0 0 0 round ${radius}px)`
                 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 style={{
                     width: '100%',
                     height: '100%',
@@ -139,7 +139,7 @@ const Card = ({
                     width: animateOut ? 0 : cardWidth,
                     left: animateOut ? cardWidth : 0
                 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 style={{
                     position: 'absolute',
                     inset: 0,

@@ -28,43 +28,44 @@ const About = () => {
     const handleTabChange = (tab: aboutTab) => {
         if (tab === activeTab || isExiting) return
         setNextTab(tab)
-        console.log('1')
         setIsExiting(true)
-        console.log('2')
     }
 
     const resetTabStatus = () => {
         setActiveTab(nextTab!)
-        console.log('3')
         setNextTab(null)
-        console.log('4')
         setIsExiting(false)
-        console.log('5')
+    }
+
+    const animationProps = {
+        animateIn: !isExiting,
+        animateOut: isExiting,
+        onAnimationComplete: resetTabStatus,
     }
 
 
     let tabContent =
-        <IntroTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+        <IntroTab {...animationProps} />
     switch (activeTab) {
         case 'intro':
             tabContent =
-                <IntroTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+                <IntroTab {...animationProps} />
             break;
         case 'ux':
             tabContent =
-                <UXTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+                <UXTab {...animationProps} />
             break;
         case 'arch':
             tabContent =
-                <ArchTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+                <ArchTab {...animationProps} />
             break;
         case 'by':
             tabContent =
-                <ByTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+                <ByTab {...animationProps} />
             break;
         case 'for':
             tabContent =
-                <ForTab animateIn={!isExiting} animateOut={isExiting} onAnimationComplete={resetTabStatus} />
+                <ForTab {...animationProps} />
             break;
     }
 

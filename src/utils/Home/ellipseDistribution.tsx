@@ -65,7 +65,7 @@ const ellipseDistribution = (
         const z = randomizeZ()
 
         const size = getFinalImgSize(randomProjects[i].cover)
-        console.log(`${i}, size: ${size}, x: ${ellipseRadiusX}, y: ${ellipseRadiusY}`)
+        //console.log(`${i}, size: ${size}, x: ${ellipseRadiusX}, y: ${ellipseRadiusY}`)
 
         return {
             id: `home-project-${i}`,

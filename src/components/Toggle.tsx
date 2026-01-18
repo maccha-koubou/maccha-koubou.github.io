@@ -53,7 +53,6 @@ const Toggle = ({
             }}
             onClick={onClick}
             onMouseEnter={() => {
-                console.log(isActive)
                 setRefreshKey(refreshKey + 1)
                 setIsLeave(false)
                 setIsHover(true)
@@ -64,7 +63,7 @@ const Toggle = ({
             }}
         >
 
-            {/* Off layer of button */}
+            {/* Body of the toggle */}
             <div style={{
                 display: 'flex',
                 width: 'fit-content',
@@ -73,7 +72,7 @@ const Toggle = ({
             }}>
                 <Card
                     radius={radius}
-                    bg={'transparent'}
+                    bg={isActive ? color : 'transparent'}
                     w={w}
                     h={h}
                     padding={padding}
@@ -87,53 +86,18 @@ const Toggle = ({
                         display: 'flex',
                         fontSize: `${textSize}px`,
                         fontWeight: 300,
-                        color: color,
+                        color: isActive ? colors.white : color,
                         whiteSpace: 'nowrap',
                         justifyContent: 'center',
                         gap: '8px'
                     }}>
-                        {offIcon}
+                        {isActive ? onIcon : offIcon}
                         {text}
                     </span>
                 </Card>
             </div>
 
-            {/* On layer of button */}
-            <div style={{
-                display: 'flex',
-                width: 'fit-content',
-                height: 'fit-content',
-                position: 'absolute',
-                left: '0px',
-                top: '0px',
-                zIndex: 1,
-                opacity: isActive ? 1 : 0,
-            }}>
-                <Card
-                    radius={radius}
-                    bg={color}
-                    w={w}
-                    h={h}
-                    padding={padding}
-                    horizon={horizon}
-                    vertical={vertical}
-                >
-                    <span style={{
-                        display: 'flex',
-                        fontSize: `${textSize}px`,
-                        fontWeight: 300,
-                        color: colors.white,
-                        whiteSpace: 'nowrap',
-                        justifyContent: 'center',
-                        gap: '8px'
-                    }}>
-                        {onIcon}
-                        {text}
-                    </span>
-                </Card>
-            </div>
-
-            {/* Highlight layer of button */}
+            {/* Highlight layer of the toggle */}
             <div style={{
                 display: 'flex',
                 width: 'fit-content',
