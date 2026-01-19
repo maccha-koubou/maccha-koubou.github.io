@@ -78,6 +78,10 @@ const WorkCategory = ({
     }, [])
 
 
+    // Control the exit animation when switching the page
+    const [isExit, setIsExit] = useState<'1' | '2' | 'false'>('false');
+
+
 
     const maxXOffset = 200
     const maxYOffset = 80
@@ -94,9 +98,13 @@ const WorkCategory = ({
             children: (
                 <WorkCategoryTitle
                     type={type}
+                    subType1={subType1}
+                    subType2={subType2}
                     activeProject={activeProject}
                     activeSubType={activeSubType}
                     setActiveSubType={setActiveSubType}
+                    setIsExit={setIsExit}
+                    isExit={isExit}
                 />
             ),
         },
@@ -114,10 +122,16 @@ const WorkCategory = ({
                             projects={filteredProjects}
                             activeProject={activeProject}
                             setActiveProject={setActiveProject}
+                            subType1={subType1}
+                            subType2={subType2}
+                            activeSubType={activeSubType}
+                            setActiveSubType={setActiveSubType}
                             canvasWidth={canvasWidth}
                             canvasHeight={canvasHeight}
                             maxXOffset={maxXOffset}
                             maxYOffset={maxYOffset}
+                            isExit={isExit}
+                            setIsExit={setIsExit}
                             key={activeSubType ? activeSubType.toString() : type}
                         />
                     </ScrollWrapper>

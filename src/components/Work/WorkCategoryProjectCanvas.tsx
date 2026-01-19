@@ -1,5 +1,5 @@
 import React from "react";
-import {Project} from "../../config/ProjectType";
+import {Project, SubProjectType} from "../../config/ProjectType";
 import {
     genProjectCards,
     useRandomizeOffsets
@@ -15,6 +15,12 @@ interface WorkCategoryProjectCanvasProps {
     canvasHeight: number
     maxXOffset: number
     maxYOffset: number
+    isExit: '1' | '2' | 'false'
+    setIsExit: (isExit: '1' | '2' | 'false') => void
+    subType1: SubProjectType;
+    subType2: SubProjectType;
+    activeSubType: SubProjectType[];
+    setActiveSubType: (activeSubType: SubProjectType[]) => void;
 }
 
 const WorkCategoryProjectCanvas = ({
@@ -25,6 +31,12 @@ const WorkCategoryProjectCanvas = ({
                                        canvasHeight,
                                        maxXOffset,
                                        maxYOffset,
+                                       isExit,
+                                       setIsExit,
+                                       subType1,
+                                       subType2,
+                                       activeSubType,
+                                       setActiveSubType,
                                    }: WorkCategoryProjectCanvasProps) => {
 
     const randomOffsets = useRandomizeOffsets(projects.length, maxXOffset, maxYOffset)
@@ -43,7 +55,7 @@ const WorkCategoryProjectCanvas = ({
     const overallWidth = projects.length * baselineGap
 
     const projectCards =
-        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio)
+        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio, isExit, setIsExit, subType1, subType2, activeSubType, setActiveSubType)
 
     return (
         <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>

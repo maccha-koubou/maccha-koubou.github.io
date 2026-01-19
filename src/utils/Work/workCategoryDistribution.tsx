@@ -1,7 +1,7 @@
 import {calculateImgFocus, calculateImgFrameSize} from "../getImgSize";
 import ProjectCard from "../../components/ProjectCard";
 import React, {useRef} from "react";
-import {Project} from "../../config/ProjectType";
+import {Project, SubProjectType} from "../../config/ProjectType";
 import {CANVAS_HEIGHT, NAV_HEIGHT, PROJECT_CARD_LONGER_SIDE} from "../../config/Size";
 
 
@@ -38,7 +38,13 @@ export const genProjectCards = (
     offsets: {x: number[], y: number[]},
     maxYOffset: number,
     randomSize: number[],
-    randomRatio: number[]
+    randomRatio: number[],
+    isExit: '1' | '2' | 'false',
+    setIsExit: (isExit: '1' | '2' | 'false') => void,
+    subType1: SubProjectType,
+    subType2: SubProjectType,
+    activeSubType: SubProjectType[],
+    setActiveSubType: (activeSubType: SubProjectType[]) => void
 ) => {
     return Array.from({ length: projects.length }, (_, i) => {
 
@@ -77,6 +83,29 @@ export const genProjectCards = (
                     h={size.height}
                     focusPoint={focusPoint}
                     horizontalPosLimitation={labelPosition}
+                    animateOut={isExit !== 'false'}
+                    onAnimationComplete={() => {
+                        switch (isExit) {
+                            case '1':
+                                setIsExit('false')
+                                if (activeSubType.includes(subType1)) {
+                                    setActiveSubType(activeSubType.filter(type => type !== subType1))
+                                } else {
+                                    setActiveSubType([...activeSubType, subType1])
+                                }
+                                break
+                            case '2':
+                                setIsExit('false')
+                                if (activeSubType.includes(subType2)) {
+                                    setActiveSubType(activeSubType.filter(type => type !== subType2))
+                                } else {
+                                    setActiveSubType([...activeSubType, subType2])
+                                }
+                                break
+                            case 'false':
+                                break
+                        }
+                    }}
                 />
             ),
         }

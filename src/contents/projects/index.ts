@@ -5,6 +5,7 @@ import choiceSpace from "./choiceSpace";
 import houseWithGlassYard from "./houseWithGlassYard";
 import queerRadar from "./queerRadar";
 import transitionGuidepost from "./transitionGuidepost";
+import cbeasy from "./cbeasy";
 
 const projects: Project[] = [
     campusCorridor,
@@ -13,6 +14,7 @@ const projects: Project[] = [
     houseWithGlassYard,
     queerRadar,
     transitionGuidepost,
+    cbeasy
 ]
 
 export default projects;

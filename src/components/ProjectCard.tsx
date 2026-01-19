@@ -16,6 +16,8 @@ interface ProjectCardProps {
     index?: number
     horizontalPosLimitation?: 'left' | 'right' | 'both'
     focusPoint: {x: number; y: number}
+    animateOut?: boolean
+    onAnimationComplete?: () => void
 }
 
 const ProjectCard = ({
@@ -28,7 +30,9 @@ const ProjectCard = ({
                 w,
                 index,
                 horizontalPosLimitation,
-                focusPoint
+                focusPoint,
+                animateOut = false,
+                onAnimationComplete
               }: ProjectCardProps) => {
 
     // Get the size of the label
@@ -95,6 +99,9 @@ const ProjectCard = ({
                 w={w}
                 h={h}
                 radius={24}
+                animateIn={true}
+                animateOut={animateOut}
+                onAnimationComplete={onAnimationComplete}
             >
                 <div style={{
                     position: 'relative',
@@ -127,7 +134,14 @@ const ProjectCard = ({
                 }}
                 ref={ref}
             >
-                <Card bg={labelBg} radius={14} h={28} padding={[0, 8, 0, 8]}>
+                <Card
+                    bg={labelBg}
+                    radius={14}
+                    h={28}
+                    padding={[0, 8, 0, 8]}
+                    animateIn={true}
+                    animateOut={animateOut}
+                >
                     <span style={{
                         display: "flex",
                         width: "fit-content",

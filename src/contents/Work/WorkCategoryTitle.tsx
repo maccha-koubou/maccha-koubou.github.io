@@ -10,43 +10,43 @@ import {UnselectedIcon} from "../../assets/icons/UnselectedIcon";
 interface WorkCategoryTitleProps {
     activeProject: Project | null;
     type: ProjectType;
+    subType1: SubProjectType;
+    subType2: SubProjectType;
     activeSubType: SubProjectType[];
     setActiveSubType: (activeSubType: SubProjectType[]) => void;
+    setIsExit: (isExit: '1' | '2' | 'false') => void;
+    isExit: '1' | '2' | 'false';
 }
 
 const WorkCategoryTitle = ({
                                activeProject,
                                type,
+                               subType1,
+                               subType2,
                                activeSubType,
                                setActiveSubType,
+                               setIsExit,
+                               isExit,
                            }: WorkCategoryTitleProps) => {
 
     // Determine the text of the title
     let titleBeginning: string
     let titleMiddle = '&'
     let titleEnd: string
-    let toggle1: SubProjectType
-    let toggle2: SubProjectType
     let titleGap = 16
 
     switch (type) {
         case ProjectType.PRODUCT:
             titleBeginning = 'Project'
             titleEnd = 'Service'
-            toggle1 = SubProjectType.DIGITAL_PRODUCTS
-            toggle2 = SubProjectType.PHYSICAL_PRODUCTS
             break
         case ProjectType.SPACE:
             titleBeginning = 'Space'
             titleEnd = 'Public life'
-            toggle1 = SubProjectType.ARCHITECTURE_SPACES
-            toggle2 = SubProjectType.URBAN_SPACES
             break
         case ProjectType.VISUALIZATION:
             titleBeginning = 'Visualizations'
             titleEnd = 'Thinking'
-            toggle1 = SubProjectType.VISUAL_COMMUNICATION
-            toggle2 = SubProjectType.RESEARCH_VISUALIZATIONS
             break
     }
     if (activeProject) {
@@ -57,10 +57,10 @@ const WorkCategoryTitle = ({
     }
 
     const [isToggle1Active, setIsToggle1Active] = useState(
-        activeSubType && activeSubType.includes(toggle1)
+        activeSubType && activeSubType.includes(subType1)
     );
     const [isToggle2Active, setIsToggle2Active] = useState(
-        activeSubType && activeSubType.includes(toggle2)
+        activeSubType && activeSubType.includes(subType2)
     );
 
     // Shows toggles when no project is active, show the project's subtitle when it's active
@@ -92,7 +92,7 @@ const WorkCategoryTitle = ({
             }}>
                 <Toggle
                     isActive={isToggle1Active}
-                    text={toggle1}
+                    text={subType1}
                     offIcon={
                         <UnselectedIcon />
                     }
@@ -101,17 +101,15 @@ const WorkCategoryTitle = ({
                     }
                     onClick={
                         () => {
-                            setIsToggle1Active(!isToggle1Active)
-                            if (activeSubType.includes(toggle1)) {
-                                setActiveSubType(activeSubType.filter(type => type !== toggle1))
-                            } else {
-                                setActiveSubType([...activeSubType, toggle1])
+                            if (isExit === 'false') {
+                                setIsExit('1')
+                                setIsToggle1Active(!isToggle1Active)
                             }
                     }}
                 />
                 <Toggle
                     isActive={isToggle2Active}
-                    text={toggle2}
+                    text={subType2}
                     offIcon={
                         <UnselectedIcon />
                     }
@@ -120,13 +118,11 @@ const WorkCategoryTitle = ({
                     }
                     onClick={
                         () => {
-                            setIsToggle2Active(!isToggle2Active)
-                            if (activeSubType.includes(toggle2)) {
-                                setActiveSubType(activeSubType.filter(type => type !== toggle2))
-                            } else {
-                                setActiveSubType([...activeSubType, toggle2])
+                            if (isExit === 'false') {
+                                setIsExit('2')
+                                setIsToggle2Active(!isToggle2Active)
                             }
-                        }}
+                    }}
                 />
             </div>
         )
