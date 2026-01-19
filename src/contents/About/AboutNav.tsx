@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {NAV_HEIGHT} from "../../config/Size";
 import NavBar from "../../components/NavBar";
 import {NavButtonProps} from "../../components/NavButton";
@@ -10,6 +10,8 @@ interface AboutNavProps {
 }
 
 const AboutNav = ({ setActiveTab}: AboutNavProps) => {
+
+    const [highlightNumber, setHighlightNumber] = useState(0);
 
     const buttons:NavButtonProps[] = [
         {
@@ -44,7 +46,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             ),
             onClick: () => {
                 setActiveTab('intro')
-            }
+            },
+            index: 0
         },
         {
             id: 'gap-1',
@@ -54,7 +57,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             isGap: true,
             firstChildren: (
                 <></>
-            )
+            ),
+            index: 1
         },
         {
             id: 'ux-designer',
@@ -73,7 +77,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             ),
             onClick: () => {
                 setActiveTab('ux')
-            }
+            },
+            index: 2
         },
         {
             id: 'architect',
@@ -92,7 +97,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             ),
             onClick: () => {
                 setActiveTab('arch')
-            }
+            },
+            index: 3
         },
         {
             id: 'gap-2',
@@ -102,7 +108,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             isGap: true,
             firstChildren: (
                 <></>
-            )
+            ),
+            index: 4
         },
         {
             id: 'i-design-by',
@@ -122,7 +129,8 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             ),
             onClick: () => {
                 setActiveTab('by')
-            }
+            },
+            index: 5
         },
         {
             id: 'i-design-for',
@@ -142,12 +150,19 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             ),
             onClick: () => {
                 setActiveTab('for')
-            }
+            },
+            index: 6
         }
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center',height: `${NAV_HEIGHT}px`}}>
-            <NavBar buttons={buttons} direction={'column'} gap={0} />
+            <NavBar
+                buttons={buttons}
+                direction={'column'}
+                gap={0}
+                highlightNumber={highlightNumber}
+                setHighlightNumber={setHighlightNumber}
+            />
         </div>
     )
 }

@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {NAV_HEIGHT} from "../config/Size";
 import NavBar from "../components/NavBar";
 import {NavButtonProps} from "../components/NavButton";
-import { useNavigate } from 'react-router-dom'
+import {useLocation, useNavigate} from 'react-router-dom'
+import getPageNumber from "../utils/getPageNumber";
 
 const MainNav = () => {
     const navigate = useNavigate()
+    const location = useLocation();
+    const [highlightNumber, setHighlightNumber] = useState(Math.floor(getPageNumber(location.pathname)));
+
+    useEffect(() => {
+        const page = Math.floor(getPageNumber(location.pathname));
+        setHighlightNumber(page);
+    }, [location.pathname]);
 
     const buttons:NavButtonProps[] = [
         {
@@ -25,7 +33,8 @@ const MainNav = () => {
             ),
             onClick: () => {
                 navigate('/')
-            }
+            },
+            index: 0,
         },
         {
             id: 'work',
@@ -44,7 +53,8 @@ const MainNav = () => {
             ),
             onClick: () => {
                 navigate('/work')
-            }
+            },
+            index: 1,
         },
         {
             id: 'about',
@@ -63,12 +73,19 @@ const MainNav = () => {
             ),
             onClick: () => {
                 navigate('/about')
-            }
+            },
+            index: 2,
         }
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center',height: `${NAV_HEIGHT}px`}}>
-            <NavBar buttons={buttons} direction={'row'} gap={40} />
+            <NavBar
+                buttons={buttons}
+                direction={'row'}
+                gap={40}
+                highlightNumber={highlightNumber}
+                setHighlightNumber={setHighlightNumber}
+            />
         </div>
     )
 }

@@ -16,9 +16,11 @@ export interface NavButtonProps {
     onMouseEnter?: () => void
     onMouseLeave?: () => void
     isGap?: boolean
+    index: number
+    setHighlightNumber?: (number: number) => void
 }
 
-export const NavButton = ({
+export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
                   id,
                   h,
                   padding,
@@ -33,7 +35,9 @@ export const NavButton = ({
                   onMouseEnter,
                   onMouseLeave,
                   isGap = false,
-              }: NavButtonProps) => {
+                  index,
+                  setHighlightNumber,
+              }: NavButtonProps, ref) => {
 
     const bg = highlighted ? firstColor : bgColor;
     const finalFirstColor = highlighted ? colors.white : firstColor;
@@ -41,6 +45,7 @@ export const NavButton = ({
 
     return (
         <div
+            ref={ref}
             style={{
                 display: 'flex',
                 borderRadius: `${h / 2}px`,
@@ -54,7 +59,10 @@ export const NavButton = ({
                 gap: `${gap}px`,
                 cursor: `${isGap ? 'default' : 'pointer'}`,
             }}
-            onClick={onClick}
+            onClick={() => {
+                setHighlightNumber?.(index)
+                onClick?.()
+            }}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
         >
@@ -67,4 +75,4 @@ export const NavButton = ({
             </div>
         </div>
     )
-}
+})
