@@ -11,7 +11,6 @@ const IntroCard = () => {
             justifyContent: 'center',
             alignItems: 'center',
             padding: '0px 0px 40px 0px',
-            pointerEvents: 'none'
         }}>
             <Card
                 w={'36%'}

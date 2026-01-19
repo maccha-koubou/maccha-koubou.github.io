@@ -19,6 +19,7 @@ interface ProjectCardProps {
     horizontalPosLimitation?: 'left' | 'right' | 'both'
     focusPoint: {x: number; y: number}
     animateOut?: boolean
+    labelAnimateOut?: boolean
     onAnimationComplete?: () => void
     transformOrigin: string
 }
@@ -35,6 +36,7 @@ const ProjectCard = ({
                 horizontalPosLimitation,
                 focusPoint,
                 animateOut = false,
+                labelAnimateOut = false,
                 onAnimationComplete,
                 transformOrigin
               }: ProjectCardProps) => {
@@ -44,6 +46,7 @@ const ProjectCard = ({
     * */
     // Get the size of the label
     const { ref, size: labelSize } = measureSize<HTMLDivElement>()
+    const [refreshKey, setRefreshKey] = useState(0)
 
     // Randomize the coordination of the label
     let horizontalPos: 'left' | 'right' | 'both' =
@@ -112,10 +115,12 @@ const ProjectCard = ({
                 onMouseEnter={() => {
                     setIsHover(true)
                     setIsCardSizeChange(true)
+                    onMouseEnter?.()
                 }}
                 onMouseLeave={() => {
                     setIsHover(false)
                     setIsCardSizeChange(true)
+                    onMouseLeave?.()
                 }}
                 initial={{ width: w, height: h, top: 0, left: 0 }}
                 animate={{
@@ -171,12 +176,18 @@ const ProjectCard = ({
                 ref={ref}
             >
                 <Card
+                    key={refreshKey}
                     bg={labelBg}
                     radius={14}
                     h={28}
                     padding={[0, 8, 0, 8]}
                     animateIn={true}
-                    animateOut={animateOut}
+                    animateOut={animateOut || labelAnimateOut}
+                    onAnimationComplete={() => {
+                        if (labelAnimateOut) {
+                            setRefreshKey(refreshKey + 1)
+                        }
+                    }}
                 >
                     <span style={{
                         display: "flex",

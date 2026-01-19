@@ -139,7 +139,6 @@ const WorkCategoryTitle = ({
             alignItems: 'center',
             padding: '0px 0px 80px 0px',
             gap: '24px',
-            pointerEvents: 'none'
         }}>
             <Card>
                 <div style={{

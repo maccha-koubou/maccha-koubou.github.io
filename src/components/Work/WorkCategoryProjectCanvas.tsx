@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Project, SubProjectType} from "../../config/ProjectType";
 import {
     genProjectCards,
@@ -10,7 +10,7 @@ import {useRandomizeRatio, useRandomizeSize} from "../../utils/getImgSize";
 interface WorkCategoryProjectCanvasProps {
     projects: Project[]
     activeProject: Project | null
-    setActiveProject: (p: Project) => void
+    setActiveProject: (p: Project | null) => void
     canvasWidth: number
     canvasHeight: number
     maxXOffset: number
@@ -43,6 +43,8 @@ const WorkCategoryProjectCanvas = ({
     const randomSize = useRandomizeSize(projects.length)
     const randomRatio = useRandomizeRatio(projects.length)
 
+    const [isProjectsHover, setIsProjectsHover] = useState<boolean[]>(Array.from({ length: projects.length }, () => false))
+
 
 
     // Calculate how wide area does all projects occupy
@@ -55,7 +57,7 @@ const WorkCategoryProjectCanvas = ({
     const overallWidth = projects.length * baselineGap
 
     const projectCards =
-        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio, isExit, setIsExit, subType1, subType2, activeSubType, setActiveSubType)
+        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio, isExit, setIsExit, subType1, subType2, activeSubType, setActiveSubType, setActiveProject, isProjectsHover, setIsProjectsHover)
 
     return (
         <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>

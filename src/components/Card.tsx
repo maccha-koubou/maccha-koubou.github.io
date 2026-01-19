@@ -146,7 +146,7 @@ const Card = ({
                 }}
                 transition={
                     isCardSizeChange
-                    ? { duration: 0, ease: "easeInOut" } // If the size of card is changing (e.g. in hovered project cards), use 0 duration to remove the animation
+                    ? { duration: 0, ease: 'linear' } // If the size of card is changing (e.g. in hovered project cards), use 0 duration to remove the animation
                     : { duration: 0.4, ease: "easeInOut" }
                 }
                 style={{

@@ -44,7 +44,10 @@ export const genProjectCards = (
     subType1: SubProjectType,
     subType2: SubProjectType,
     activeSubType: SubProjectType[],
-    setActiveSubType: (activeSubType: SubProjectType[]) => void
+    setActiveSubType: (activeSubType: SubProjectType[]) => void,
+    setActiveProject: (p: Project | null) => void,
+    isProjectsHover: boolean[],
+    setIsProjectsHover: (b: boolean[]) => void,
 ) => {
     return Array.from({ length: projects.length }, (_, i) => {
 
@@ -63,10 +66,10 @@ export const genProjectCards = (
         if (i % 2 === 0) {
             finalOffsets.y = finalOffsets.y + bottomProjectBaseOffset
             transformOriginVertical = 'bottom'
-            transformOriginHorizontal = 'left'
+            transformOriginHorizontal = 'right'
         } else {
             transformOriginVertical = 'top'
-            transformOriginHorizontal = 'right'
+            transformOriginHorizontal = 'left'
         }
 
         // The label of the first project is always on right
@@ -75,10 +78,10 @@ export const genProjectCards = (
         let labelPosition: 'left' | 'right' | 'both' = 'both'
         if (i === projects.length - 1) {
             labelPosition = 'left'
-            transformOriginHorizontal = 'left'
+            transformOriginHorizontal = 'right'
         } else if (i === 0) {
             labelPosition = 'right'
-            transformOriginHorizontal = 'right'
+            transformOriginHorizontal = 'left'
         }
 
         return {
@@ -89,12 +92,26 @@ export const genProjectCards = (
             children: (
                 <ProjectCard
                     project={projects[i]}
+                    onMouseEnter={() => {
+                        setActiveProject(projects[i])
+                        // Change the corresponding item on the array true when the project card is hovered
+                        setIsProjectsHover([
+                            ...isProjectsHover.slice(0, i),
+                            true,
+                            ...isProjectsHover.slice(i + 1),
+                        ])
+                    }}
+                    onMouseLeave={() => {
+                        setActiveProject(null)
+                        setIsProjectsHover(Array.from({ length: projects.length }, () => false))
+                    }}
                     isLabelSecondary={true}
                     w={size.width}
                     h={size.height}
                     focusPoint={focusPoint}
                     horizontalPosLimitation={labelPosition}
                     animateOut={isExit !== 'false'}
+                    labelAnimateOut={isProjectsHover[i]}
                     transformOrigin={`${transformOriginVertical} ${transformOriginHorizontal}`}
                     onAnimationComplete={() => {
                         switch (isExit) {
