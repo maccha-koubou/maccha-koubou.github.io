@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Project} from "../config/ProjectType";
 import {colors} from "../styles/theme";
 import Card from "./Card";
 import {genCardLabelCoord} from "../utils/genCardLabelCoord";
 import measureSize from "../utils/measureSize";
+import {motion} from "framer-motion";
+import {PROJECT_CARD_HOVER_HEIGHT, PROJECT_CARD_HOVER_WIDTH} from "../config/Size";
 
 interface ProjectCardProps {
     project: Project
@@ -18,6 +20,7 @@ interface ProjectCardProps {
     focusPoint: {x: number; y: number}
     animateOut?: boolean
     onAnimationComplete?: () => void
+    transformOrigin: string
 }
 
 const ProjectCard = ({
@@ -32,9 +35,13 @@ const ProjectCard = ({
                 horizontalPosLimitation,
                 focusPoint,
                 animateOut = false,
-                onAnimationComplete
+                onAnimationComplete,
+                transformOrigin
               }: ProjectCardProps) => {
 
+    /*
+    *   Label Part
+    * */
     // Get the size of the label
     const { ref, size: labelSize } = measureSize<HTMLDivElement>()
 
@@ -86,6 +93,13 @@ const ProjectCard = ({
         labelBg = colors.secondary
     }
 
+    /*
+    *   Animation Part
+    * */
+    const [isHover, setIsHover] = useState(false);
+    const [isCardSizeChange, setIsCardSizeChange] = useState(false);
+
+
 
     return (
         <div style={{
@@ -93,35 +107,57 @@ const ProjectCard = ({
             height:`${h}px`,
             overflow: 'visible',
         }}>
-            <Card
-                borderColor={colors.primaryLight}
-                borderWidth={2}
-                w={w}
-                h={h}
-                radius={24}
-                animateIn={true}
-                animateOut={animateOut}
-                onAnimationComplete={onAnimationComplete}
+            <motion.div
+                style={{position: 'absolute'}}
+                onMouseEnter={() => {
+                    setIsHover(true)
+                    setIsCardSizeChange(true)
+                }}
+                onMouseLeave={() => {
+                    setIsHover(false)
+                    setIsCardSizeChange(true)
+                }}
+                initial={{ width: w, height: h, top: 0, left: 0 }}
+                animate={{
+                    width: isHover ? PROJECT_CARD_HOVER_WIDTH : w,
+                    height: isHover ? PROJECT_CARD_HOVER_HEIGHT : h,
+                    top: isHover && transformOrigin.includes('bottom')? h - PROJECT_CARD_HOVER_HEIGHT : 0,
+                    left: isHover && transformOrigin.includes('right')? w - PROJECT_CARD_HOVER_WIDTH : 0,
+                }}
+                onAnimationComplete={() => setIsCardSizeChange(false)}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
             >
-                <div style={{
-                    position: 'relative',
-                    overflow: 'hidden',
-                    width: w,
-                    height: h
-                }}>
-                    <img
-                        src={project.cover}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            display: 'block',
-                            objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
-                        }}
-                        alt={project.subtitle}
-                    />
-                </div>
-            </Card>
+                <Card
+                    borderColor={colors.primaryLight}
+                    borderWidth={2}
+                    w={'100%'}
+                    h={'100%'}
+                    radius={24}
+                    animateIn={true}
+                    animateOut={animateOut}
+                    onAnimationComplete={onAnimationComplete}
+                    isCardSizeChange={isCardSizeChange}
+                >
+                    <div style={{
+                        position: 'relative',
+                        overflow: 'hidden',
+                        width: '100%',
+                        height: '100%'
+                    }}>
+                        <img
+                            src={project.cover}
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                display: 'block',
+                                objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
+                            }}
+                            alt={project.subtitle}
+                        />
+                    </div>
+                </Card>
+            </motion.div>
 
             {/* The label of card */}
             <div style={{

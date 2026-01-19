@@ -18,6 +18,8 @@ interface CardProps {
     embodiedBorder?: boolean
     onAnimationComplete?: () => void
     initialHiding?: boolean
+    isCardSizeChange?: boolean
+    interactable?: boolean
 }
 
 const Card = ({
@@ -36,6 +38,8 @@ const Card = ({
     embodiedBorder = false,
     onAnimationComplete,
     initialHiding = false,
+    isCardSizeChange = false,
+    interactable = true,
 }: CardProps) => {
 
     // Add "px" after the width and height
@@ -84,6 +88,7 @@ const Card = ({
             height: finalHeight,
             position: 'relative',
             visibility: isActivated ? 'visible' : 'hidden',
+            pointerEvents: interactable ? 'auto' : 'none',
             }}
             ref={maskRef}
         >
@@ -133,13 +138,17 @@ const Card = ({
 
             {/* Border layer */}
             <motion.div
-                key={cardWidth}
+                // key={cardWidth}
                 initial={{ width: borderInitialWidth }}
                 animate={{
                     width: animateOut ? 0 : cardWidth,
                     left: animateOut ? cardWidth : 0
                 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={
+                    isCardSizeChange
+                    ? { duration: 0, ease: "easeInOut" } // If the size of card is changing (e.g. in hovered project cards), use 0 duration to remove the animation
+                    : { duration: 0.4, ease: "easeInOut" }
+                }
                 style={{
                     position: 'absolute',
                     inset: 0,

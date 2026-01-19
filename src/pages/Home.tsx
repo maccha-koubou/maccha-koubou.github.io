@@ -26,6 +26,7 @@ const Home = () => {
             z: 1,
             w: '100%',
             h: '100%',
+            isPassThrough: true,
             children: (
                 <IntroCard />
             ),

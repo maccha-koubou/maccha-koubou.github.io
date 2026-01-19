@@ -8,11 +8,21 @@ export interface CanvasItemProps {
     w?: number | 'fit-content' | '100%'
     h?: number | 'fit-content' | '100%'
     children: React.ReactNode
+    isPassThrough?: boolean
 }
 
-export const CanvasItem: React.FC<CanvasItemProps> = ({ id, x, y, z, children, w = 'fit-content', h = 'fit-content' }) => {
+export const CanvasItem: React.FC<CanvasItemProps> = ({ id, x, y, z, children, w = 'fit-content', h = 'fit-content', isPassThrough = false }) => {
     return (
-        <div style={{ display: 'flex', position: 'absolute', left: x, top: y, zIndex: z, width: w, height: h }}>
+        <div style={{
+            display: 'flex',
+            position: 'absolute',
+            left: x,
+            top: y,
+            zIndex: z,
+            width: w,
+            height: h,
+            pointerEvents: isPassThrough? 'none' : 'auto'
+        }}>
             {children}
         </div>
     )

@@ -75,8 +75,10 @@ const ellipseDistribution = (
         const size = calculateImgFrameSize(randomRatio[i], randomSize[i])
         const focusPoint = calculateImgFocus(randomProjects[i], randomRatio[i])
 
-        //const size = getFinalImgSize(randomProjects[i].cover, randomSize[i])
-        //console.log(`${i}, size: ${size}, x: ${ellipseRadiusX}, y: ${ellipseRadiusY}`)
+        const transformOriginHorizontal =
+            i === 0 || i === 1 || i === 5 ? 'right' : 'left'
+        const transformOriginVertical =
+            i < 3 ? 'bottom' : 'top'
 
         return {
             id: `home-project-${i}`,
@@ -93,6 +95,7 @@ const ellipseDistribution = (
                     focusPoint={focusPoint}
                     index={i}
                     animateOut={isExit === i}
+                    transformOrigin={`${transformOriginVertical} ${transformOriginHorizontal}`}
                 />
             ),
         }

@@ -95,6 +95,7 @@ const WorkCategory = ({
             z: 3,
             w: '100%',
             h: '100%',
+            isPassThrough: true,
             children: (
                 <WorkCategoryTitle
                     type={type}
