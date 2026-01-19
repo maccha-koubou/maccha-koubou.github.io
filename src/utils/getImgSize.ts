@@ -26,15 +26,20 @@ export const useRandomizeSize = (count: number) => {
 }
 
 
+export const calculateRandomRatio = () => {
+    return Math.random() < 0.5
+        ? Math.random() * 0.4
+        : 0.6 + Math.random() * 0.4
+}
+
+
 
 // Create random ratio for the img frame
 export const useRandomizeRatio = (count: number) => {
     const ref = useRef<number[]>([])
     if (ref.current.length === 0) {
         ref.current = Array.from({ length: count }, () =>
-            Math.random() < 0.5
-                ? Math.random() * 0.4
-                : 0.6 + Math.random() * 0.4
+            calculateRandomRatio()
         )
     }
     return ref.current

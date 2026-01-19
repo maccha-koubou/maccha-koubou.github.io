@@ -55,7 +55,9 @@ const ellipseDistribution = (
     randomProjects: Project[],
     randomZ: number[],
     randomSize: number[],
-    randomRatio: number[]
+    randomRatio: number[],
+    isExit: number | null,
+    setIsExit: (isExit: number | null) => void,
 ): CanvasItemProps[] => {
 
     const count = 6
@@ -83,12 +85,14 @@ const ellipseDistribution = (
             z: z,
             children: (
                 <ProjectCard
+                    key={randomProjects[i].title}
                     project={randomProjects[i]}
                     isLabelSecondary={false}
                     w={size.width}
                     h={size.height}
                     focusPoint={focusPoint}
                     index={i}
+                    animateOut={isExit === i}
                 />
             ),
         }
