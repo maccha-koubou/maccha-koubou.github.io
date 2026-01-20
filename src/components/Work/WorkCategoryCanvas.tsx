@@ -10,7 +10,7 @@ interface WorkCategoryCanvasProps {
 const WorkCategoryCanvas: React.FC<WorkCategoryCanvasProps> = ({ items, width = '100%' }) => {
     return (
         <div
-            data-component="MainCanvas"
+            data-component="WorkcategoryCanvas"
             style={{
                 position: 'relative',
                 width: width,

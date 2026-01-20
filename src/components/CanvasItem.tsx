@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface CanvasItemProps {
-    id: string
+    id?: string
     x: number
     y: number
     z: number

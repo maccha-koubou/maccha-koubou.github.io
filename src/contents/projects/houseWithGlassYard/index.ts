@@ -2,10 +2,11 @@ import {createProject, ProjectType, SubProjectType} from "../../../config/Projec
 import cover from "./cover.png";
 
 const houseWithGlassYard = createProject({
-    title: 'House with Glass Yard',
+    titleWithLineBreak: 'House with Glass Yard',
     subtitle: 'House with Glass Yard',
     cover: cover,
     coverColored: cover,
+    coverAlt: '',
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.5, y: 0.5},
     types: [ProjectType.SPACE],

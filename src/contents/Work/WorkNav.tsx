@@ -27,12 +27,13 @@ const WorkNav = () => {
             ),
             onClick: () => {
                 navigate(pop() ?? '/work')
-            }
+            },
+            index: 0
         }
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center', alignItems: 'flex-end', height: `${NAV_HEIGHT}px`}}>
-            <NavBar buttons={buttons} direction={'row'} gap={40} />
+            <NavBar buttons={buttons} direction={'row'} gap={40} highlightNumber={0} setHighlightNumber={() => {}}/>
         </div>
     )
 }

@@ -2,10 +2,11 @@ import {createProject, ProjectType, SubProjectType} from "../../../config/Projec
 import cover from "./cover.png";
 
 const queerRadar = createProject({
-    title: 'Queer Radar',
+    titleWithLineBreak: 'Queer Radar',
     subtitle: 'Queer Radar',
     cover: cover,
     coverColored: cover,
+    coverAlt: '',
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.5, y: 0.5},
     types: [ProjectType.PRODUCT],

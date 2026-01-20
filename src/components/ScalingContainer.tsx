@@ -1,11 +1,15 @@
-import React, {useEffect, useState} from 'react'
+import React, {createContext, useContext, useEffect, useState} from 'react'
 import {CANVAS_MIN_WIDTH, ORIGINAL_HEIGHT} from "../config/Size";
+
+export const ScalingContainerContext = createContext<HTMLDivElement | null>(null);
+export const useScalingContainerRef = () => useContext(ScalingContainerContext);
 
 interface ScalingContainerProps {
     children: React.ReactNode
 }
 
 export const ScalingContainer = ({ children }: ScalingContainerProps) => {
+    const [containerElement, setContainerElement] = useState<HTMLDivElement | null>(null);
 
     // Calculate the scaling factor of the layout
     const [scale, setScale] = useState(window.innerHeight / ORIGINAL_HEIGHT)
@@ -30,24 +34,28 @@ export const ScalingContainer = ({ children }: ScalingContainerProps) => {
 
     // Scaling should be based on the top left position, or there will be gaps on left and right sides
     return (
-        <div style={{
-            width: `${finalOuterWidth}px`,
-            margin: '0px',
-            overflowX: 'hidden',
-        }}>
-
-            {/* Outer div is used to cut the overflowing part of inner div which was caused by the rescaling*/}
-            <div
-                style={{
-                    width: `${finalInnerWidth}px`,
-                    margin: '0px',
-                    transform: `scale(${scale})`,
-                    transformOrigin: 'top left',
-                    overflow: 'hidden',
+        <ScalingContainerContext.Provider value={containerElement}>
+            <div style={{
+                width: `${finalOuterWidth}px`,
+                margin: '0px',
+                overflowX: 'hidden',
                 }}
             >
-                {children}
+
+                {/* Outer div is used to cut the overflowing part of inner div which was caused by the rescaling*/}
+                <div
+                    style={{
+                        width: `${finalInnerWidth}px`,
+                        margin: '0px',
+                        transform: `scale(${scale})`,
+                        transformOrigin: 'top left',
+                        overflow: 'hidden',
+                    }}
+                    ref={setContainerElement}
+                >
+                    {children}
+                </div>
             </div>
-        </div>
+        </ScalingContainerContext.Provider>
     )
 }

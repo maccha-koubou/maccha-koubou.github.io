@@ -1,17 +1,19 @@
+import React from "react";
+
 export interface Project {
     id: string,
     url: string,
     title: string,
+    titleWithLineBreak: string,
     subtitle: string,
     types: ProjectType[],
     subtypes: SubProjectType[],
     cover: string,
     coverColored: string,
+    coverAlt: string,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
-
-    // To-do: add the slide type
-    slides: any[],
+    slides: React.ReactNode[],
 }
 
 export enum ProjectType {
@@ -32,26 +34,29 @@ export enum SubProjectType {
 }
 
 export const createProject = (input: {
-    title: string
+    titleWithLineBreak: string
     subtitle: string
     types: ProjectType[]
     subtypes: SubProjectType[]
     cover: string
     coverColored: string,
+    coverAlt: string,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
     slides: any[] // <- To be updated
 }) => {
 
+    const title = input.titleWithLineBreak.replace(/\n/g, '');
+
     // Title to id (Kebab)
-    const id = input.title
+    const id = title
         .trim()
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '')
 
     // Title to folder url (Camel)
-    const url = input.title
+    const url = title
         .trim()
         .replace(/[^a-zA-Z0-9 ]+/g, '')
         .split(/\s+/) // Become a string[]
@@ -62,7 +67,7 @@ export const createProject = (input: {
         )
         .join('')
 
-    const project: Project = {id, url, ...input}
+    const project: Project = {id, url, title, ...input}
 
     return project
 }

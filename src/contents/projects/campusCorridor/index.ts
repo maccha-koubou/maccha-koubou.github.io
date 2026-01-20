@@ -2,10 +2,11 @@ import {createProject, ProjectType, SubProjectType} from "../../../config/Projec
 import cover from './cover.png'
 
 const campusCorridor = createProject({
-    title: 'Campus Corridor',
+    titleWithLineBreak: 'Campus Corridor',
     subtitle: 'Campus Corridor',
     cover: cover,
     coverColored: cover,
+    coverAlt: '',
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.6, y: 0.5},
     types: [ProjectType.SPACE],
