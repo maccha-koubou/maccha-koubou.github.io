@@ -57,7 +57,6 @@ const ellipseDistribution = (
     randomSize: number[],
     randomRatio: number[],
     isExit: number | null,
-    setIsExit: (isExit: number | null) => void,
 ): CanvasItemProps[] => {
 
     const count = 6

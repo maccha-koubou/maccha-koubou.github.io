@@ -67,8 +67,8 @@ const Card = ({
 
     // If the card has a complex animation, the border layer here can make chaotic motions
     // In this case, turning on embodiedBorder can turn off the border layer and embody the border into the card content
-    const bodyBorderWidth = embodiedBorder ? borderWidth : 0
-    const bodyBorderRadius = embodiedBorder ? radius : 0
+    const bodyBorderWidth = embodiedBorder || isCardSizeChange ? borderWidth : 0
+    const bodyBorderRadius = embodiedBorder || isCardSizeChange ? radius : 0
 
 
     // Determine weather the border animation is shown
@@ -144,11 +144,7 @@ const Card = ({
                     width: animateOut ? 0 : cardWidth,
                     left: animateOut ? cardWidth : 0
                 }}
-                transition={
-                    isCardSizeChange
-                    ? { duration: 0, ease: 'linear' } // If the size of card is changing (e.g. in hovered project cards), use 0 duration to remove the animation
-                    : { duration: 0.4, ease: "easeInOut" }
-                }
+                transition={{ duration: 0.4, ease: "easeInOut" }}
                 style={{
                     position: 'absolute',
                     inset: 0,
@@ -157,7 +153,7 @@ const Card = ({
                     transformOrigin: animateOut ? 'right' : 'left',
                     pointerEvents: 'none',
                     height: `${cardHeight}px`,
-                    visibility: embodiedBorder ? 'hidden' : 'visible',
+                    visibility: embodiedBorder || isCardSizeChange ? 'hidden' : 'visible',
                 }}
             />
         </div>

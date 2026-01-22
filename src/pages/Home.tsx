@@ -122,7 +122,6 @@ const Home = () => {
             randomSize,
             randomRatio,
             isExit,
-            setIsExit
         )
 
     const items: CanvasItemProps[] = [

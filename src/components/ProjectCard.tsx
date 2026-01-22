@@ -38,7 +38,7 @@ const ProjectCard = ({
                 animateOut = false,
                 labelAnimateOut = false,
                 onAnimationComplete,
-                transformOrigin
+                transformOrigin,
               }: ProjectCardProps) => {
 
     /*
@@ -129,7 +129,6 @@ const ProjectCard = ({
                     top: isHover && transformOrigin.includes('bottom')? h - PROJECT_CARD_HOVER_HEIGHT : 0,
                     left: isHover && transformOrigin.includes('right')? w - PROJECT_CARD_HOVER_WIDTH : 0,
                 }}
-                onAnimationComplete={() => setIsCardSizeChange(false)}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
             >
                 <Card
@@ -141,7 +140,7 @@ const ProjectCard = ({
                     animateIn={true}
                     animateOut={animateOut}
                     onAnimationComplete={onAnimationComplete}
-                    isCardSizeChange={isCardSizeChange}
+                    isCardSizeChange={isCardSizeChange && !animateOut}
                 >
                     <div style={{
                         position: 'relative',
