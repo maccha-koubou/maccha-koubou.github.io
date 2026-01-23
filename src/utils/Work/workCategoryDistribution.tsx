@@ -48,6 +48,7 @@ export const genProjectCards = (
     setActiveProject: (p: Project | null) => void,
     isProjectsHover: boolean[],
     setIsProjectsHover: (b: boolean[]) => void,
+    onClick: (url: string) => void,
 ) => {
     return Array.from({ length: projects.length }, (_, i) => {
 
@@ -91,6 +92,7 @@ export const genProjectCards = (
             z: 2,
             children: (
                 <ProjectCard
+                    onClick={() => {onClick(projects[i].url)}}
                     project={projects[i]}
                     onMouseEnter={() => {
                         setActiveProject(projects[i])

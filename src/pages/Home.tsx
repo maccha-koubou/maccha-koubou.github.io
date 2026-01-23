@@ -10,8 +10,18 @@ import measureSize from "../utils/measureSize";
 import {calculateRandomRatio, useRandomizeSize} from "../utils/getImgSize";
 import {Project} from "../config/ProjectType";
 import projects from "../contents/projects";
+import {usePageSwitch} from "../router/Router";
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
+
+    // Navigate function for project cards, change the phase state and navigate 0.4 seconds later
+    const navigate = useNavigate();
+    const { pageSwitchPhase, setPageSwitchPhase } = usePageSwitch();
+    const projectCardOnClick = (url: string) => {
+        setPageSwitchPhase('exit')
+        setTimeout(() => navigate(`/work/${url}`), 400)
+    }
 
     // Responsive width of canvas for the ellipse distribution
     const { ref, size: canvasSize } = measureSize<HTMLDivElement>()
@@ -59,8 +69,17 @@ const Home = () => {
         )
     );
 
-    const [isExit, setIsExit] = useState<number | null>(null)
+    const [isExit, setIsExit] = useState<boolean[]>([false, false, false, false, false, false])
     const lastReplacedIndexRef = useRef<number | null>(null);
+
+
+    // If the page is switching, play the exit animation for each project card
+    useEffect(() => {
+        if (pageSwitchPhase === 'exit') {
+            console.log('now exiting')
+            setIsExit([true, true, true, true, true, true])
+        }
+    }, [pageSwitchPhase]);
 
 
     // Reselect one project every 1-8 seconds
@@ -79,10 +98,14 @@ const Home = () => {
                 lastReplacedIndexRef.current = indexToReplace;
 
 
-                setIsExit(indexToReplace)
+                setIsExit([
+                    ...isExit.slice(0, indexToReplace),
+                    true,
+                    ...isExit.slice(indexToReplace + 1),
+                ])
 
                 setTimeout(() => {
-                    setIsExit(null)
+                    setIsExit([false, false, false, false, false, false])
                     setRandomProjects(prev => {
                         const remaining = projects.filter(
                             p => !prev.some(dp => dp.id === p.id)
@@ -122,6 +145,7 @@ const Home = () => {
             randomSize,
             randomRatio,
             isExit,
+            projectCardOnClick
         )
 
     const items: CanvasItemProps[] = [

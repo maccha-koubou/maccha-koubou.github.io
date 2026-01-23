@@ -7,6 +7,8 @@ import projects from "../../contents/projects";
 import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
 import WorkCategoryProjectCanvas from "../../components/Work/WorkCategoryProjectCanvas";
 import ScrollWrapper, {ScrollWrapperHandle} from "../../components/ScrollWrapper";
+import {useNavigate} from "react-router-dom";
+import {usePageSwitch} from "../../router/Router";
 
 interface WorkCategoryProps {
     type: ProjectType
@@ -17,6 +19,14 @@ const WorkCategory = ({
     type,
     subType = null,
 }: WorkCategoryProps ) => {
+
+    // Navigate function for project cards, change the phase state and navigate 0.4 seconds later
+    const navigate = useNavigate();
+    const { setPageSwitchPhase } = usePageSwitch();
+    const projectCardOnClick = (url: string) => {
+        setPageSwitchPhase('exit')
+        setTimeout(() => navigate(`/work/${url}`), 400)
+    }
 
     // Responsive width of canvas for the ellipse distribution
     const { ref, size: canvasSize } = measureSize<HTMLDivElement>()
@@ -133,6 +143,7 @@ const WorkCategory = ({
                             maxYOffset={maxYOffset}
                             isExit={isExit}
                             setIsExit={setIsExit}
+                            onClick={projectCardOnClick}
                             key={activeSubType ? activeSubType.toString() : type}
                         />
                     </ScrollWrapper>

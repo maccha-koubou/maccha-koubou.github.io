@@ -1,8 +1,11 @@
 import Card from "../../components/Card";
 import {colors} from "../../styles/theme";
 import React from "react";
+import {usePageSwitch} from "../../router/Router";
 
 const IntroCard = () => {
+    const { pageSwitchPhase } = usePageSwitch();
+
     return (
         <div style={{
             width: '100%',
@@ -12,6 +15,7 @@ const IntroCard = () => {
             alignItems: 'center',
             padding: '0px 0px 40px 0px',
         }}>
+
             <Card
                 w={'36%'}
                 h={"fit-content"}
@@ -20,6 +24,7 @@ const IntroCard = () => {
                 borderColor={colors.primaryLight}
                 radius={24}
                 padding={[40, 56, 48, 56]}
+                animateOut={pageSwitchPhase === 'exit'}
             >
                 <div style={{
                     display: 'flex',

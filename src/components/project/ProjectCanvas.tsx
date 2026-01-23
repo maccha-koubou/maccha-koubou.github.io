@@ -1,7 +1,7 @@
 import React, {useEffect, useLayoutEffect, useRef, useState} from 'react'
 import { CanvasItem } from "../CanvasItem";
 import {
-    NAV_HEIGHT, ORIGINAL_HEIGHT, PROJECT_CARD_LONGER_SIDE, PROJECT_CARD_SHORTER_SIDE,
+    NAV_HEIGHT, ORIGINAL_HEIGHT,
     PROJECT_COVER_HEIGHT,
     PROJECT_COVER_WIDTH,
     PROJECT_GAP,
@@ -13,9 +13,7 @@ import {Project} from "../../config/ProjectType";
 import {colors} from "../../styles/theme";
 import Card from "../Card";
 import ReactDOM from "react-dom";
-import {useScalingContainerRef} from "../ScalingContainer";
 import {useScroll} from "../ScrollWrapper";
-import {calculateImgFocus} from "../../utils/getImgSize";
 
 interface ProjectCanvasProps {
     project: Project
@@ -26,23 +24,15 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
 
-    // Calculate the focus point of the cover
-    const horizontalRatio = PROJECT_CARD_LONGER_SIDE / PROJECT_CARD_SHORTER_SIDE
-    const verticalRatio = PROJECT_CARD_SHORTER_SIDE / PROJECT_CARD_LONGER_SIDE
-    const coverRatio = PROJECT_COVER_WIDTH / PROJECT_COVER_HEIGHT
-    const finalRatio = (coverRatio - horizontalRatio) / (verticalRatio - horizontalRatio)
-    const focusPoint = calculateImgFocus(project, finalRatio)
-
     const { scrollX, scrollY } = useScroll();
 
     // Move the cover to ScalingContainer to cover the other elements
     const coverRef = useRef<HTMLDivElement>(null);
     const [coverRect, setCoverRect] = useState<{left: number, top: number, width: number, height: number, radius: number, border: number}|null>(null);
-    const scalingContainerRef = useScalingContainerRef();
 
     // Update the coord and size of the cover
     const update = () => {
-        if (coverRef.current && scalingContainerRef) {
+        if (coverRef.current) {
             const coverDOM = coverRef.current.getBoundingClientRect();
             const scale = window.innerHeight / ORIGINAL_HEIGHT
             setCoverRect({
@@ -65,14 +55,14 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
         });
         ro.observe(coverRef.current);
         return () => ro.disconnect();
-    }, [scalingContainerRef]);
+    }, []);
 
     // Calculate the coord of the cover
     useLayoutEffect(() => {
         update();
         window.addEventListener('resize', update);
         return () => window.removeEventListener('resize', update);
-    }, [scrollX, scrollY, scalingContainerRef]);
+    }, [scrollX, scrollY]);
 
     return (
         <div style={{
@@ -97,7 +87,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
             </CanvasItem>
 
             {/* Portal layer & main content of cover */}
-            {coverRect && scalingContainerRef &&
+            {coverRect &&
                 ReactDOM.createPortal(
                     <CanvasItem
                         x={coverRect.left}
@@ -122,7 +112,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                                     height: '100%',
                                     objectFit: 'cover',
                                     display: 'block',
-                                    objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
+                                    objectPosition: `${project.landscape.x * 100}% ${project.landscape.y * 100}%`
                                 }}
                                 alt={project.coverAlt}
                             />
@@ -134,15 +124,13 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
 
             {/* Project title */}
             <CanvasItem x={beginX + PROJECT_COVER_WIDTH + PROJECT_GAP} y={0} z={0}>
-                <div style={{
-                    position: 'relative',
-                    width: PROJECT_TITLE_WIDTH,
-                    height: PROJECT_HEIGHT,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'flex-start',
-                }}>
+                <Card
+                    w={PROJECT_TITLE_WIDTH}
+                    h={PROJECT_HEIGHT}
+                    horizon={'flex-start'}
+                    vertical={'center'}
+                    animateIn={true}
+                >
                     <span style={{
                         color: colors.primary,
                         fontWeight: 500,
@@ -152,7 +140,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                     }}>
                         {project.titleWithLineBreak}
                     </span>
-                </div>
+                </Card>
             </CanvasItem>
 
             {/* Slides */}

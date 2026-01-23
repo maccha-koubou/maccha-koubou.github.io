@@ -56,7 +56,8 @@ const ellipseDistribution = (
     randomZ: number[],
     randomSize: number[],
     randomRatio: number[],
-    isExit: number | null,
+    isExit: boolean[],
+    onClick: (url: string) => void,
 ): CanvasItemProps[] => {
 
     const count = 6
@@ -86,6 +87,7 @@ const ellipseDistribution = (
             z: z,
             children: (
                 <ProjectCard
+                    onClick={() => {onClick(randomProjects[i].url)}}
                     key={randomProjects[i].title}
                     project={randomProjects[i]}
                     isLabelSecondary={false}
@@ -93,7 +95,7 @@ const ellipseDistribution = (
                     h={size.height}
                     focusPoint={focusPoint}
                     index={i}
-                    animateOut={isExit === i}
+                    animateOut={isExit[i]}
                     transformOrigin={`${transformOriginVertical} ${transformOriginHorizontal}`}
                 />
             ),

@@ -21,6 +21,7 @@ interface WorkCategoryProjectCanvasProps {
     subType2: SubProjectType;
     activeSubType: SubProjectType[];
     setActiveSubType: (activeSubType: SubProjectType[]) => void;
+    onClick: (url: string) => void;
 }
 
 const WorkCategoryProjectCanvas = ({
@@ -37,6 +38,7 @@ const WorkCategoryProjectCanvas = ({
                                        subType2,
                                        activeSubType,
                                        setActiveSubType,
+                                       onClick,
                                    }: WorkCategoryProjectCanvasProps) => {
 
     const randomOffsets = useRandomizeOffsets(projects.length, maxXOffset, maxYOffset)
@@ -57,7 +59,7 @@ const WorkCategoryProjectCanvas = ({
     const overallWidth = projects.length * baselineGap
 
     const projectCards =
-        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio, isExit, setIsExit, subType1, subType2, activeSubType, setActiveSubType, setActiveProject, isProjectsHover, setIsProjectsHover)
+        genProjectCards(projects, baselineGap, randomOffsets, maxYOffset, randomSize, randomRatio, isExit, setIsExit, subType1, subType2, activeSubType, setActiveSubType, setActiveProject, isProjectsHover, setIsProjectsHover, onClick)
 
     return (
         <WorkCategoryCanvas items={projectCards} width={`${overallWidth}px`}/>

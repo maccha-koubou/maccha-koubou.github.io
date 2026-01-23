@@ -1,11 +1,17 @@
-import React, {useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Project} from "../config/ProjectType";
 import {colors} from "../styles/theme";
 import Card from "./Card";
 import {genCardLabelCoord} from "../utils/genCardLabelCoord";
 import measureSize from "../utils/measureSize";
 import {motion} from "framer-motion";
-import {PROJECT_CARD_HOVER_HEIGHT, PROJECT_CARD_HOVER_WIDTH} from "../config/Size";
+import {
+    ORIGINAL_HEIGHT,
+    PROJECT_CARD_HOVER_HEIGHT,
+    PROJECT_CARD_HOVER_WIDTH, PROJECT_COVER_HEIGHT,
+    PROJECT_COVER_WIDTH
+} from "../config/Size";
+import ReactDOM from "react-dom";
 
 interface ProjectCardProps {
     project: Project
@@ -101,67 +107,181 @@ const ProjectCard = ({
     * */
     const [isHover, setIsHover] = useState(false);
     const [isCardSizeChange, setIsCardSizeChange] = useState(false);
+    const [isClickable, setIsClickable] = useState(false);
+    const [isCoverExpanding, setIsCoverExpanding] = useState(false);
+
+    // Only clickable when there is no animation
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            if (isHover) setIsClickable(true)
+        }, 400)
+        return () => clearTimeout(timer)
+    }, [isHover])
+
+
+    // Cover animation
+    // Cover expanding animation
+    const coverRef = useRef<HTMLDivElement>(null);
+    const [coverRect, setCoverRect] = useState<{left: number, top: number, width: number, height: number, radius: number, border: number}|null>(null);
+    const [targetRect, setTargetRect] = useState<{left: number, top: number, width: number, height: number, radius: number}|null>(null);
+
+
+
+    // Get the coord and size of the cover when clicked
+    const handleCardClick = () => {
+        if (!isClickable) return;
+        const coverDOM = coverRef.current!.getBoundingClientRect();
+        const scale = window.innerHeight / ORIGINAL_HEIGHT;
+        setCoverRect({
+            left: coverDOM.left,
+            top: coverDOM.top,
+            width: coverDOM.width,
+            height: coverDOM.height,
+            radius: 24 * scale,
+            border: 2 * scale,
+        });
+        setTargetRect({
+            left: -64 * scale,
+            top: 0,
+            width: PROJECT_COVER_WIDTH * scale,
+            height: PROJECT_COVER_HEIGHT * scale,
+            radius: 64 * scale,
+        })
+        setIsCoverExpanding(true);
+    };
 
 
 
     return (
-        <div style={{
-            width:`${w}px`,
-            height:`${h}px`,
-            overflow: 'visible',
-        }}>
-            <motion.div
-                style={{position: 'absolute'}}
-                onMouseEnter={() => {
-                    setIsHover(true)
-                    setIsCardSizeChange(true)
-                    onMouseEnter?.()
-                }}
-                onMouseLeave={() => {
-                    setIsHover(false)
-                    setIsCardSizeChange(true)
-                    onMouseLeave?.()
-                }}
-                initial={{ width: w, height: h, top: 0, left: 0 }}
-                animate={{
-                    width: isHover ? PROJECT_CARD_HOVER_WIDTH : w,
-                    height: isHover ? PROJECT_CARD_HOVER_HEIGHT : h,
-                    top: isHover && transformOrigin.includes('bottom')? h - PROJECT_CARD_HOVER_HEIGHT : 0,
-                    left: isHover && transformOrigin.includes('right')? w - PROJECT_CARD_HOVER_WIDTH : 0,
-                }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-            >
-                <Card
-                    borderColor={colors.primaryLight}
-                    borderWidth={2}
-                    w={'100%'}
-                    h={'100%'}
-                    radius={24}
-                    animateIn={true}
-                    animateOut={animateOut}
-                    onAnimationComplete={onAnimationComplete}
-                    isCardSizeChange={isCardSizeChange && !animateOut}
-                >
-                    <div style={{
-                        position: 'relative',
-                        overflow: 'hidden',
-                        width: '100%',
-                        height: '100%'
-                    }}>
-                        <img
-                            src={project.cover}
-                            style={{
+        <div
+            style={{
+                width:`${w}px`,
+                height:`${h}px`,
+                overflow: 'visible',
+                cursor: 'pointer',
+            }}
+            onClick={isClickable
+                ? () => {
+                    onClick?.()
+                    handleCardClick()
+                }
+                : () => {}}
+        >
+            {/* Portal layer & main content of cover */}
+            {coverRect && targetRect &&
+                ReactDOM.createPortal(
+                    <motion.div
+                        initial={{
+                            left: coverRect.left,
+                            top: coverRect.top,
+                            width: coverRect.width,
+                            height: coverRect.height,
+                            borderRadius: coverRect.radius,
+                        }}
+                        animate={{
+                            left: targetRect.left,
+                            top: targetRect.top,
+                            width: targetRect.width,
+                            height: targetRect.height,
+                            borderRadius: targetRect.radius,
+                        }}
+                        transition={{ duration: 0.4, ease: 'easeInOut' }}
+                        style={{
+                            position: 'fixed',
+                            border: `${coverRect.border}px solid ${colors.primaryLight}`,
+                            overflow: 'hidden'
+                        }}
+                        onAnimationComplete={() => setIsCoverExpanding(false)}
+                    >
+                        <Card
+                            borderWidth={coverRect.border}
+                            w={'100%'}
+                            h={'100%'}
+                            embodiedBorder={true}
+                        >
+                            <div style={{
+                                position: 'relative',
+                                overflow: 'hidden',
                                 width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                display: 'block',
-                                objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
+                                height: '100%'
+                            }}>
+                                <img
+                                    src={project.cover}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        display: 'block',
+                                        objectPosition: `${project.landscape.x * 100}% ${project.landscape.y * 100}%`
+                                    }}
+                                    alt={''}
+                                />
+                            </div>
+                        </Card>
+                    </motion.div>,
+                    document.body
+                )
+            }
+
+
+            {!isCoverExpanding &&
+                <motion.div
+                    style={{position: 'absolute'}}
+                    onMouseEnter={() => {
+                        setIsHover(true)
+                        setIsCardSizeChange(true)
+                        onMouseEnter?.()
+                    }}
+                    onMouseLeave={() => {
+                        setIsHover(false)
+                        setIsCardSizeChange(true)
+                        setIsClickable(false)
+                        onMouseLeave?.()
+                    }}
+                    initial={{ width: w, height: h, top: 0, left: 0 }}
+                    animate={{
+                        width: isHover ? PROJECT_CARD_HOVER_WIDTH : w,
+                        height: isHover ? PROJECT_CARD_HOVER_HEIGHT : h,
+                        top: isHover && transformOrigin.includes('bottom')? h - PROJECT_CARD_HOVER_HEIGHT : 0,
+                        left: isHover && transformOrigin.includes('right')? w - PROJECT_CARD_HOVER_WIDTH : 0,
+                    }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                >
+                    <Card
+                        borderColor={colors.primaryLight}
+                        borderWidth={2}
+                        w={'100%'}
+                        h={'100%'}
+                        radius={24}
+                        animateIn={true}
+                        animateOut={animateOut}
+                        onAnimationComplete={onAnimationComplete}
+                        isCardSizeChange={isCardSizeChange && !animateOut}
+                    >
+                        <div
+                            style={{
+                                position: 'relative',
+                                overflow: 'hidden',
+                                width: '100%',
+                                height: '100%'
                             }}
-                            alt={project.subtitle}
-                        />
-                    </div>
-                </Card>
-            </motion.div>
+                            ref={coverRef}
+                        >
+                            <img
+                                src={project.cover}
+                                style={{
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    display: 'block',
+                                    objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
+                                }}
+                                alt={project.subtitle}
+                            />
+                        </div>
+                    </Card>
+                </motion.div>
+            }
 
             {/* The label of card */}
             <div style={{
@@ -171,6 +291,7 @@ const ProjectCard = ({
                 zIndex: 2,
                 width: "fit-content",
                 height: "fit-content",
+                pointerEvents: 'none',
                 }}
                 ref={ref}
             >
@@ -180,6 +301,7 @@ const ProjectCard = ({
                     radius={14}
                     h={28}
                     padding={[0, 8, 0, 8]}
+                    interactable={false}
                     animateIn={true}
                     animateOut={animateOut || labelAnimateOut}
                     onAnimationComplete={() => {

@@ -41,6 +41,7 @@ const Card = ({
     isCardSizeChange = false,
     interactable = true,
 }: CardProps) => {
+    const [refreshKey, setRefreshKey] = useState(0)
 
     // Add "px" after the width and height
     const finalWidth =
@@ -112,9 +113,12 @@ const Card = ({
                     height: '100%',
                     overflow: 'hidden',
                 }}
-                onAnimationComplete={() => { if (animateOut) {
-                    onAnimationComplete?.()
-                } }}
+                onAnimationComplete={() => {
+                    setRefreshKey(refreshKey + 1)
+                    if (animateOut) {
+                        onAnimationComplete?.()
+                    }
+                }}
             >
                 {/* Main content */}
                 <div
