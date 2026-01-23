@@ -1,5 +1,5 @@
 import React from "react"
-import {Route, Routes} from 'react-router-dom'
+import {Route, Routes, useLocation} from 'react-router-dom'
 import {NAV_HEIGHT, ORIGINAL_HEIGHT} from "../config/Size";
 import WorkNav from "../contents/Work/WorkNav";
 import WorkCategory from "../pages/Work/WorkCategory";
@@ -7,6 +7,7 @@ import {ProjectType} from "../config/ProjectType";
 import ProjectDetail from "../pages/Work/ProjectDetail";
 
 const WorkRouter = () => {
+    const location = useLocation();
 
     return (
 
@@ -17,7 +18,7 @@ const WorkRouter = () => {
             zIndex: 1
         }}>
             <div style={{ flex: 1, position: 'relative'}}>
-                <WorkNav />
+                <WorkNav key={location.pathname} />
                 <Routes>
                     <Route path="product" element={<WorkCategory type={ProjectType.PRODUCT} />} />
                     <Route path="space" element={<WorkCategory type={ProjectType.SPACE} />} />

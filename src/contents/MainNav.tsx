@@ -4,11 +4,14 @@ import NavBar from "../components/NavBar";
 import {NavButtonProps} from "../components/NavButton";
 import {useLocation, useNavigate} from 'react-router-dom'
 import getPageNumber from "../utils/getPageNumber";
+import {isUrlProject} from "../router/Router";
+import {usePageSwitch} from "../app";
 
 const MainNav = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const [highlightNumber, setHighlightNumber] = useState(Math.floor(getPageNumber(location.pathname)));
+    const { setPageSwitchPhase } = usePageSwitch();
 
     useEffect(() => {
         const page = Math.floor(getPageNumber(location.pathname));
@@ -32,7 +35,12 @@ const MainNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/')
+                if (isUrlProject(location.pathname)) {
+                    setPageSwitchPhase('exit')
+                    setTimeout(() => navigate('/'), 400)
+                } else {
+                    navigate('/')
+                }
             },
             index: 0,
         },
@@ -52,7 +60,12 @@ const MainNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/work')
+                if (isUrlProject(location.pathname)) {
+                    setPageSwitchPhase('exit')
+                    setTimeout(() => navigate('/work'), 400)
+                } else {
+                    navigate('/work')
+                }
             },
             index: 1,
         },
@@ -72,7 +85,12 @@ const MainNav = () => {
                 </span>
             ),
             onClick: () => {
-                navigate('/about')
+                if (isUrlProject(location.pathname)) {
+                    setPageSwitchPhase('exit')
+                    setTimeout(() => navigate('/about'), 400)
+                } else {
+                    navigate('/about')
+                }
             },
             index: 2,
         }

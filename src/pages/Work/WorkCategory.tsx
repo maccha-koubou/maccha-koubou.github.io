@@ -8,7 +8,7 @@ import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
 import WorkCategoryProjectCanvas from "../../components/Work/WorkCategoryProjectCanvas";
 import ScrollWrapper, {ScrollWrapperHandle} from "../../components/ScrollWrapper";
 import {useNavigate} from "react-router-dom";
-import {usePageSwitch} from "../../router/Router";
+import {usePageSwitch} from "../../app";
 
 interface WorkCategoryProps {
     type: ProjectType

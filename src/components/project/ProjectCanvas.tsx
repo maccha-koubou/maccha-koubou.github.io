@@ -14,6 +14,7 @@ import {colors} from "../../styles/theme";
 import Card from "../Card";
 import ReactDOM from "react-dom";
 import {useScroll} from "../ScrollWrapper";
+import {usePageSwitch} from "../../app";
 
 interface ProjectCanvasProps {
     project: Project
@@ -23,6 +24,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
 
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
+    const { pageSwitchPhase } = usePageSwitch();
 
     const { scrollX, scrollY } = useScroll();
 
@@ -103,6 +105,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                             radius={coverRect.radius}
                             embodiedBorder={true}
                             interactable={false}
+                            animateOut={pageSwitchPhase === 'exit'}
                         >
                             <></>
                             <img
@@ -130,6 +133,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                     horizon={'flex-start'}
                     vertical={'center'}
                     animateIn={true}
+                    animateOut={pageSwitchPhase === 'exit'}
                 >
                     <span style={{
                         color: colors.primary,

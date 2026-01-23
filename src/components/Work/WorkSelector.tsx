@@ -76,6 +76,7 @@ const WorkSelector = ({
                     horizon={'flex-start'}
                     vertical={'center'}
                     padding={[0, 0, 4, 36]}
+                    animateIn={true}
                 >
                     <div style={{
                         display: "flex",
@@ -132,6 +133,7 @@ const WorkSelector = ({
                     horizon={'flex-start'}
                     vertical={'flex-end'}
                     padding={[0, 0, 20, 36]}
+                    animateIn={true}
                 >
                     <span style={{
                         color: colors.white,
@@ -165,6 +167,7 @@ const WorkSelector = ({
                     horizon={'flex-start'}
                     vertical={'flex-end'}
                     padding={[0, 0, 20, 36]}
+                    animateIn={true}
                 >
                     <span style={{
                         color: colors.white,

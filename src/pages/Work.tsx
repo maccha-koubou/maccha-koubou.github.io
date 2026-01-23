@@ -7,6 +7,7 @@ import TextMatrix from "../contents/Work/TextMatrix";
 import TextRing from "../components/TextRing";
 import measureSize from "../utils/measureSize";
 import ProjectSlide from "../components/Work/ProjectSlide";
+import Card from "../components/Card";
 
 const Work = () => {
 
@@ -95,13 +96,19 @@ const Work = () => {
             y: 0,
             z: 1,
             children: (
-                <TextRing
-                    radius={360}
-                    fontSize={20}
-                    text={ringText}
-                    width={canvasWidth}
-                    height={canvasHeight - 20}
-                />
+                <Card
+                    w={canvasWidth}
+                    h={canvasHeight - 20}
+                    animateIn={true}
+                >
+                    <TextRing
+                        radius={360}
+                        fontSize={20}
+                        text={ringText}
+                        width={canvasWidth}
+                        height={canvasHeight - 20}
+                    />
+                </Card>
             )
         },
         {
@@ -123,7 +130,13 @@ const Work = () => {
             y: 0,
             z: 0,
             children: (
-                <TextMatrix width={canvasWidth} />
+                <Card
+                    w={canvasWidth}
+                    h={'100%'}
+                    animateIn={true}
+                >
+                    <TextMatrix width={canvasWidth} />
+                </Card>
             )
         }
     ]

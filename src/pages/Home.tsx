@@ -10,8 +10,8 @@ import measureSize from "../utils/measureSize";
 import {calculateRandomRatio, useRandomizeSize} from "../utils/getImgSize";
 import {Project} from "../config/ProjectType";
 import projects from "../contents/projects";
-import {usePageSwitch} from "../router/Router";
 import {useNavigate} from "react-router-dom";
+import {usePageSwitch} from "../app";
 
 const Home = () => {
 

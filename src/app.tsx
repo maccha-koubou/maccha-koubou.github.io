@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { HashRouter } from 'react-router-dom'
+import {HashRouter} from 'react-router-dom'
 import Router from './router/Router'
 import MainNav from "./contents/MainNav";
 import {ScalingContainer} from "./components/ScalingContainer";
@@ -9,10 +9,26 @@ import {ORIGINAL_HEIGHT} from "./config/Size";
 import projects from './contents/projects'
 import {HistoryContainer} from "./router/HistoryContainer";
 
+interface PageSwitchContextType {
+    pageSwitchPhase: 'idle' | 'enter' | 'exit';
+    setPageSwitchPhase: (phase: 'idle' | 'enter' | 'exit') => void;
+}
+
+const PageSwitchContext = React.createContext<PageSwitchContextType | null>(null);
+
+export const usePageSwitch = () => {
+    const context = React.useContext(PageSwitchContext);
+    if (!context) throw new Error('no page switch context');
+    return context;
+};
+
 const App = () => {
 
     // Import and use the projects once to make them initialized
     console.log(projects.length)
+
+    // Handle the animation relating to project detail pages
+    const [pageSwitchPhase, setPageSwitchPhase] = useState<'idle' | 'enter' | 'exit'>('idle');
 
     const [language, setLanguage] = useState(Language.EN)
 
@@ -22,6 +38,7 @@ const App = () => {
             : fonts.chineseCharacterKanji
 
     return (
+        <PageSwitchContext.Provider value={{ pageSwitchPhase, setPageSwitchPhase }}>
         <HashRouter>
             <HistoryContainer>
                 <ScalingContainer>
@@ -39,6 +56,7 @@ const App = () => {
                 </ScalingContainer>
             </HistoryContainer>
         </HashRouter>
+        </PageSwitchContext.Provider>
     )
 }
 

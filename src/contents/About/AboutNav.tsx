@@ -4,6 +4,7 @@ import NavBar from "../../components/NavBar";
 import {NavButtonProps} from "../../components/NavButton";
 import {colors} from "../../styles/theme";
 import {aboutTab} from "../../pages/About";
+import Card from "../../components/Card";
 
 interface AboutNavProps {
     setActiveTab: (aboutTab: aboutTab) => void;
@@ -156,13 +157,15 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center',height: `${NAV_HEIGHT}px`}}>
-            <NavBar
-                buttons={buttons}
-                direction={'column'}
-                gap={0}
-                highlightNumber={highlightNumber}
-                setHighlightNumber={setHighlightNumber}
-            />
+            <Card animateIn={true}>
+                <NavBar
+                    buttons={buttons}
+                    direction={'column'}
+                    gap={0}
+                    highlightNumber={highlightNumber}
+                    setHighlightNumber={setHighlightNumber}
+                />
+            </Card>
         </div>
     )
 }

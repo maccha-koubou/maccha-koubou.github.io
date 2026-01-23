@@ -1,7 +1,7 @@
 import Card from "../../components/Card";
 import {colors} from "../../styles/theme";
 import React from "react";
-import {usePageSwitch} from "../../router/Router";
+import {usePageSwitch} from "../../app";
 
 const IntroCard = () => {
     const { pageSwitchPhase } = usePageSwitch();
