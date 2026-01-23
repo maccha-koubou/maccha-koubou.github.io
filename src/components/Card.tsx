@@ -153,7 +153,7 @@ const Card = ({
                     transformOrigin: animateOut ? 'right' : 'left',
                     pointerEvents: 'none',
                     height: `${cardHeight}px`,
-                    visibility: embodiedBorder || isCardSizeChange ? 'hidden' : 'visible',
+                    visibility: embodiedBorder || isCardSizeChange ? 'hidden' : 'visible', // If the card size is changing, also turn off the border layer to for better motion
                 }}
             />
         </div>

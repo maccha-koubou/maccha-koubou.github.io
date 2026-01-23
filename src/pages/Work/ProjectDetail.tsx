@@ -40,7 +40,7 @@ const ProjectDetail = () => {
     return (
         <div ref={ref} style={{width:'100%', height:'100%'}}>
             <div ref={parentRef}>
-                <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight}>
+                <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight} alignment={'left'}>
                     <ProjectCanvas
                         project={project}
                     />
