@@ -1,4 +1,5 @@
 import React from "react";
+import {ThemeColors} from "../styles/theme";
 
 export interface Project {
     id: string,
@@ -11,6 +12,7 @@ export interface Project {
     cover: string,
     coverColored: string,
     coverAlt: string,
+    color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
     slides: React.ReactNode[],
@@ -41,6 +43,7 @@ export const createProject = (input: {
     cover: string
     coverColored: string,
     coverAlt: string,
+    color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
     slides: any[] // <- To be updated

@@ -7,6 +7,7 @@ const transitionGuidepost = createProject({
     cover: cover,
     coverColored: cover,
     coverAlt: '',
+    color: {primary: '#EA005F', primaryLight: '#F7468A', secondaryLight: '#0074E8', secondary: '#006AEA', neon: '#66FFFF'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.5, y: 0.5},
     types: [ProjectType.PRODUCT],

@@ -7,6 +7,7 @@ const choiceSpace = createProject({
     cover: cover,
     coverColored: cover,
     coverAlt: '',
+    color: {primary: '#FA6400', primaryLight: '#FF934A', secondaryLight: '#333333', secondary: '#333333', neon: '#66FFFF'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.3, y: 0.5},
     types: [ProjectType.SPACE],

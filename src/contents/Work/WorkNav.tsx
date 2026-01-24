@@ -43,7 +43,7 @@ const WorkNav = () => {
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center', alignItems: 'flex-end', height: `${NAV_HEIGHT}px`}}>
-            <Card animateIn={true} animateOut={pageSwitchPhase === 'exit'}>
+            <Card radius={14} animateIn={true} animateOut={pageSwitchPhase === 'exit'}>
                 <NavBar buttons={buttons} direction={'row'} gap={40} highlightNumber={0} setHighlightNumber={() => {}}/>
             </Card>
         </div>

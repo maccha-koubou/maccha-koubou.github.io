@@ -25,6 +25,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
     const { pageSwitchPhase } = usePageSwitch();
+    const portalRoot = document.getElementById('theme-provider');
 
     const { scrollX, scrollY } = useScroll();
 
@@ -94,7 +95,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                     <CanvasItem
                         x={coverRect.left}
                         y={0}
-                        z={0}
+                        z={-1}
                         isPassThrough={true}
                     >
                         <Card
@@ -121,7 +122,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                             />
                         </Card>
                     </CanvasItem>,
-                    document.body
+                    portalRoot ? portalRoot : document.body
                 )
             }
 

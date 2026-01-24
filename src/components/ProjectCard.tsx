@@ -12,6 +12,7 @@ import {
     PROJECT_COVER_WIDTH
 } from "../config/Size";
 import ReactDOM from "react-dom";
+import {useTheme} from "./ThemeProvider";
 
 interface ProjectCardProps {
     project: Project
@@ -122,6 +123,8 @@ const ProjectCard = ({
     // Cover animation
     // Cover expanding animation
     const coverRef = useRef<HTMLDivElement>(null);
+    const portalRoot = document.getElementById('theme-provider');
+    const { setTheme, resetTheme } = useTheme();
     const [coverRect, setCoverRect] = useState<{left: number, top: number, width: number, height: number, radius: number, border: number}|null>(null);
     const [targetRect, setTargetRect] = useState<{left: number, top: number, width: number, height: number, radius: number}|null>(null);
 
@@ -219,7 +222,7 @@ const ProjectCard = ({
                             </div>
                         </Card>
                     </motion.div>,
-                    document.body
+                    portalRoot ? portalRoot : document.body
                 )
             }
 
@@ -231,12 +234,21 @@ const ProjectCard = ({
                         setIsHover(true)
                         setIsCardSizeChange(true)
                         onMouseEnter?.()
+                        setTheme({
+                            primary: project.color.primary,
+                            primaryLight: project.color.primaryLight,
+                            secondary: project.color.secondary,
+                            secondaryLight: project.color.secondaryLight
+                        }, 0.4)
                     }}
                     onMouseLeave={() => {
                         setIsHover(false)
                         setIsCardSizeChange(true)
                         setIsClickable(false)
                         onMouseLeave?.()
+                        if (!isCoverExpanding) { // Only reset the theme color when the card is no expanding (namely, the page is no switching)
+                            resetTheme()
+                        }
                     }}
                     initial={{ width: w, height: h, top: 0, left: 0 }}
                     animate={{

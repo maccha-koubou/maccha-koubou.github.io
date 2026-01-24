@@ -8,6 +8,7 @@ import {fonts} from "./styles/theme";
 import {ORIGINAL_HEIGHT} from "./config/Size";
 import projects from './contents/projects'
 import {HistoryContainer} from "./router/HistoryContainer";
+import ThemeProvider from "./components/ThemeProvider";
 
 interface PageSwitchContextType {
     pageSwitchPhase: 'idle' | 'enter' | 'exit';
@@ -39,23 +40,25 @@ const App = () => {
 
     return (
         <PageSwitchContext.Provider value={{ pageSwitchPhase, setPageSwitchPhase }}>
-        <HashRouter>
-            <HistoryContainer>
-                <ScalingContainer>
-                    <div style={{
-                        height: `${ORIGINAL_HEIGHT}px`,
-                        fontFamily: `${fontFamily}`,
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}>
-                        <div style={{ flex: 1, position: 'relative' }}>
-                            <Router />
-                        </div>
-                        <MainNav />
-                    </div>
-                </ScalingContainer>
-            </HistoryContainer>
-        </HashRouter>
+            <HashRouter>
+                <HistoryContainer>
+                    <ThemeProvider>
+                        <ScalingContainer>
+                            <div style={{
+                                height: `${ORIGINAL_HEIGHT}px`,
+                                fontFamily: `${fontFamily}`,
+                                display: 'flex',
+                                flexDirection: 'column',
+                            }}>
+                                <div style={{ flex: 1, position: 'relative' }}>
+                                    <Router />
+                                </div>
+                                <MainNav />
+                            </div>
+                        </ScalingContainer>
+                    </ThemeProvider>
+                </HistoryContainer>
+            </HashRouter>
         </PageSwitchContext.Provider>
     )
 }

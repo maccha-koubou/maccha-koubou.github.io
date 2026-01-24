@@ -157,7 +157,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
     ]
     return (
         <div style={{display: "flex", justifyContent: 'center',height: `${NAV_HEIGHT}px`}}>
-            <Card animateIn={true}>
+            <Card radius={32} animateIn={true}>
                 <NavBar
                     buttons={buttons}
                     direction={'column'}
