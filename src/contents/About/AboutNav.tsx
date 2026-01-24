@@ -21,6 +21,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             padding: 32,
             secondColor: colors.secondary,
             gap: 16,
+            bgColor: 'transparent',
             firstChildren: (
                 <span style={{
                     display: "flex",
@@ -56,6 +57,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             firstColor: 'transparent',
             padding: 36,
             isGap: true,
+            bgColor: 'transparent',
             firstChildren: (
                 <></>
             ),
@@ -65,6 +67,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             id: 'ux-designer',
             h: 64,
             padding: 32,
+            bgColor: 'transparent',
             firstChildren: (
                 <span style={{
                     display: "flex",
@@ -85,6 +88,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             id: 'architect',
             h: 64,
             padding: 32,
+            bgColor: 'transparent',
             firstChildren: (
                 <span style={{
                     display: "flex",
@@ -107,6 +111,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             firstColor: 'transparent',
             padding: 36,
             isGap: true,
+            bgColor: 'transparent',
             firstChildren: (
                 <></>
             ),
@@ -117,6 +122,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             h: 64,
             padding: 32,
             firstColor: colors.secondary,
+            bgColor: 'transparent',
             firstChildren: (
                 <span style={{
                     display: "flex",
@@ -138,6 +144,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
             h: 64,
             padding: 32,
             firstColor: colors.secondary,
+            bgColor: 'transparent',
             firstChildren: (
                 <span style={{
                     display: "flex",

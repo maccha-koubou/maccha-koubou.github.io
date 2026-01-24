@@ -1,11 +1,12 @@
 import {motion, useAnimation} from "framer-motion";
 import {DEFAULT_COLOR, ThemeColors} from "../styles/theme";
-import React, {createContext, useContext, useEffect} from "react";
+import React, {createContext, useContext, useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import {isUrlProject} from "../router/Router";
 import projects from "../contents/projects";
 
 const ThemeContext = createContext<{
+    currentColor: ThemeColors;
     setTheme: (theme: Partial<ThemeColors>, duration?: number) => void;
     resetTheme: () => void;
 }>(null!);
@@ -25,16 +26,19 @@ interface ThemeProviderProps {
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
     const location = useLocation();
     const controls = useAnimation();
+    const [currentColor, setCurrentColor] = useState<ThemeColors>(DEFAULT_COLOR);
 
     const setTheme = (
         theme: Partial<ThemeColors>,
     ) => {
+        const newTheme = { ...currentColor, ...theme }
+        setCurrentColor(newTheme);
         controls.start({
-            '--color-primary': theme.primary ?? DEFAULT_COLOR.primary,
-            '--color-primary-light': theme.primaryLight ?? DEFAULT_COLOR.primaryLight,
-            '--color-secondary': theme.secondary ?? DEFAULT_COLOR.secondary,
-            '--color-secondary-light': theme.secondaryLight ?? DEFAULT_COLOR.secondaryLight,
-            '--color-neon': theme.neon ?? DEFAULT_COLOR.neon,
+            '--color-primary': newTheme.primary,
+            '--color-primary-light': newTheme.primaryLight,
+            '--color-secondary': newTheme.secondary,
+            '--color-secondary-light': newTheme.secondaryLight,
+            '--color-neon': newTheme.neon,
             transition: { duration: 0.4, ease: 'easeInOut' },
         });
     };
@@ -63,7 +67,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
                 '--color-neon': DEFAULT_COLOR.neon,
             } as React.CSSProperties}
         >
-            <ThemeContext.Provider value={{ setTheme, resetTheme }}>
+            <ThemeContext.Provider value={{ currentColor, setTheme, resetTheme }}>
                 {children}
             </ThemeContext.Provider>
         </motion.div>

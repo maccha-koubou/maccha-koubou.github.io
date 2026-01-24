@@ -95,7 +95,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                     <CanvasItem
                         x={coverRect.left}
                         y={0}
-                        z={-1}
+                        z={0}
                         isPassThrough={true}
                     >
                         <Card

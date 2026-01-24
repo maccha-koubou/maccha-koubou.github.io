@@ -9,6 +9,7 @@ import {ORIGINAL_HEIGHT} from "./config/Size";
 import projects from './contents/projects'
 import {HistoryContainer} from "./router/HistoryContainer";
 import ThemeProvider from "./components/ThemeProvider";
+import {Bg} from "./assets/img/bg";
 
 interface PageSwitchContextType {
     pageSwitchPhase: 'idle' | 'enter' | 'exit';
@@ -54,6 +55,9 @@ const App = () => {
                                     <Router />
                                 </div>
                                 <MainNav />
+                            </div>
+                            <div style={{pointerEvents: 'none', position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: `${ORIGINAL_HEIGHT}px`}}>
+                                <Bg />
                             </div>
                         </ScalingContainer>
                     </ThemeProvider>
