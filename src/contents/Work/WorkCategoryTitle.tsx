@@ -13,7 +13,6 @@ interface WorkCategoryTitleProps {
     subType1: SubProjectType;
     subType2: SubProjectType;
     activeSubType: SubProjectType[];
-    setActiveSubType: (activeSubType: SubProjectType[]) => void;
     setIsExit: (isExit: '1' | '2' | 'false') => void;
     isExit: '1' | '2' | 'false';
 }
@@ -24,7 +23,6 @@ const WorkCategoryTitle = ({
                                subType1,
                                subType2,
                                activeSubType,
-                               setActiveSubType,
                                setIsExit,
                                isExit,
                            }: WorkCategoryTitleProps) => {
@@ -102,7 +100,7 @@ const WorkCategoryTitle = ({
                     onClick={
                         () => {
                             if (isExit === 'false') {
-                                setIsExit('1')
+                                setIsExit('1') // The state of filter is changed by setIsExit
                                 setIsToggle1Active(!isToggle1Active)
                             }
                     }}
@@ -119,7 +117,7 @@ const WorkCategoryTitle = ({
                     onClick={
                         () => {
                             if (isExit === 'false') {
-                                setIsExit('2')
+                                setIsExit('2') // The state of filter is changed by setIsExit
                                 setIsToggle2Active(!isToggle2Active)
                             }
                     }}
@@ -140,7 +138,7 @@ const WorkCategoryTitle = ({
             padding: '0px 0px 80px 0px',
             gap: '24px',
         }}>
-            <Card>
+            <Card animateIn={true}>
                 <div style={{
                     display: 'flex',
                     flexDirection: 'row',

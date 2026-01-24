@@ -110,7 +110,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
                         >
                             <></>
                             <img
-                                src={project.cover}
+                                src={project.coverColored}
                                 style={{
                                     width: '100%',
                                     height: '100%',

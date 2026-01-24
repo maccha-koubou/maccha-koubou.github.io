@@ -10,16 +10,21 @@ import measureSize from "../utils/measureSize";
 import {calculateRandomRatio, useRandomizeSize} from "../utils/getImgSize";
 import {Project} from "../config/ProjectType";
 import projects from "../contents/projects";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {usePageSwitch} from "../app";
+import {useHistory} from "../router/HistoryContainer";
 
 const Home = () => {
 
     // Navigate function for project cards, change the phase state and navigate 0.4 seconds later
     const navigate = useNavigate();
+    const location = useLocation()
+    const { push } = useHistory()
     const { pageSwitchPhase, setPageSwitchPhase } = usePageSwitch();
+
     const projectCardOnClick = (url: string) => {
         setPageSwitchPhase('exit')
+        push(location.pathname)
         setTimeout(() => navigate(`/work/${url}`), 400)
     }
 

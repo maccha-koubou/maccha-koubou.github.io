@@ -7,24 +7,27 @@ import projects from "../../contents/projects";
 import WorkCategoryTitle from "../../contents/Work/WorkCategoryTitle";
 import WorkCategoryProjectCanvas from "../../components/Work/WorkCategoryProjectCanvas";
 import ScrollWrapper, {ScrollWrapperHandle} from "../../components/ScrollWrapper";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 import {usePageSwitch} from "../../app";
+import {useHistory} from "../../router/HistoryContainer";
 
 interface WorkCategoryProps {
     type: ProjectType
-    subType?: SubProjectType | null
 }
 
 const WorkCategory = ({
     type,
-    subType = null,
 }: WorkCategoryProps ) => {
 
     // Navigate function for project cards, change the phase state and navigate 0.4 seconds later
     const navigate = useNavigate();
+    const location = useLocation()
+    const { push } = useHistory()
+
     const { setPageSwitchPhase } = usePageSwitch();
     const projectCardOnClick = (url: string) => {
         setPageSwitchPhase('exit')
+        push(location.pathname)
         setTimeout(() => navigate(`/work/${url}`), 400)
     }
 
@@ -51,7 +54,14 @@ const WorkCategory = ({
             break
     }
 
-    const [activeSubType, setActiveSubType] = useState<SubProjectType[]>(subType ? [subType] : [subType1, subType2])
+    const [searchParams] = useSearchParams();
+    let filteredType: SubProjectType | null = null;
+    if (searchParams.get('filter') === subType1) {
+        filteredType = subType1;
+    } else if (searchParams.get('filter') === subType2) {
+        filteredType = subType2;
+    }
+    const [activeSubType, setActiveSubType] = useState<SubProjectType[]>(filteredType ? [filteredType] : [subType1, subType2])
     const [activeProject, setActiveProject] = useState<Project | null>(null)
 
 
@@ -89,6 +99,8 @@ const WorkCategory = ({
 
 
     // Control the exit animation when switching the page
+    // !!! The state of filter is changed by setIsExit !!!
+    // !!! The state change happens at workCategoryDistribution -> genProjectCards() !!!
     const [isExit, setIsExit] = useState<'1' | '2' | 'false'>('false');
 
 
@@ -113,7 +125,6 @@ const WorkCategory = ({
                     subType2={subType2}
                     activeProject={activeProject}
                     activeSubType={activeSubType}
-                    setActiveSubType={setActiveSubType}
                     setIsExit={setIsExit}
                     isExit={isExit}
                 />
@@ -127,7 +138,7 @@ const WorkCategory = ({
             w: '100%',
             h: '100%',
             children: (
-                <div key={subType ? subType : type}>
+                <div>
                     <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight}>
                         <WorkCategoryProjectCanvas
                             projects={filteredProjects}

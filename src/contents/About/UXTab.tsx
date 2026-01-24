@@ -6,7 +6,8 @@ import CardStack from "../../components/CardStack";
 import Button from "../../components/Button";
 import measureSize from "../../utils/measureSize";
 import {RightArrowIcon} from "../../assets/icons/RightArrowIcon";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
+import {useHistory} from "../../router/HistoryContainer";
 
 interface UXTabProps {
     animateIn: boolean;
@@ -20,6 +21,8 @@ const UXTab = ({
                    onAnimationComplete,
                }: UXTabProps) => {
     const navigate = useNavigate()
+    const location = useLocation()
+    const { push } = useHistory()
 
     // Get the size of the button and cards
     const { ref: refCard1, size: card1Size } = measureSize<HTMLDivElement>()
@@ -99,7 +102,10 @@ const UXTab = ({
                             icon={<RightArrowIcon />}
                             animateIn={animateIn}
                             animateOut={animateOut}
-                            onClick={() => navigate('/work/product')}
+                            onClick={() => {
+                                push(location.pathname)
+                                navigate('/work/product')
+                            }}
                         />
                     </div>
                 </div>

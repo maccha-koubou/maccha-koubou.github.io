@@ -120,8 +120,13 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 2,
+                cursor: 'pointer',
             }}
                  className={styles.card1}
+                 onClick={() => {
+                     push(location.pathname)
+                     navigate(`/work/${type}?filter=${subTypes1}`)
+                 }}
             >
                 <Card
                     borderColor={colors.white}
@@ -154,8 +159,13 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 1,
+                cursor: 'pointer',
             }}
                  className={styles.card2}
+                 onClick={() => {
+                     push(location.pathname)
+                     navigate(`/work/${type}?filter=${subTypes2}`)
+                 }}
             >
                 <Card
                     borderColor={colors.white}

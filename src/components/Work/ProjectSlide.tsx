@@ -2,6 +2,8 @@ import React, {useEffect, useMemo, useState} from "react";
 import {ProjectType} from "../../config/ProjectType";
 import projects from "../../contents/projects";
 import {getImgSize} from "../../utils/getImgSize";
+import {colors} from "../../styles/theme";
+import texture from "../../assets/img/texture.png";
 
 interface ProjectSlideProps {
     type: ProjectType | null;
@@ -92,6 +94,7 @@ const ProjectSlide = ({ type, width, height }: ProjectSlideProps) => {
                 justifyContent: 'center',
                 alignItems: 'center',
                 overflow: "hidden",
+                backgroundColor: colors.secondary,
             }}>
                 <img
                     src={current.cover}
@@ -99,6 +102,14 @@ const ProjectSlide = ({ type, width, height }: ProjectSlideProps) => {
                     style={{
                         width: `${imgWidth}px`,
                         height: `${imgHeight}px`,
+                        objectFit: 'contain'
+                    }}
+                />
+                <img
+                    src={texture}
+                    alt={''}
+                    style={{
+                        position: "absolute",
                         objectFit: 'contain'
                     }}
                 />

@@ -13,6 +13,7 @@ import {
 } from "../config/Size";
 import ReactDOM from "react-dom";
 import {useTheme} from "./ThemeProvider";
+import texture from "../assets/img/texture.png";
 
 interface ProjectCardProps {
     project: Project
@@ -200,6 +201,7 @@ const ProjectCard = ({
                             borderWidth={coverRect.border}
                             w={'100%'}
                             h={'100%'}
+                            bg={colors.secondary}
                             embodiedBorder={true}
                         >
                             <div style={{
@@ -209,7 +211,7 @@ const ProjectCard = ({
                                 height: '100%'
                             }}>
                                 <img
-                                    src={project.cover}
+                                    src={project.coverColored}
                                     style={{
                                         width: '100%',
                                         height: '100%',
@@ -264,6 +266,7 @@ const ProjectCard = ({
                         borderWidth={2}
                         w={'100%'}
                         h={'100%'}
+                        bg={colors.secondary}
                         radius={24}
                         animateIn={true}
                         animateOut={animateOut}
@@ -289,6 +292,34 @@ const ProjectCard = ({
                                     objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
                                 }}
                                 alt={project.subtitle}
+                            />
+                            <img
+                                src={texture}
+                                style={{
+                                    position: 'absolute',
+                                    left: 0,
+                                    top: 0,
+                                    width: 400,
+                                    height: 250,
+                                    display: 'block',
+                                }}
+                                alt={''}
+                            />
+                            <motion.img
+                                src={project.coverColored}
+                                alt=""
+                                style={{
+                                    position: 'absolute',
+                                    inset: 0,
+                                    width: '100%',
+                                    height: '100%',
+                                    objectFit: 'cover',
+                                    objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`,
+                                    pointerEvents: 'none',
+                                }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: isHover ? 1 : 0 }}
+                                transition={{ duration: 0.4, ease: 'easeInOut' }}
                             />
                         </div>
                     </Card>
