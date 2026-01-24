@@ -24,6 +24,7 @@ const IntroCard = () => {
                 borderColor={colors.primaryLight}
                 radius={24}
                 padding={[40, 56, 48, 56]}
+                animateIn={true}
                 animateOut={pageSwitchPhase === 'exit'}
             >
                 <div style={{

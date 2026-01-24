@@ -1,5 +1,5 @@
 import {Project} from "../../config/ProjectType";
-import campusCorridor from "./campusCorridor";
+import dormitoryVillage from "./dormitoryVillage";
 import exploreInVirtualLight from "./exploreInVirtualLight";
 import choiceSpace from "./choiceSpace";
 import houseWithGlassYard from "./houseWithGlassYard";
@@ -8,7 +8,7 @@ import transitionGuidepost from "./transitionGuidepost";
 import cbeasy from "./cbeasy";
 
 const projects: Project[] = [
-    campusCorridor,
+    dormitoryVillage,
     exploreInVirtualLight,
     choiceSpace,
     houseWithGlassYard,

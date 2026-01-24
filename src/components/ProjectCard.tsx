@@ -240,7 +240,8 @@ const ProjectCard = ({
                             primary: project.color.primary,
                             primaryLight: project.color.primaryLight,
                             secondary: project.color.secondary,
-                            secondaryLight: project.color.secondaryLight
+                            secondaryLight: project.color.secondaryLight,
+                            neon: project.color.neon,
                         }, 0.4)
                     }}
                     onMouseLeave={() => {
