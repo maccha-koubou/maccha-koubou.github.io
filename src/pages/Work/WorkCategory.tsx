@@ -139,7 +139,7 @@ const WorkCategory = ({
             h: '100%',
             children: (
                 <div>
-                    <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight}>
+                    <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth}>
                         <WorkCategoryProjectCanvas
                             projects={filteredProjects}
                             activeProject={activeProject}

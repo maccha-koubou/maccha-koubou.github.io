@@ -1,9 +1,9 @@
 import React from 'react'
 import {PROJECT_HEIGHT, PROJECT_WIDTH} from "../../config/Size";
-import {SlideItem, SlideItemProps} from "./SlideItem";
+import {CanvasItem, CanvasItemProps} from "../CanvasItem";
 
 interface SlideCanvasProps {
-    items: SlideItemProps[]
+    items: CanvasItemProps[]
 }
 
 const SlideCanvas: React.FC<SlideCanvasProps> = ({ items }) => {
@@ -14,7 +14,7 @@ const SlideCanvas: React.FC<SlideCanvasProps> = ({ items }) => {
             height: `${PROJECT_HEIGHT}px`
         }}>
             {items.map(item => (
-                <SlideItem {...item} />
+                <CanvasItem {...item} />
             ))}
         </div>
     )

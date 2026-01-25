@@ -4,7 +4,7 @@ import {colors} from "../styles/theme";
 export interface NavButtonProps {
     id: string;
     h: number
-    padding: number
+    padding: number | number[]
     firstChildren: React.ReactNode
     secondChildren?: React.ReactNode
     gap?: number
@@ -53,7 +53,7 @@ export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
                 width: 'fit-content',
                 height: h,
                 boxSizing: 'border-box',
-                padding: `0px ${padding}px 0px ${padding}px`,
+                padding: typeof padding === 'number' ? `0px ${padding}px 0px ${padding}px` : `${padding[0]}px ${padding[1]}px ${padding[2]}px ${padding[3]}px` ,
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: `${gap}px`,

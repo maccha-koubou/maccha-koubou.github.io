@@ -14,6 +14,7 @@ interface CardStackProps {
     padding?: number | [number, number, number, number] // [top, right, bottom, left]
     horizon?: 'flex-start' | 'center' | 'flex-end'
     vertical?: 'flex-start' | 'center' | 'flex-end'
+    initialHiding?: boolean
     animateIn?: boolean
     animateOut?: boolean
     onAnimationComplete?: () => void
@@ -30,6 +31,7 @@ const CardStack = ({
                   padding = 0,
                   horizon = 'center',
                   vertical = 'center',
+                  initialHiding = false,
                   animateIn,
                   animateOut,
                   onAnimationComplete,
@@ -71,6 +73,7 @@ const CardStack = ({
                     padding={padding}
                     horizon={horizon}
                     vertical={vertical}
+                    initialHiding={initialHiding}
                     animateIn={animateIn}
                     animateOut={animateOut}
                     onAnimationComplete={onAnimationComplete}
@@ -95,6 +98,7 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    initialHiding={initialHiding}
                     animateIn={animateIn}
                     animateOut={animateOut}
                 />
@@ -118,6 +122,7 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    initialHiding={initialHiding}
                     animateIn={animateIn}
                     animateOut={animateOut}
                 />
@@ -141,6 +146,7 @@ const CardStack = ({
                     bg={'transparent'}
                     w={cardWidth}
                     h={cardHeight}
+                    initialHiding={initialHiding}
                     animateIn={animateIn}
                     animateOut={animateOut}
                 />

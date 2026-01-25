@@ -1,11 +1,15 @@
-import React, {useEffect, useRef} from "react"
+import React, {useEffect, useImperativeHandle, useRef} from "react"
 import ScrollWrapper, {ScrollWrapperHandle} from "../../components/ScrollWrapper";
 import measureSize from "../../utils/measureSize";
 import ProjectCanvas from "../../components/project/ProjectCanvas";
 import {Navigate, useParams} from "react-router-dom";
 import projects from "../../contents/projects";
 
-const ProjectDetail = () => {
+interface ProjectDetailProps {
+    setScrollX: (x: number) => void;
+}
+
+const ProjectDetail = React.forwardRef<ScrollWrapperHandle, ProjectDetailProps>((props, ref) => {
 
     const { projectUrl } = useParams<{ projectUrl: string }>();
 
@@ -17,17 +21,21 @@ const ProjectDetail = () => {
         return <Navigate to="/work" replace />
     }
 
-    const { ref, size: canvasSize } = measureSize<HTMLDivElement>()
+    const { ref: measureRef, size: canvasSize } = measureSize<HTMLDivElement>()
     const canvasWidth = canvasSize ? canvasSize.width : 0
-    const canvasHeight = canvasSize ? canvasSize.height : 0
 
     // Scroll the project card canvas on the bottom layer
     const parentRef = useRef<HTMLDivElement>(null)
     const scrollWrapperRef = useRef<ScrollWrapperHandle>(null)
 
+    useImperativeHandle(ref, () => ({
+        scrollByDelta: (deltaY: number) => scrollWrapperRef.current?.scrollByDelta(deltaY),
+        scrollToX: (scrollToX: number) => scrollWrapperRef.current?.scrollToX(scrollToX),
+    }));
+
     useEffect(() => {
         const onWheel = (e: WheelEvent) => {
-            e.preventDefault()
+            e.preventDefault();
             scrollWrapperRef.current?.scrollByDelta(e.deltaY)
         }
 
@@ -38,16 +46,18 @@ const ProjectDetail = () => {
 
 
     return (
-        <div ref={ref} style={{width:'100%', height:'100%'}}>
+        <div ref={measureRef} style={{width:'100%', height:'100%'}}>
             <div ref={parentRef}>
-                <ScrollWrapper ref={scrollWrapperRef} canvasWidth={canvasWidth} canvasHeight={canvasHeight} alignment={'left'}>
+                <ScrollWrapper ref={scrollWrapperRef as React.RefObject<ScrollWrapperHandle>} canvasWidth={canvasWidth} alignment={'left'} speed={3}>
                     <ProjectCanvas
                         project={project}
+                        canvasWidth={canvasWidth}
+                        setScrollX={props.setScrollX}
                     />
                 </ScrollWrapper>
             </div>
         </div>
     )
-}
+})
 
 export default ProjectDetail

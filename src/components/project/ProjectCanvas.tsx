@@ -15,12 +15,15 @@ import Card from "../Card";
 import ReactDOM from "react-dom";
 import {useScroll} from "../ScrollWrapper";
 import {usePageSwitch} from "../../app";
+import SlideCanvas from "./SlideCanvas";
 
 interface ProjectCanvasProps {
     project: Project
+    canvasWidth: number;
+    setScrollX: (x: number) => void;
 }
 
-const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
+const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, setScrollX }) => {
 
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
@@ -63,6 +66,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
     // Calculate the coord of the cover
     useLayoutEffect(() => {
         update();
+        setScrollX(scrollX);
         window.addEventListener('resize', update);
         return () => window.removeEventListener('resize', update);
     }, [scrollX, scrollY]);
@@ -149,14 +153,27 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project }) => {
             </CanvasItem>
 
             {/* Slides */}
-            {project.slides.map((slide, i) => (
-                <CanvasItem
-                    x={beginX + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (i + 1) }
-                    y={0}
-                    z={0}
-                    children={slide}
-                />
-            ))}
+            {project.slides.map((slide, i) => {
+                const x = beginX + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (i + 1)
+                const isVisible =
+                    x + PROJECT_WIDTH > scrollX &&
+                    x < scrollX + canvasWidth
+                if (!isVisible) return null
+                return (
+                    <CanvasItem
+                        x={beginX + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (i + 1)}
+                        y={0}
+                        z={0}
+                    >
+                        <SlideCanvas items={slide.render(true, pageSwitchPhase === 'exit')}/>
+                    </CanvasItem>
+                )
+            })}
+
+            {/* Placeholder at the end, to ensure the whole canvas can be display, no matter whether the slides at the end are rendered */}
+            <CanvasItem x={overallWidth - 10} y={0} z={0}>
+                <div style={{width: 10, height: 10}} />
+            </CanvasItem>
         </div>
     )
 }

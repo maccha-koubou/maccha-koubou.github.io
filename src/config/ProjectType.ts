@@ -1,5 +1,5 @@
-import React from "react";
 import {ThemeColors} from "../styles/theme";
+import {CanvasItemProps} from "../components/CanvasItem";
 
 export interface Project {
     id: string,
@@ -15,7 +15,7 @@ export interface Project {
     color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
-    slides: React.ReactNode[],
+    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean) => CanvasItemProps[] }>
 }
 
 export enum ProjectType {
@@ -46,7 +46,7 @@ export const createProject = (input: {
     color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
-    slides: any[] // <- To be updated
+    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean) => CanvasItemProps[] }>
 }) => {
 
     const title = input.titleWithLineBreak.replace(/\n/g, '');

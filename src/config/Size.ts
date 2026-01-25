@@ -7,7 +7,7 @@ export const CANVAS_HEIGHT = ORIGINAL_HEIGHT - NAV_HEIGHT
 
 export const PROJECT_WIDTH = 1200
 export const PROJECT_HEIGHT = CANVAS_HEIGHT - NAV_HEIGHT
-export const PROJECT_GAP = 240
+export const PROJECT_GAP = 360
 export const PROJECT_TITLE_WIDTH = 512
 
 export const PROJECT_CARD_LONGER_SIDE = 200
