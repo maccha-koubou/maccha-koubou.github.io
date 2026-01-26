@@ -53,7 +53,7 @@ const UXTab = ({
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
-                            I don't only focus on interfaces and functions. With human-centered perspectives and logical thinking, I design for marginalized users and edge scenarios, aiming to create smooth experiences that across entire ecosystems.
+                            My focus goes beyond interfaces and functions. With human-centric perspectives and logical thinking, I design for marginalized users and complex scenarios, aiming to create smooth experiences that bridge entire ecosystems.
                         </span>
                     </CardStack>
                 </div>
@@ -77,7 +77,7 @@ const UXTab = ({
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
-                            I'm also interested in technology. I believe technologies are non-neutral, and I care about how to avoid its biases and structural inequalities, using its potential for accessibility and empowerment.
+                            I'm also interested in technology. I believe technologies are non-neutral, and I aim to mitigate their biases and structural inequalities, leveraging their potential for accessibility and empowerment
                         </span>
                     </CardStack>
                 </div>

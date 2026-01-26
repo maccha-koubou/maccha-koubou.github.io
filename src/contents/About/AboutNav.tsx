@@ -97,7 +97,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
                     fontWeight: 500,
                     fontSize: '36px',
                 }}>
-                    Architect
+                    Space designer
                 </span>
             ),
             onClick: () => {

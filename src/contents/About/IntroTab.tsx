@@ -30,7 +30,7 @@ const IntroTab = ({
     const items: CanvasItemProps[] = [
         {
             id: 'about-intro-avatar',
-            x: 96,
+            x: 92,
             y: 212,
             z: 2,
             children: (
@@ -78,12 +78,12 @@ const IntroTab = ({
         },
         {
             id: 'about-intro-text',
-            x: 324,
+            x: 320,
             y: 240,
             z: 1,
             children: (
                 <CardStack
-                    w={520}
+                    w={528}
                     animateIn={animateIn}
                     animateOut={animateOut}
                 >
@@ -93,7 +93,7 @@ const IntroTab = ({
                         fontSize: '20px',
                         color: colors.secondary,
                     }}>
-                        I am a product designer and architect. Whether in digital services or physical spaces, I believe design can connect technology, physical world, society, and people. Through design, I aim to bring warm and inclusive responses to systemic problems.
+                        I am a UX & space designer. From digital services to physical spaces, I believe design can connect technology, society, and people. Through thoughtful, empathetic practice, I aim to respond to complex and systemic challenges with inclusion and connection.
                     </span>
                 </CardStack>
             )

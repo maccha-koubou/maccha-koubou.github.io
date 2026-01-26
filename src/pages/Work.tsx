@@ -77,7 +77,7 @@ const Work = () => {
             z: 2,
             children: (
                 <WorkSelector
-                    title1={'Visualizations'}
+                    title1={'Visualization'}
                     title2={'Thinking'}
                     type={ProjectType.VISUALIZATION}
                     subTypes1={SubProjectType.RESEARCH_VISUALIZATIONS}

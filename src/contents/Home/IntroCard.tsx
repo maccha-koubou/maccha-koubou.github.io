@@ -47,7 +47,7 @@ const IntroCard = () => {
                         fontSize: '40px',
                         textAlign: 'center'
                     }}>
-                        Designing for belonging, care, and change.
+                        Thoughtful design for<br />care & change.
                     </span>
                     <span style={{
                         color: colors.secondary,

@@ -53,7 +53,7 @@ const ArchTab = ({
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
-                            My background in urban design helps me look beyond individual buildings. I see public spaces as links between urban systems, including communities, transportation, and commerce. I aim to make cities more connected, efficient, and inclusive.
+                            My background in urban design helps me look beyond individual buildings. I see public spaces as links between urban systems. Going beyond form and efficiency, I aim to connect communities and promote public life.
                         </span>
                     </CardStack>
                 </div>
@@ -77,7 +77,7 @@ const ArchTab = ({
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
-                            I also care about how people interact with space. Through behavioral observation and research, I try to create supportive, non-exclusionary places for diverse public life.
+                            I focus on how people interact with space. Through a human-centric perspective and behavioral observation, I design inclusive, supportive environments for the real needs of diverse people.
                         </span>
                     </CardStack>
                 </div>

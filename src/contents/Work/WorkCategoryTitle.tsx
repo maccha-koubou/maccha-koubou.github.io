@@ -43,7 +43,7 @@ const WorkCategoryTitle = ({
             titleEnd = 'Public life'
             break
         case ProjectType.VISUALIZATION:
-            titleBeginning = 'Visualizations'
+            titleBeginning = 'Visualization'
             titleEnd = 'Thinking'
             break
     }

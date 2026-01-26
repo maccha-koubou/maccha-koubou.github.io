@@ -34,19 +34,19 @@ const ByTab = ({
                         animateOut={animateOut}
                         onAnimationComplete={onAnimationComplete}
                         title={'Empathy'}
-                        text={'I design from users\' behaviors and perspectives, coordinating diverse needs, especially for marginalized groups.'}
+                        text={'I design from users\' behaviors and perspectives, prioritizing the needs of marginalized groups and coordinating diverse stakeholders.'}
                     />
                     <ByCard
                         animateIn={animateIn}
                         animateOut={animateOut}
-                        title={'Ethic sensitivity'}
-                        text={'To be finished'}
+                        title={'Critical thinking'}
+                        text={'I critically examine assumptions, conventions, and norms in design, ensuring they do not exclude people or limit new possibilities.'}
                     />
                     <ByCard
                         animateIn={animateIn}
                         animateOut={animateOut}
                         title={'Systematic thinking'}
-                        text={'I don\'t just focus on the happy path, but think systematically about edge cases and long-term challenges.'}
+                        text={'I don\'t just focus on the happy path, but think systematically about edge cases, multiple touchpoints, whole process, and long-term challenges.'}
                     />
                 </div>
             )

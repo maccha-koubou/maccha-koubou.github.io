@@ -12,7 +12,7 @@ const exploreInVirtualLight = createProject({
     cover: cover,
     coverColored: coverColored,
     coverAlt: '',
-    color: {primary: '#FA6400', primaryLight: '#FF934A', secondary: '#333333', secondaryLight: '#555555', neon: '#66FFFF'},
+    color: {primary: '#FA6400', primaryLight: '#FF934A', secondary: '#333333', secondaryLight: '#666666', neon: '#66FFFF'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.7, y: 0.5},
     types: [ProjectType.PRODUCT],

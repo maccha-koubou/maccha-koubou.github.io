@@ -34,15 +34,15 @@ const ForTab = ({
                     <ForCard
                         title={'Queer-feminism'}
                         subtitle1={'Intersectionality'}
-                        subtitle2={'Care'}
+                        subtitle2={'Care for vulnerability'}
                         animateIn={animateIn}
                         animateOut={animateOut}
                         onAnimationComplete={onAnimationComplete}
                     />
                     <ForCard
                         title={'Anti-ableism'}
-                        subtitle1={'Neurodiversity'}
-                        subtitle2={'Accessibility'}
+                        subtitle1={'Social model of disability'}
+                        subtitle2={'Design for all'}
                         animateIn={animateIn}
                         animateOut={animateOut}
                     />
