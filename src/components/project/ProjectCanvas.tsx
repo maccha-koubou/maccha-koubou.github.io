@@ -16,6 +16,7 @@ import ReactDOM from "react-dom";
 import {useScroll} from "../ScrollWrapper";
 import {usePageSwitch} from "../../app";
 import SlideCanvas from "./SlideCanvas";
+import {RightArrowLargeIcon} from "../../assets/icons/RightArrowLargeIcon";
 
 interface ProjectCanvasProps {
     project: Project
@@ -102,6 +103,22 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, set
                         z={0}
                         isPassThrough={true}
                     >
+                        {/* The arrow above the cover */}
+                        <div style={{position: 'absolute', zIndex: 1, top: coverRect.height / 2 - coverRect.height / 16, left: coverRect.width - coverRect.height / 32}}>
+                            <Card
+                                w={coverRect.height / 16}
+                                h={coverRect.height / 16}
+                                bg={colors.primary}
+                                radius={coverRect.radius}
+                                embodiedBorder={true}
+                                interactable={false}
+                                animateOut={pageSwitchPhase === 'exit'}
+                            >
+                                <div style={{color: colors.white, width: coverRect.height / 24, height: coverRect.height / 24}}>
+                                    <RightArrowLargeIcon size={coverRect.height / 24} />
+                                </div>
+                            </Card>
+                        </div>
                         <Card
                             w={coverRect.width}
                             h={coverRect.height}
@@ -112,7 +129,6 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, set
                             interactable={false}
                             animateOut={pageSwitchPhase === 'exit'}
                         >
-                            <></>
                             <img
                                 src={project.coverColored}
                                 style={{
@@ -145,7 +161,8 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, set
                         fontWeight: 500,
                         fontSize: '80px',
                         textAlign: 'left',
-                        whiteSpace: 'pre-line'
+                        whiteSpace: 'pre-line',
+                        padding: '0px 0px 60px 0px',
                     }}>
                         {project.titleWithLineBreak}
                     </span>

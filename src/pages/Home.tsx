@@ -66,7 +66,15 @@ const Home = () => {
         randomOffsets
             .filter((_, i) =>
                 i !== (1 + randomDecoPosition) && i !== (4+ randomDecoPosition))
-            .map(offset => offset - (randomDecoPosition * 4 - 2))
+            .map((offset, i) => {
+                let offsetDirection = (randomDecoPosition * 2 - 1)
+                // The direction of the offset depends on whether the index is odd or even
+                if (i % 2 === 0) {
+                    return offset - offsetDirection * 2
+                } else {
+                    return offset + offsetDirection
+                }
+            })
 
 
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {NAV_HEIGHT, PROJECT_GAP, PROJECT_TITLE_WIDTH, PROJECT_WIDTH} from "../../config/Size";
+import {NAV_HEIGHT, PROJECT_COVER_WIDTH, PROJECT_GAP, PROJECT_TITLE_WIDTH, PROJECT_WIDTH} from "../../config/Size";
 import NavBar from "../../components/NavBar";
 import {NavButtonProps} from "../../components/NavButton";
 import {useLocation, useNavigate} from 'react-router-dom'
@@ -8,7 +8,7 @@ import Card from "../../components/Card";
 import {usePageSwitch} from "../../app";
 import {isUrlProject} from "../../router/Router";
 import projects from "../projects";
-import {LeftArrowSmall} from "../../assets/icons/LeftArrowSmall";
+import {LeftArrowSmallIcon} from "../../assets/icons/LeftArrowSmallIcon";
 import {Project} from "../../config/ProjectType";
 import {colors} from "../../styles/theme";
 
@@ -48,7 +48,7 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
                     fontSize: '16px',
                     gap: '4px'
                 }}>
-                    <LeftArrowSmall />
+                    <LeftArrowSmallIcon />
                     BACK
                 </span>
             ),
@@ -92,7 +92,7 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
                     fontSize: '16px',
                     gap: '4px'
                 }}>
-                    <LeftArrowSmall />
+                    <LeftArrowSmallIcon />
                 </span>
             ),
             onClick: () => {
@@ -121,9 +121,15 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
 
     // Extract stages from the project
     const stages = project
-        ? Array.from(new Map(
-            project.slides.map((slide, i) => [slide.stage, { stage: slide.stage, firstSlideIndex: i }])
-        ).values())
+        ? project.slides.reduce((acc, slide, i) => {
+            if (!acc.some(s => s.stage === slide.stage)) {
+                acc.push({
+                    stage: slide.stage,
+                    firstSlideIndex: i,
+                })
+            }
+            return acc
+        }, [] as { stage: string; firstSlideIndex: number }[])
         : [];
 
     const projectButtons:NavButtonProps[] = stages?.map((slide, i) => ({
@@ -137,14 +143,13 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
         ),
         onClick: () => {
             navigateSlide(slide.firstSlideIndex);
-            console.log(scrollX)
         },
         index: i + 2
     })) ?? [];
 
     // Control the highlight based on the scroll position
     useEffect(() => {
-        const currentSlideIndex = Math.floor((scrollX - (-64 + PROJECT_TITLE_WIDTH)) / (PROJECT_WIDTH + PROJECT_GAP)) + 1
+        const currentSlideIndex = Math.floor((scrollX - (-64 + PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH)) / (PROJECT_WIDTH + PROJECT_GAP))
         let currentStageIndex = 0
         if (stages.length && currentSlideIndex >= stages[0].firstSlideIndex) {
             for (let i = 0; i < stages.length; i++) {
@@ -155,7 +160,6 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
                 }
             }
         }
-        console.log(scrollX)
         setHighlightNumber(currentStageIndex + 2);
     }, [scrollX]);
 

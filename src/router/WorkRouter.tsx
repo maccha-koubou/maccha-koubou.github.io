@@ -1,6 +1,13 @@
 import React, {useRef} from "react"
 import {Route, Routes, useLocation} from 'react-router-dom'
-import {NAV_HEIGHT, ORIGINAL_HEIGHT, PROJECT_GAP, PROJECT_TITLE_WIDTH, PROJECT_WIDTH} from "../config/Size";
+import {
+    NAV_HEIGHT,
+    ORIGINAL_HEIGHT,
+    PROJECT_COVER_WIDTH,
+    PROJECT_GAP,
+    PROJECT_TITLE_WIDTH,
+    PROJECT_WIDTH
+} from "../config/Size";
 import WorkNav from "../contents/Work/WorkNav";
 import WorkCategory from "../pages/Work/WorkCategory";
 import {ProjectType} from "../config/ProjectType";
@@ -19,7 +26,8 @@ const WorkRouter = () => {
 
     const navigateSlide = (index: number) => {
         const offsetToCenter = (canvasWidth - PROJECT_WIDTH) / 2;
-        const x = (-64 + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (index - 1) - offsetToCenter);
+        const x = (-64 + PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * index - offsetToCenter);
+        console.log("to " + index)
         scrollRef.current?.scrollToX(x);
     }
 

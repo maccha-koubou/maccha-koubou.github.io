@@ -1,6 +1,6 @@
 import React from "react";
 
-export const LeftArrowSmall = () => (
+export const LeftArrowSmallIcon = () => (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2.46973 10.5L10 2.96973L11.0605 4.03027L5.34082 9.75L17.5303 9.75L17.5303 11.25L5.34082 11.25L11.0605 16.9697L10 18.0303L2.46973 10.5Z" fill="currentColor"/>
     </svg>
