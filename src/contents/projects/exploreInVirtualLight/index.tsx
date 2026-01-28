@@ -10,7 +10,17 @@ import strategy1 from "./img/strategy_1.png";
 import strategy2 from "./img/strategy_2.png";
 import strategy3 from "./img/strategy_3.png";
 import flow from "./img/flow.png";
+import ui1 from "./img/ui1.png";
+import ui2 from "./img/ui2.png";
+import ui3 from "./img/ui3.png";
+import ui4 from "./img/ui4.png";
+import ui5 from "./img/ui5.png";
+import uiVideo from "./img/ui1.mp4";
+import team from "./img/team.png";
 import {RightArrowLargeIcon} from "../../../assets/icons/RightArrowLargeIcon";
+import {RightArrowIcon} from "../../../assets/icons/RightArrowIcon";
+import Button from "../../../components/Button";
+import InfoLabel from "../../../components/InfoLabel";
 
 const exploreInVirtualLight = createProject({
     titleWithLineBreak: 'Explore in \nVirtual Light',
@@ -29,10 +39,10 @@ const exploreInVirtualLight = createProject({
         *       Introduction
         *
         **************************************************************************/
-        {stage: 'INTRODUCTION', render: (animateIn: boolean, animateOut: boolean) => ([
+        {stage: 'INTRODUCTION', render: (animateIn: boolean, animateOut: boolean, onNavigate?: (to: string) => void) => ([
             {
                 x: 200,
-                y: 140,
+                y: 120,
                 z: 1,
                 children: (
                     <CardStack
@@ -41,7 +51,7 @@ const exploreInVirtualLight = createProject({
                         animateOut={animateOut}
                     >
                         <div style={{
-                            padding: '36px 36px 48px 36px',
+                            padding: '36px 36px 100px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
@@ -66,14 +76,30 @@ const exploreInVirtualLight = createProject({
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
-                                Instead of forcing visitors through a fixed exhibition route, this project reimagines Qinhuai culture as a network of personal narratives.
+                                Reimagining cultural exhibition as a personal narratives network, rather than a fixed route.
                                 <br /><br />
-                                By combining a networked space and a virtual lantern system, visitors can choose their own paths, turning cultural exploration into an active, gamified, role-based experience.
+                                Digital media combined with the physical exhibition lets visitors explore along their own paths, turning the exhibition into a gamified journey.
                             </span>
                         </div>
                     </CardStack>
                 )
-            }
+            },
+            {
+                x: 640,
+                y: 500,
+                z: 1,
+                children: (
+                    <Button
+                        text={'View the related space design project'}
+                        icon={<RightArrowIcon />}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onClick={() => {
+                            onNavigate?.('/work/choiceSpace')
+                        }}
+                    />
+                )
+            },
         ])},
         /*************************************************************************
          *
@@ -181,7 +207,7 @@ const exploreInVirtualLight = createProject({
         {stage: 'STRATEGIES', render: (animateIn: boolean, animateOut: boolean) => ([
             {
                 x: 0,
-                y: 140,
+                y: 120,
                 z: 1,
                 children: (
                     <Card
@@ -201,7 +227,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 0,
-                y: 220,
+                y: 200,
                 z: 0,
                 children: (
                     <Card
@@ -224,7 +250,7 @@ const exploreInVirtualLight = createProject({
                             alignItems: 'center',
                             gap: '12px',
                         }}>
-                            <img src={strategy1} width={'100%'} alt={''} />
+                            <img src={strategy1} width={'100%'} alt={'Diagram showing a network with multiple nodes. Two users pass through different nodes through different paths.'} />
                             <span style={{
                                 color: colors.primary,
                                 fontWeight: 500,
@@ -247,7 +273,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 370,
-                y: 360,
+                y: 364,
                 z: 0,
                 children: (
                     <Card
@@ -266,7 +292,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 420,
-                y: 220,
+                y: 200,
                 z: 0,
                 children: (
                     <Card
@@ -289,7 +315,7 @@ const exploreInVirtualLight = createProject({
                             alignItems: 'center',
                             gap: '12px',
                         }}>
-                            <img src={strategy2} width={'100%'} alt={''} />
+                            <img src={strategy2} width={'100%'} alt={'Diagram showing digital media in the space that reacts differently to different people.'} />
                             <span style={{
                                 color: colors.primary,
                                 fontWeight: 500,
@@ -312,7 +338,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 790,
-                y: 360,
+                y: 364,
                 z: 0,
                 children: (
                     <Card
@@ -331,7 +357,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 840,
-                y: 220,
+                y: 200,
                 z: 0,
                 children: (
                     <Card
@@ -354,7 +380,7 @@ const exploreInVirtualLight = createProject({
                             alignItems: 'center',
                             gap: '12px',
                         }}>
-                            <img src={strategy3} width={'100%'} alt={''} />
+                            <img src={strategy3} width={'100%'} alt={'Diagram showing an app that connects different exhibition contents into a line.'} />
                             <span style={{
                                 color: colors.primary,
                                 fontWeight: 500,
@@ -378,13 +404,13 @@ const exploreInVirtualLight = createProject({
         ])},
         /*************************************************************************
          *
-         *       Overview: Overcome - Flow
+         *       Overview: Outcome - Flow
          *
          **************************************************************************/
         {stage: 'USER FLOW', render: (animateIn: boolean, animateOut: boolean) => ([
             {
                 x: 0,
-                y: 160,
+                y: 140,
                 z: 1,
                 children: (
                     <div style={{
@@ -534,39 +560,28 @@ const exploreInVirtualLight = createProject({
                 y: 280,
                 z: -1,
                 children: (
-                    <div style={{display: 'flex', flexDirection: 'row'}}>
+                    <Card animateIn={animateIn} animateOut={animateOut}>
                         <div style={{
-                            width: 316,
+                            display: 'flex',
+                            flexDirection: 'row',
                             fontWeight: 600,
                             fontSize: '80px',
                             color: colors.primaryLight,
                         }}>
-                            1
+                            <div style={{width: 316}}>
+                                1
+                            </div>
+                            <div style={{width: 316}}>
+                                2
+                            </div>
+                            <div style={{width: 316,}}>
+                                3
+                            </div>
+                            <div>
+                                4
+                            </div>
                         </div>
-                        <div style={{
-                            width: 316,
-                            fontWeight: 600,
-                            fontSize: '80px',
-                            color: colors.primaryLight,
-                        }}>
-                            2
-                        </div>
-                        <div style={{
-                            width: 316,
-                            fontWeight: 600,
-                            fontSize: '80px',
-                            color: colors.primaryLight,
-                        }}>
-                            3
-                        </div>
-                        <div style={{
-                            fontWeight: 600,
-                            fontSize: '80px',
-                            color: colors.primaryLight,
-                        }}>
-                            4
-                        </div>
-                    </div>
+                    </Card>
                 )
             },
             {
@@ -578,25 +593,24 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <img src={flow} style={{width: 1200}} alt='Diagram showing diverse visitor perspectives on Qinhuai culture within a 0.9-hectare site, highlighting visitor uncertainty: "Can I find what I want?", leading to the final strategy "Personalized digital media exhibition", and design outcomes "Digital media in space" and "Digital media in app".' />
+                        <img src={flow} style={{width: 1200}} alt='Diagram showing the user flow within 4 stages. Firstly, the user gets a role on the app at the reception. Then, the user interacts with digital media in the space directly or via the app. Further, the user receives quests on the app and led to different spaces. Finally, the pattern on the app upgrades.' />
                     </Card>
                 )
             },
         ])},
         /*************************************************************************
          *
-         *       Overview: outcome
+         *       Overview: Outcome - App
          *
          **************************************************************************/
-        {stage: 'OUTCOME', render: (animateIn: boolean, animateOut: boolean) => ([
+        {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
             {
                 x: 0,
-                y: 180,
+                y: 140,
                 z: 0,
                 children: (
-                    <Card
-                        w={360}
-                        h={400}
+                    <CardStack
+                        w={640}
                         bg={colors.white}
                         borderWidth={2}
                         borderColor={colors.primaryLight}
@@ -605,168 +619,285 @@ const exploreInVirtualLight = createProject({
                         animateOut={animateOut}
                     >
                         <div style={{
-                            padding: '36px 36px 48px 36px',
+                            padding: '36px 36px 100px 36px',
                             width: '100%',
                             height: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                            gap: '12px',
+                            gap: '36px',
                         }}>
-                            <img src={strategy1} width={'100%'} alt={''} />
                             <span style={{
                                 color: colors.primary,
                                 fontWeight: 500,
-                                fontSize: '24px',
-                                textAlign: 'center'
+                                fontSize: '36px',
                             }}>
-                            Networked space
-                        </span>
+                                Key touchpoint:<br />virtual lantern app
+                            </span>
                             <span style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
-                                textAlign: 'center'
                             }}>
-                            Within the same exhibition, freely explore different scenarios.
-                        </span>
+                                A luminous pattern inspired by iconic Qinhuai lanterns.
+                                <br />
+                                <br />
+                                Users explore with the app as if walking through a lantern fair.
+                                <br />
+                                <br />
+                                The pattern provides quests, supports interactions, and upgrades through exploration, finally becoming a unique pattern shaped by each user's journey.
+                            </span>
+                        </div>
+                    </CardStack>
+                )
+            },
+            {
+                x: 320,
+                y: 500,
+                z: 1,
+                children: (
+                    <Button
+                        text={'View the interactive pattern code'}
+                        icon={<RightArrowIcon />}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        onClick={() => {
+                            window.open('https://github.com/maccha-koubou/lantern', '_blank')
+                        }}
+                    />
+                )
+            },
+            {
+                x: 800,
+                y: 20,
+                z: 1,
+                children: (
+                    <Card
+                        radius={56}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                    >
+                        <div>
+                            <video src={uiVideo} style={{height: 720}} autoPlay loop muted playsInline />
+                            <img
+                                src={ui1}
+                                style={{position: 'absolute', left: 0, top: 0, zIndex: -1, height: 720}}
+                                alt={'App home screen showing a compass with a dynamic pattern inside. A bottom bar is used to switch patterns with different interactions. When touched, the pattern form texts or ripples.'}
+                            />
                         </div>
                     </Card>
                 )
             },
             {
-                x: 370,
-                y: 360,
-                z: 0,
+                x: 1156,
+                y: 712,
+                z: 2,
                 children: (
-                    <Card
-                        w={40}
-                        h={40}
-                        bg={colors.primary}
-                        radius={24}
-                        animateIn={animateIn}
-                        animateOut={animateOut}
-                    >
-                        <div style={{color: colors.white, width: 24, height: 24}}>
-                            <RightArrowLargeIcon size={24} />
-                        </div>
-                    </Card>
+                    <div style={{width: 28, display: 'flex', justifyContent: 'flex-end'}}>
+                        <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Select a pattern'} />
+                    </div>
                 )
             },
-            {
-                x: 420,
-                y: 180,
-                z: 0,
-                children: (
-                    <Card
-                        w={360}
-                        h={400}
-                        bg={colors.white}
-                        borderWidth={2}
-                        borderColor={colors.primaryLight}
-                        radius={24}
-                        animateIn={animateIn}
-                        animateOut={animateOut}
-                    >
-                        <div style={{
-                            padding: '36px 36px 48px 36px',
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                            gap: '12px',
-                        }}>
-                            <img src={strategy2} width={'100%'} alt={''} />
-                            <span style={{
-                                color: colors.primary,
-                                fontWeight: 500,
-                                fontSize: '24px',
-                                textAlign: 'center'
-                            }}>
-                            Digital media in space
-                        </span>
-                            <span style={{
-                                color: colors.secondary,
-                                fontWeight: 300,
-                                fontSize: '20px',
-                                textAlign: 'center'
-                            }}>
-                            Within the same scenario, have personalized experiences.
-                        </span>
-                        </div>
-                    </Card>
-                )
-            },
-            {
-                x: 790,
-                y: 360,
-                z: 0,
-                children: (
-                    <Card
-                        w={40}
-                        h={40}
-                        bg={colors.primary}
-                        radius={24}
-                        animateIn={animateIn}
-                        animateOut={animateOut}
-                    >
-                        <div style={{color: colors.white, width: 24, height: 24}}>
-                            <RightArrowLargeIcon size={24} />
-                        </div>
-                    </Card>
-                )
-            },
-            {
-                x: 840,
-                y: 180,
-                z: 0,
-                children: (
-                    <Card
-                        w={360}
-                        h={400}
-                        bg={colors.white}
-                        borderWidth={2}
-                        borderColor={colors.primaryLight}
-                        radius={24}
-                        animateIn={animateIn}
-                        animateOut={animateOut}
-                    >
-                        <div style={{
-                            padding: '36px 36px 48px 36px',
-                            width: '100%',
-                            height: '100%',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'flex-start',
-                            alignItems: 'center',
-                            gap: '12px',
-                        }}>
-                            <img src={strategy3} width={'100%'} alt={''} />
-                            <span style={{
-                                color: colors.primary,
-                                fontWeight: 500,
-                                fontSize: '24px',
-                                textAlign: 'center'
-                            }}>
-                            Digital media in app
-                        </span>
-                            <span style={{
-                                color: colors.secondary,
-                                fontWeight: 300,
-                                fontSize: '20px',
-                                textAlign: 'center'
-                            }}>
-                            Gamified guidance connects separate experiences into a personalized narrative.
-                        </span>
-                        </div>
-                    </Card>
-                )
-            }
         ])},
-
+        /*************************************************************************
+         *
+         *       Overview: Outcome - App
+         *
+         **************************************************************************/
+        {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: -120,
+                y: 80,
+                z: 0,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '16px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <img
+                                src={ui2}
+                                style={{height: 600}}
+                                alt={'App pattern switching screen shows 6 patterns with their levels and introductions.'}
+                            />
+                        </Card>
+                        <div style={{position: 'absolute', bottom: 0, left: 296, width: 28, display: 'flex', justifyContent: 'flex-end'}}>
+                            <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Select a pattern'} />
+                        </div>
+                    </div>
+                )
+            },
+            {
+                x: 260,
+                y: 80,
+                z: 1,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '16px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <img
+                                src={ui3}
+                                style={{height: 600}}
+                                alt={'App quest completed screen with a illustration based on the pattern and a story.'}
+                            />
+                        </Card>
+                        <div style={{position: 'absolute', bottom: 0, left: 296, width: 28, display: 'flex', justifyContent: 'flex-end'}}>
+                            <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Complete a quest'} />
+                        </div>
+                    </div>
+                )
+            },
+            {
+                x: 640,
+                y: 80,
+                z: 0,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '16px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <img
+                                src={ui4}
+                                style={{height: 600}}
+                                alt={'App AR scanning screen showing the current quest and the interactive elements in the exhibition hall.'}
+                            />
+                        </Card>
+                        <div style={{position: 'absolute', bottom: 0, left: 296, width: 28, display: 'flex', justifyContent: 'flex-end'}}>
+                            <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Interact with space by AR'} />
+                        </div>
+                    </div>
+                )
+            },
+            {
+                x: 1020,
+                y: 80,
+                z: 1,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '16px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <img
+                                src={ui5}
+                                style={{height: 600}}
+                                alt={''}
+                            />
+                        </Card>
+                        <div style={{position: 'absolute', bottom: 0, left: 296, width: 28, display: 'flex', justifyContent: 'flex-end'}}>
+                            <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Review the journey'} />
+                        </div>
+                    </div>
+                )
+            },
+        ])},
+        /*************************************************************************
+         *
+         *       Overview: Outcome - App
+         *
+         **************************************************************************/
+        {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: -60,
+                y: 60,
+                z: 0,
+                children: (
+                    <CardStack
+                        w={800}
+                        bg={colors.white}
+                        borderWidth={2}
+                        borderColor={colors.primaryLight}
+                        radius={24}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                    >
+                        <div style={{
+                            padding: '36px 36px 48px 36px',
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '36px',
+                        }}>
+                            <span style={{
+                                color: colors.primary,
+                                fontWeight: 500,
+                                fontSize: '36px',
+                            }}>
+                                Team & credits
+                            </span>
+                            <span style={{
+                                color: colors.secondary,
+                                fontWeight: 300,
+                                fontSize: '20px',
+                            }}>
+                                Team project ／ My role: Led concept development and service & UX design
+                                <br /><br />
+                                Supervisor: Assoc. Prof. Jing Wang, Haoran Li
+                                <br />
+                                Teammates: Haoyue Lei, Shaojian Deng, Yaran He, Er Zhuo (Tianjin University)
+                            </span>
+                        </div>
+                    </CardStack>
+                )
+            },
+            {
+                x: 160,
+                y: 300,
+                z: 1,
+                children: (
+                    <CardStack
+                        w={1100}
+                        bg={colors.white}
+                        borderWidth={2}
+                        borderColor={colors.primaryLight}
+                        radius={24}
+                        padding={36}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                    >
+                        <div style={{
+                            width: '100%',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '36px',
+                        }}>
+                            <span style={{
+                                position: "absolute",
+                                zIndex: 1,
+                                color: colors.primary,
+                                fontWeight: 500,
+                                fontSize: '20px',
+                            }}>
+                                How we cooperated?
+                            </span>
+                            <img src={team} width={'100%'} alt={'Diagram showing role distribution between teamwork (2022) and individual extension (2024), highlighting my responsibility for concept and architectural & urban design in the 2022, and service & UX design in 2024.'} />
+                        </div>
+                    </CardStack>
+                )
+            },
+        ])},
         /*************************************************************************
          *
          *       Research & Ideation

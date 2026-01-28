@@ -27,8 +27,12 @@ const WorkRouter = () => {
     const navigateSlide = (index: number) => {
         const offsetToCenter = (canvasWidth - PROJECT_WIDTH) / 2;
         const x = (-64 + PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * index - offsetToCenter);
-        console.log("to " + index)
         scrollRef.current?.scrollToX(x);
+    }
+
+    // Used in the project canvas. When navigating from one project page to another project page, clean the scroll data
+    const cleanScroll = () => {
+        scrollRef.current?.scrollToX(0);
     }
 
     return (
@@ -43,12 +47,12 @@ const WorkRouter = () => {
             ref={ref}
         >
             <div style={{ flex: 1, position: 'relative'}}>
-                <WorkNav key={location.pathname} navigateSlide={navigateSlide} scrollX={scrollX} />
+                <WorkNav key={location.pathname} navigateSlide={navigateSlide} cleanScroll={cleanScroll} scrollX={scrollX} />
                 <Routes>
                     <Route path="product" element={<WorkCategory type={ProjectType.PRODUCT} />} />
                     <Route path="space" element={<WorkCategory type={ProjectType.SPACE} />} />
                     <Route path="visualization" element={<WorkCategory type={ProjectType.VISUALIZATION} />} />
-                    <Route path=":projectUrl" element={<ProjectDetail ref={scrollRef} setScrollX={setScrollX} />} />
+                    <Route path=":projectUrl" element={<ProjectDetail ref={scrollRef} setScrollX={setScrollX} cleanScroll={cleanScroll} />} />
                 </Routes>
             </div>
         </div>

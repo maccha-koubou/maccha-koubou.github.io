@@ -7,6 +7,7 @@ import projects from "../../contents/projects";
 
 interface ProjectDetailProps {
     setScrollX: (x: number) => void;
+    cleanScroll: () => void;
 }
 
 const ProjectDetail = React.forwardRef<ScrollWrapperHandle, ProjectDetailProps>((props, ref) => {
@@ -53,6 +54,7 @@ const ProjectDetail = React.forwardRef<ScrollWrapperHandle, ProjectDetailProps>(
                         project={project}
                         canvasWidth={canvasWidth}
                         setScrollX={props.setScrollX}
+                        cleanScroll={props.cleanScroll}
                     />
                 </ScrollWrapper>
             </div>

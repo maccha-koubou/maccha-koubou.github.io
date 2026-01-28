@@ -17,21 +17,38 @@ import {useScroll} from "../ScrollWrapper";
 import {usePageSwitch} from "../../app";
 import SlideCanvas from "./SlideCanvas";
 import {RightArrowLargeIcon} from "../../assets/icons/RightArrowLargeIcon";
+import {useHistory} from "../../router/HistoryContainer";
+import {useLocation, useNavigate} from "react-router-dom";
 
 interface ProjectCanvasProps {
     project: Project
     canvasWidth: number;
     setScrollX: (x: number) => void;
+    cleanScroll: () => void;
 }
 
-const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, setScrollX }) => {
+const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, setScrollX, cleanScroll }) => {
 
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
-    const { pageSwitchPhase } = usePageSwitch();
-    const portalRoot = document.getElementById('theme-provider');
 
+    const portalRoot = document.getElementById('theme-provider');
     const { scrollX, scrollY } = useScroll();
+
+    const navigate = useNavigate()
+    const { pageSwitchPhase, setPageSwitchPhase } = usePageSwitch();
+    const location = useLocation()
+    const { push } = useHistory()
+
+    // Function for the navigation provided by the slide contents
+    const onNavigate = (url: string) => {
+        setPageSwitchPhase('exit')
+        push(location.pathname)
+        setTimeout(() => {
+            cleanScroll()
+            navigate(url)
+        }, 400)
+    }
 
     // Move the cover to ScalingContainer to cover the other elements
     const coverRef = useRef<HTMLDivElement>(null);
@@ -182,7 +199,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, set
                         y={0}
                         z={0}
                     >
-                        <SlideCanvas items={slide.render(true, pageSwitchPhase === 'exit')}/>
+                        <SlideCanvas items={slide.render(true, pageSwitchPhase === 'exit', onNavigate)}/>
                     </CanvasItem>
                 )
             })}

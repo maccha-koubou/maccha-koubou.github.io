@@ -15,9 +15,10 @@ import {colors} from "../../styles/theme";
 interface WorkNavProps {
     navigateSlide: (index: number) => void;
     scrollX: number;
+    cleanScroll: () => void;
 }
 
-const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
+const WorkNav = ({navigateSlide, scrollX, cleanScroll}: WorkNavProps) => {
     const navigate = useNavigate()
     const location = useLocation();
     const { pageSwitchPhase, setPageSwitchPhase } = usePageSwitch();
@@ -98,7 +99,10 @@ const WorkNav = ({navigateSlide, scrollX}: WorkNavProps) => {
             onClick: () => {
                 if (isUrlProject(location.pathname)) {
                     setPageSwitchPhase('exit')
-                    setTimeout(() => navigate(pop() ?? '/work'), 400)
+                    setTimeout(() => {
+                        cleanScroll()
+                        navigate(pop() ?? '/work')
+                    }, 400)
                 } else {
                     navigate(pop() ?? '/work')
                 }

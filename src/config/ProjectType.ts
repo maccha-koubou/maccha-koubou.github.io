@@ -15,7 +15,7 @@ export interface Project {
     color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
-    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean) => CanvasItemProps[] }>
+    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean, onNavigate?: (to: string) => void) => CanvasItemProps[] }>
 }
 
 export enum ProjectType {
@@ -46,7 +46,7 @@ export const createProject = (input: {
     color: ThemeColors,
     landscape: {x: number, y: number},
     portrait: {x: number, y: number},
-    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean) => CanvasItemProps[] }>
+    slides: Array<{ stage: string, render: (animateIn: boolean, animateOut: boolean, onNavigate?: (to: string) => void) => CanvasItemProps[] }>
 }) => {
 
     const title = input.titleWithLineBreak.replace(/\n/g, '');
