@@ -55,7 +55,8 @@ const Home = () => {
 
     const COUNT = 6
     const randomOffsets = useRandomizeOffsets(COUNT)
-    const randomZ = useRandomizeZ(COUNT)
+    //const randomZ = useRandomizeZ(COUNT)
+    const randomZ = [1, 1, 1, 1, 1, 1]
     const randomSize = useRandomizeSize(COUNT)
 
     const DECO_COUNT = 4

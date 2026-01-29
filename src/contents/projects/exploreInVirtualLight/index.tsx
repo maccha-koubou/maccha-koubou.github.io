@@ -16,6 +16,8 @@ import ui3 from "./img/ui3.png";
 import ui4 from "./img/ui4.png";
 import ui5 from "./img/ui5.png";
 import uiVideo from "./img/ui1.mp4";
+import scenario1 from "./img/scenario1.png";
+import scenario2 from "./img/scenario2.png";
 import team from "./img/team.png";
 import {RightArrowLargeIcon} from "../../../assets/icons/RightArrowLargeIcon";
 import {RightArrowIcon} from "../../../assets/icons/RightArrowIcon";
@@ -24,7 +26,7 @@ import InfoLabel from "../../../components/InfoLabel";
 
 const exploreInVirtualLight = createProject({
     titleWithLineBreak: 'Explore in \nVirtual Light',
-    subtitle: 'A Gamified Digital Exhibition Service for Nanjing\'s Local Culture',
+    subtitle: 'A gamified digital exhibition service for personal cultural narratives',
     cover: cover,
     coverColored: coverColored,
     coverAlt: '',
@@ -167,13 +169,13 @@ const exploreInVirtualLight = createProject({
                             flexDirection: 'column',
                             gap: '12px',
                         }}>
-                        <span style={{
-                            color: colors.secondary,
-                            fontWeight: 300,
-                            fontSize: '20px',
-                        }}>
-                            Strategy
-                        </span>
+                            <span style={{
+                                color: colors.secondary,
+                                fontWeight: 300,
+                                fontSize: '20px',
+                            }}>
+                                Strategy
+                            </span>
                             <span style={{
                                 color: colors.primary,
                                 fontWeight: 500,
@@ -693,7 +695,130 @@ const exploreInVirtualLight = createProject({
                 z: 2,
                 children: (
                     <div style={{width: 28, display: 'flex', justifyContent: 'flex-end'}}>
-                        <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Select a pattern'} />
+                        <InfoLabel animateIn={animateIn} animateOut={animateOut} text={'Interact through the pattern'} />
+                    </div>
+                )
+            },
+        ])},
+        /*************************************************************************
+         *
+         *       Overview: Outcome - App (Scenario)
+         *
+         **************************************************************************/
+        {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: 340,
+                y: 40,
+                z: 0,
+                children: (
+                    <Card
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        radius={24}
+                    >
+                        <img
+                            src={scenario1}
+                            width={440}
+                            alt={'A visitor engages with a "poss and guess" riddle, an interactive activity in the exhibition.'}
+                        />
+                    </Card>
+                )
+            },
+            {
+                x: 700,
+                y: 160,
+                z: 1,
+                children: (
+                    <Card
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        radius={24}
+                    >
+                        <img
+                            src={scenario2}
+                            width={380}
+                            alt={'The visitor touches the pattern on the app, and the touched pattern reveals part of the riddle\'s answer.'}
+                        />
+                    </Card>
+                )
+            },
+            {
+                x: 180,
+                y: 420,
+                z: 2,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 16
+                    }}>
+                        <Card animateIn={animateIn} animateOut={animateOut}>
+                            <div style={{
+                                fontWeight: 600,
+                                fontSize: '48px',
+                                color: colors.primary,
+                            }}>
+                                1
+                            </div>
+                        </Card>
+                        <Card
+                            w={360}
+                            padding={[12, 16, 16, 16]}
+                            bg={colors.primary}
+                            borderWidth={2}
+                            borderColor={colors.white}
+                            radius={24}
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.white,
+                                fontWeight: 300,
+                                fontSize: '20px',
+                            }}>
+                                I can't figure out the answer to this "pose & guess" riddle.<br />Let me ask the app for hints!
+                            </span>
+                        </Card>
+                    </div>
+                )
+            },
+            {
+                x: 900,
+                y: 560,
+                z: 2,
+                children: (
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: 16
+                    }}>
+                        <Card
+                            w={180}
+                            padding={[12, 16, 16, 16]}
+                            bg={colors.primary}
+                            borderWidth={2}
+                            borderColor={colors.white}
+                            radius={24}
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.white,
+                                fontWeight: 300,
+                                fontSize: '20px',
+                            }}>
+                                Oh! The answer ends with "er"!
+                            </span>
+                        </Card>
+                        <Card animateIn={animateIn} animateOut={animateOut}>
+                            <div style={{
+                                fontWeight: 600,
+                                fontSize: '48px',
+                                color: colors.primary,
+                            }}>
+                                2
+                            </div>
+                        </Card>
                     </div>
                 )
             },
@@ -722,7 +847,7 @@ const exploreInVirtualLight = createProject({
                             <img
                                 src={ui2}
                                 style={{height: 600}}
-                                alt={'App pattern switching screen shows 6 patterns with their levels and introductions.'}
+                                alt={'App pattern switching screen showing 6 patterns with their levels and introductions.'}
                             />
                         </Card>
                         <div style={{position: 'absolute', bottom: 0, left: 296, width: 28, display: 'flex', justifyContent: 'flex-end'}}>
@@ -813,9 +938,44 @@ const exploreInVirtualLight = createProject({
                 )
             },
         ])},
+
         /*************************************************************************
          *
-         *       Overview: Outcome - App
+         *       Research & Ideation
+         *       To-do: Add the project details in the following pages, and change all the previous pages' stage name into "OVERVIEW"
+         *
+         **************************************************************************/
+        /*{stage: 'RESEARCH & IDEATION', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: 0,
+                y: 0,
+                z: 1,
+                children: (
+                    <Card
+                        w={1200}
+                        h={784}
+                        bg={'transparent'}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                    >
+                        <span style={{
+                            color: colors.primary,
+                            fontWeight: 500,
+                            fontSize: '80px',
+                            textAlign: 'left',
+                            whiteSpace: 'pre-line',
+                            padding: '0px 0px 60px 0px',
+                        }}>
+                            Research<br />&<br />Ideation
+                        </span>
+                    </Card>
+                )
+            },
+        ])},*/
+
+        /*************************************************************************
+         *
+         *       Acknowledgement
          *
          **************************************************************************/
         {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
@@ -838,7 +998,7 @@ const exploreInVirtualLight = createProject({
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: '36px',
+                            gap: '24px',
                         }}>
                             <span style={{
                                 color: colors.primary,
@@ -898,41 +1058,6 @@ const exploreInVirtualLight = createProject({
                 )
             },
         ])},
-        /*************************************************************************
-         *
-         *       Research & Ideation
-         *       To-do: Add the project details in the following pages, and change all the previous pages' stage name into "OVERVIEW"
-         *
-         **************************************************************************/
-        /*{stage: 'RESEARCH & IDEATION', render: (animateIn: boolean, animateOut: boolean) => ([
-            {
-                x: 0,
-                y: 0,
-                z: 1,
-                children: (
-                    <Card
-                        w={1200}
-                        h={784}
-                        bg={'transparent'}
-                        animateIn={animateIn}
-                        animateOut={animateOut}
-                    >
-                        <span style={{
-                            color: colors.primary,
-                            fontWeight: 500,
-                            fontSize: '80px',
-                            textAlign: 'left',
-                            whiteSpace: 'pre-line',
-                            padding: '0px 0px 60px 0px',
-                        }}>
-                            Research<br />&<br />Ideation
-                        </span>
-                    </Card>
-                )
-            },
-        ])},*/
-
-
     ]
 })
 
