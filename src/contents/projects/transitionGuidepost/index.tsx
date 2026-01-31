@@ -771,7 +771,7 @@ const transitionGuidepost = createProject({
                                     fontWeight: 600,
                                     fontSize: '24px',
                                 }}>
-                                Gain insight<br />from community sharing
+                                Gain insight from<br />community data sharing
                             </span>
                             </div>
                         </Card>
@@ -852,7 +852,7 @@ const transitionGuidepost = createProject({
                             fontWeight: 600,
                             fontSize: '24px',
                         }}>
-                            Forum
+                            Forum: discuss & compare with others' data
                         </span>
                     </Card>
                 )
@@ -925,7 +925,7 @@ const transitionGuidepost = createProject({
                         fontWeight: 600,
                         fontSize: '24px',
                     }}>
-                        Guideline
+                        Step-by-step guideline
                     </span>
                     </Card>
                 )
@@ -963,7 +963,7 @@ const transitionGuidepost = createProject({
          *       Overview: Outcome - App dev
          *
          **************************************************************************/
-        {stage: 'KEY TOUCHPOINT', render: (animateIn: boolean, animateOut: boolean) => ([
+        {stage: 'OUTCOME', render: (animateIn: boolean, animateOut: boolean) => ([
             {
                 x: 0,
                 y: 200,

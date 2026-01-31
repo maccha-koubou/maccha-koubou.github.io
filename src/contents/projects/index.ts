@@ -2,7 +2,7 @@ import {Project} from "../../config/ProjectType";
 import dormitoryVillage from "./dormitoryVillage";
 import exploreInVirtualLight from "./exploreInVirtualLight";
 import choiceSpace from "./choiceSpace";
-import houseWithGlassYard from "./houseWithGlassYard";
+import smartMedicalWriting from "./smartMedicalWriting";
 import queerRadar from "./queerRadar";
 import transitionGuidepost from "./transitionGuidepost";
 import cbeasy from "./cbeasy";
@@ -11,7 +11,7 @@ const projects: Project[] = [
     dormitoryVillage,
     exploreInVirtualLight,
     choiceSpace,
-    houseWithGlassYard,
+    smartMedicalWriting,
     queerRadar,
     transitionGuidepost,
     cbeasy

@@ -61,7 +61,7 @@ export const createProject = (input: {
     // Title to folder url (Camel)
     const url = title
         .trim()
-        .replace(/[^a-zA-Z0-9 ]+/g, '')
+        .replace(/[^a-zA-Z0-9 ]+/g, ' ')
         .split(/\s+/) // Become a string[]
         .map((w, i) =>
             i === 0
