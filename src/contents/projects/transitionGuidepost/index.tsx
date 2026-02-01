@@ -31,7 +31,7 @@ import Button from "../../../components/Button";
 import {RightArrowIcon} from "../../../assets/icons/RightArrowIcon";
 
 const transitionGuidepost = createProject({
-    titleWithLineBreak: 'Transition \nGuidepost',
+    titleWithLineBreak: 'Transition Guidepost',
     subtitle: 'Transition Guidepost',
     cover: cover,
     coverColored: coverColored,
