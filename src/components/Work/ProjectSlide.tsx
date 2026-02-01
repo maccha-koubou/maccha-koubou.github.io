@@ -98,7 +98,7 @@ const ProjectSlide = ({ type, width, height }: ProjectSlideProps) => {
             }}>
                 <img
                     src={current.cover}
-                    alt={current.subtitle}
+                    alt={''}
                     style={{
                         width: `${imgWidth}px`,
                         height: `${imgHeight}px`,

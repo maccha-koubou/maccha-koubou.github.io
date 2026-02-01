@@ -292,7 +292,7 @@ const ProjectCard = ({
                                     display: 'block',
                                     objectPosition: `${focusPoint.x * 100}% ${focusPoint.y * 100}%`
                                 }}
-                                alt={project.subtitle}
+                                alt={project.coverAlt}
                             />
                             <img
                                 src={texture}

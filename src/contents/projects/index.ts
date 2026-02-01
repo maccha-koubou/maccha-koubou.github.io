@@ -6,6 +6,7 @@ import smartMedicalWriting from "./smartMedicalWriting";
 import queerRadar from "./queerRadar";
 import transitionGuidepost from "./transitionGuidepost";
 import cbeasy from "./cbeasy";
+import stoneHouseGlassYard from "./stoneHouseGlassYard";
 
 const projects: Project[] = [
     dormitoryVillage,
@@ -14,7 +15,8 @@ const projects: Project[] = [
     smartMedicalWriting,
     queerRadar,
     transitionGuidepost,
-    cbeasy
+    cbeasy,
+    //stoneHouseGlassYard
 ]
 
 export default projects;
