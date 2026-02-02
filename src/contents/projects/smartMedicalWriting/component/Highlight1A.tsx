@@ -10,13 +10,13 @@ import uiVideo3Base from "../img/uivideo3Base.png";
 import {colors} from "../../../../styles/theme";
 import {RightArrowLargeIcon} from "../../../../assets/icons/RightArrowLargeIcon";
 
-interface Highlight1Props {
+interface Highlight1AProps {
     animateOut: boolean;
 }
 
-const Highlight1 = ({
+const Highlight1A = ({
     animateOut,
-} : Highlight1Props) => {
+} : Highlight1AProps) => {
 
     const [activeIndex, setActiveIndex] = useState(0)
     const [visibleCount, setVisibleCount] = useState(1)
@@ -28,19 +28,22 @@ const Highlight1 = ({
         const video = videoRefs.current[activeIndex]
         if (!video) return
 
-        // Wait for ready
-        const play = () => {
+        let cancelled = false
+
+        const tryPlay = () => {
+            if (cancelled) return
             video.play().catch(() => {})
         }
 
-        if (video.readyState >= 2) {
-            play()
+        if (video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+            tryPlay()
         } else {
-            video.onloadeddata = play
+            video.addEventListener('canplay', tryPlay, { once: true })
         }
 
         return () => {
-            video.onloadeddata = null
+            cancelled = true
+            video.removeEventListener('canplay', tryPlay)
         }
     }, [activeIndex, visibleCount])
 
@@ -128,12 +131,14 @@ const Highlight1 = ({
                                     muted
                                     playsInline
                                     preload="auto"
-                                    onEnded={() => handleVideoEnded(0)}
+                                    onEnded={() => {
+                                        setTimeout(() => {handleVideoEnded(0)}, 500)
+                                    }}
                                 />
                                 <img
                                     src={uiVideo1Base}
                                     style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360 }}
-                                    alt={'Todo'}
+                                    alt={'UI requiring users to click into each variable to check the value. Which caused double steps, more mouse movement, and interruptions.'}
                                 />
                             </div>
                         </Card>
@@ -210,12 +215,14 @@ const Highlight1 = ({
                                    muted
                                    playsInline
                                    preload="auto"
-                                   onEnded={() => handleVideoEnded(1)}
+                                   onEnded={() => {
+                                       setTimeout(() => { handleVideoEnded(1) }, 500)
+                                   }}
                                 />
                                 <img
                                     src={uiVideo2Base}
                                     style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360}}
-                                    alt={'Todo'}
+                                    alt={'UI allowing variables to be checked in the list and then automatically fold. Which caused more development efforts and cognitive loads, especially when the value is long.'}
                                 />
                             </div>
                         </Card>
@@ -292,12 +299,14 @@ const Highlight1 = ({
                                     muted
                                     playsInline
                                     preload="auto"
-                                    onEnded={() => handleVideoEnded(2)}
+                                    onEnded={() => {
+                                        setTimeout(() => {handleVideoEnded(2)}, 500)
+                                    }}
                                 />
                                 <img
                                     src={uiVideo3Base}
                                     style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360}}
-                                    alt={'Todo'}
+                                    alt={'UI adding only a previous & next variable button on the detail page. Which reduced the steps, mouse movement, and interruptions, as well as the development effort and cognitive loads.'}
                                 />
                             </div>
                         </Card>
@@ -308,4 +317,4 @@ const Highlight1 = ({
     )
 }
 
-export default Highlight1
+export default Highlight1A

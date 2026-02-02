@@ -1012,7 +1012,9 @@ const exploreInVirtualLight = createProject({
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
-                                Team project ／ My role: Led concept development and service & UX design
+                                Team project ／ Mar. - Jun. 2022 & Jul. - Aug. 2024
+                                <br />
+                                My role: Led concept development and service & UX design
                                 <br /><br />
                                 Supervisor: Assoc. Prof. Jing Wang, Haoran Li
                                 <br />
@@ -1024,7 +1026,7 @@ const exploreInVirtualLight = createProject({
             },
             {
                 x: 160,
-                y: 300,
+                y: 320,
                 z: 1,
                 children: (
                     <CardStack

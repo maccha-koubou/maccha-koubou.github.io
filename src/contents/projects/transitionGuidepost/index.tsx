@@ -1081,12 +1081,12 @@ const transitionGuidepost = createProject({
          **************************************************************************/
         {stage: 'OUTCOME', render: (animateIn: boolean, animateOut: boolean) => ([
             {
-                x: 400,
+                x: 360,
                 y: 240,
                 z: 0,
                 children: (
                     <Card
-                        w={400}
+                        w={480}
                         bg={colors.white}
                         radius={24}
                         animateIn={animateIn}
@@ -1111,7 +1111,7 @@ const transitionGuidepost = createProject({
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
-                                Individual project
+                                Individual project ／ Feb. - Mar. 2024
                                 <br />
                                 Supervisor: Lei Zhang
                             </span>
