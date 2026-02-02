@@ -78,7 +78,7 @@ const smartMedicalWriting = createProject({
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
-                                As a UX/UI intern on a smart medical report writing system, I focused on how to use clear logic within the usage process and the detailed design of component interaction within interconnected features, providing higher efficiency with lower risk of errors.
+                                As a UX/UI intern on a smart medical report writing system, I focused on how to use clear workflow logic and the detailed interactions within complex interconnected features, providing higher efficiency with lower interruption and risk of errors.
                             </span>
                         </div>
                     </CardStack>

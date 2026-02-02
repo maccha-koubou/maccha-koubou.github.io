@@ -77,11 +77,13 @@ const Work = () => {
             z: 2,
             children: (
                 <WorkSelector
-                    title1={'Visualization'}
-                    title2={'Thinking'}
+                    //title1={'Visualization'}
+                    //title2={'Thinking'}
+                    title1={'Coming soon'}
+                    title2={'Almost here'}
                     type={ProjectType.VISUALIZATION}
-                    subTypes1={SubProjectType.RESEARCH_VISUALIZATIONS}
-                    subTypes2={SubProjectType.VISUAL_COMMUNICATION}
+                    //subTypes1={SubProjectType.RESEARCH_VISUALIZATIONS}
+                    //subTypes2={SubProjectType.VISUAL_COMMUNICATION}
                     w={cardWidth}
                     h={cardHeight}
                     gap={subCardGap}

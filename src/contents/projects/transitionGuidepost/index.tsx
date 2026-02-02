@@ -32,7 +32,7 @@ import {RightArrowIcon} from "../../../assets/icons/RightArrowIcon";
 
 const transitionGuidepost = createProject({
     titleWithLineBreak: 'Transition Guidepost',
-    subtitle: 'Transition Guidepost',
+    subtitle: 'GAHT tracking and support platform leveraging community mutual aid',
     cover: cover,
     coverColored: coverColored,
     coverAlt: 'GAHT tracking and support platform leveraging community mutual aid',

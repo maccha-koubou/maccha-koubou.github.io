@@ -10,8 +10,8 @@ interface WorkSelectorProps {
     title1: string
     title2: string
     type: ProjectType
-    subTypes1: SubProjectType
-    subTypes2: SubProjectType
+    subTypes1?: SubProjectType
+    subTypes2?: SubProjectType
     w: number,
     h: number,
     gap: number,
@@ -59,11 +59,13 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 3,
-                cursor: 'pointer',
+                cursor: subTypes1 ? 'pointer' : 'not-allowed',
                 }}
                 onClick={() => {
-                    push(location.pathname)
-                    navigate(`/work/${type}`)
+                    if (subTypes1) {
+                        push(location.pathname)
+                        navigate(`/work/${type}`)
+                    }
                 }}
             >
                 <Card
@@ -120,12 +122,14 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 2,
-                cursor: 'pointer',
+                cursor: subTypes1 ? 'pointer' : 'not-allowed',
             }}
                  className={styles.card1}
                  onClick={() => {
-                     push(location.pathname)
-                     navigate(`/work/${type}?filter=${subTypes1}`)
+                     if (subTypes1) {
+                         push(location.pathname)
+                         navigate(`/work/${type}?filter=${subTypes1}`)
+                     }
                  }}
             >
                 <Card
@@ -146,7 +150,7 @@ const WorkSelector = ({
                         fontSize: '20px',
                         textAlign: 'left'
                     }}>
-                        {subTypes1}
+                        {subTypes1 ? subTypes1 : 'Coming soon...'}
                     </span>
                 </Card>
             </div>
@@ -159,12 +163,14 @@ const WorkSelector = ({
                 width: 'fit-content',
                 height: 'fit-content',
                 zIndex: 1,
-                cursor: 'pointer',
+                cursor: subTypes2 ? 'pointer' : 'not-allowed',
             }}
                  className={styles.card2}
                  onClick={() => {
-                     push(location.pathname)
-                     navigate(`/work/${type}?filter=${subTypes2}`)
+                     if (subTypes2) {
+                         push(location.pathname)
+                         navigate(`/work/${type}?filter=${subTypes2}`)
+                     }
                  }}
             >
                 <Card
@@ -185,7 +191,7 @@ const WorkSelector = ({
                         fontSize: '20px',
                         textAlign: 'left'
                     }}>
-                        {subTypes2}
+                        {subTypes2 ? subTypes2 : 'Coming soon...'}
                     </span>
                 </Card>
             </div>
