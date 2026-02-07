@@ -9,6 +9,13 @@ import React from "react";
 import Button from "../../../components/Button";
 import {RightArrowIcon} from "../../../assets/icons/RightArrowIcon";
 import background from "./img/background.png";
+import painpoint1 from "./img/painpoint1.png";
+import painpoint2 from "./img/painpoint2.png";
+import painpoint3 from "./img/painpoint3.png";
+import research1 from "./img/research1.png";
+import research2 from "./img/research2.png";
+import {RightArrowLargeIcon} from "../../../assets/icons/RightArrowLargeIcon";
+import CardSlide from "../../../components/CardSlide";
 
 const cbeasy = createProject({
     titleWithLineBreak: 'CBeaSy',
@@ -138,7 +145,7 @@ const cbeasy = createProject({
                         fontWeight: 600,
                         fontSize: '36px',
                     }}>
-                        Background & pain point
+                        Background
                     </span>
                         </Card>
                         <Card
@@ -174,6 +181,495 @@ const cbeasy = createProject({
                     >
                         <img src={background} width={'100%'} alt={'Todo'} />
                     </Card>
+                )
+            },
+        ])},
+
+        /*************************************************************************
+         *
+         *       Overview: Background: Painpoints
+         *
+         **************************************************************************/
+        {stage: 'BACKGROUND', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: 0,
+                y: 60,
+                z: 1,
+                children: (
+                    <div style={{
+                        width: 1200,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '36px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.primary,
+                                fontWeight: 600,
+                                fontSize: '36px',
+                            }}>
+                                Pain points
+                            </span>
+                        </Card>
+                        <div style={{
+                            width: 1200,
+                            height: 160,
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '24px',
+                        }}>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <img src={painpoint1} style={{width: '100%', height: '100%', objectFit: 'cover'}} alt={'Todo'} />
+                            </Card>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <span style={{
+                                    color: colors.primary,
+                                    fontWeight: 600,
+                                    fontSize: '32px',
+                                    textAlign: 'center'
+                                }}>
+                                    Complex<br />& chaotic layout
+                                </span>
+                            </Card>
+                            <Card
+                                w={40}
+                                h={40}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                radius={20}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{color: colors.primary, width: 24, height: 24}}>
+                                    <RightArrowLargeIcon size={24} />
+                                </div>
+                            </Card>
+                            <Card
+                                w={520}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{
+                                    width: 1200,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    color: colors.white,
+                                }}>
+                                    <span style={{
+                                        fontWeight: 300,
+                                        fontSize: '24px',
+                                    }}>
+                                        Before the research
+                                    </span>
+                                    <span style={{
+                                        fontWeight: 600,
+                                        fontSize: '36px',
+                                    }}>
+                                        Hard to get started
+                                    </span>
+                                </div>
+                            </Card>
+                        </div>
+                        <div style={{
+                            width: 1200,
+                            height: 160,
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '24px',
+                        }}>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <img src={painpoint2} style={{width: '100%', height: '100%', objectFit: 'cover'}} alt={'Todo'} />
+                            </Card>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <span style={{
+                                    color: colors.primary,
+                                    fontWeight: 600,
+                                    fontSize: '32px',
+                                    textAlign: 'center'
+                                }}>
+                                    Inaccurate<br />control
+                                </span>
+                            </Card>
+                            <Card
+                                w={40}
+                                h={40}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                radius={20}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{color: colors.primary, width: 24, height: 24}}>
+                                    <RightArrowLargeIcon size={24} />
+                                </div>
+                            </Card>
+                            <Card
+                                w={520}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{
+                                    width: 1200,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    color: colors.white,
+                                }}>
+                                    <span style={{
+                                        fontWeight: 300,
+                                        fontSize: '24px',
+                                    }}>
+                                        During the research
+                                    </span>
+                                    <span style={{
+                                        fontWeight: 600,
+                                        fontSize: '36px',
+                                    }}>
+                                        Hard to control & monitor
+                                    </span>
+                                </div>
+                            </Card>
+                        </div>
+                        <div style={{
+                            width: 1200,
+                            height: 160,
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '24px',
+                        }}>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <img src={painpoint3} style={{width: '100%', height: '100%', objectFit: 'cover'}} alt={'Todo'} />
+                            </Card>
+                            <Card
+                                w={300}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <span style={{
+                                    color: colors.primary,
+                                    fontWeight: 600,
+                                    fontSize: '32px',
+                                    textAlign: 'center'
+                                }}>
+                                    Difficult saving<br />& no review
+                                </span>
+                            </Card>
+                            <Card
+                                w={40}
+                                h={40}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                radius={20}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{color: colors.primary, width: 24, height: 24}}>
+                                    <RightArrowLargeIcon size={24} />
+                                </div>
+                            </Card>
+                            <Card
+                                w={520}
+                                h={'100%'}
+                                radius={24}
+                                bg={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{
+                                    width: 1200,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    color: colors.white,
+                                }}>
+                                    <span style={{
+                                        fontWeight: 300,
+                                        fontSize: '24px',
+                                    }}>
+                                        After the research
+                                    </span>
+                                    <span style={{
+                                        fontWeight: 600,
+                                        fontSize: '36px',
+                                    }}>
+                                        Hard to record & analyse
+                                    </span>
+                                </div>
+                            </Card>
+                        </div>
+                    </div>
+                )
+            },
+        ])},
+
+        /*************************************************************************
+         *
+         *       Overview: Research
+         *
+         **************************************************************************/
+        {stage: 'RESEARCH', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: 0,
+                y: 60,
+                z: 1,
+                children: (
+                    <div style={{
+                        width: 1200,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        gap: '12px',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.primary,
+                                fontWeight: 600,
+                                fontSize: '36px',
+                            }}>
+                                Research
+                            </span>
+                        </Card>
+                        <Card
+                            h={28}
+                            padding={[0, 16, 2, 16]}
+                            radius={14}
+                            bg={colors.white}
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                    <span style={{
+                        color: colors.primary,
+                        fontWeight: 300,
+                        fontSize: '20px',
+                    }}>
+                        We improved the usability of the GUI through insights from a user flow workshop, a usability test, and a heuristic evaluation
+                    </span>
+                        </Card>
+                    </div>
+                )
+            },
+            {
+                x: 120,
+                y: 180,
+                z: 1,
+                children: (
+                    <CardSlide
+                        interval={2000}
+                        w={960}
+                        h={540}
+                        bg={colors.white}
+                        borderWidth={0}
+                        borderColor={'transparent'}
+                        radius={24}
+                        animateIn={animateIn}
+                        animateOut={animateOut}
+                        children={[(
+                            <img src={research1} width={'100%'} alt={'Todo'} />
+                        ),(
+                            <img src={research2} width={'100%'} alt={'Todo'} />
+                        )]}
+                    />
+                )
+            },
+        ])},
+        /*************************************************************************
+         *
+         *       Overview: Outcome 1
+         *
+         **************************************************************************/
+        {stage: 'OUTCOME', render: (animateIn: boolean, animateOut: boolean) => ([
+            {
+                x: 0,
+                y: 160,
+                z: 1,
+                children: (
+                    <div style={{
+                        width: 1200,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                    }}>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.primary,
+                                fontWeight: 600,
+                                fontSize: '36px',
+                            }}>
+                                Outcome 1
+                            </span>
+                        </Card>
+                        <Card
+                            animateIn={animateIn}
+                            animateOut={animateOut}
+                        >
+                            <span style={{
+                                color: colors.primary,
+                                fontWeight: 600,
+                                fontSize: '80px',
+                            }}>
+                                Intuitive Interface
+                            </span>
+                        </Card>
+                        <div style={{
+                            padding: '36px 0px 0px 0px',
+                            display: 'flex',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'flex-end',
+                            gap: '12px',
+                            color: colors.primary,
+                            fontWeight: 600,
+                            fontSize: '32px',
+                            textAlign: 'center'
+                        }}>
+                            <Card
+                                h={100}
+                                padding={36}
+                                radius={60}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <span>
+                                    Before<br />the research
+                                </span>
+                            </Card>
+                            <Card
+                                h={100}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{color: colors.primary, width: 40, height: 40}}>
+                                    <RightArrowLargeIcon size={24} />
+                                </div>
+                            </Card>
+                            <div style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '60px',
+                                color: colors.white
+                            }}>
+                                <Card
+                                    bg={colors.primary}
+                                    radius={20}
+                                    animateIn={animateIn}
+                                    animateOut={animateOut}
+                                >
+                                    <div style={{width: 40, height: 40, rotate: '90deg'}}>
+                                        <RightArrowLargeIcon size={24} />
+                                    </div>
+                                </Card>
+                                <Card
+                                    h={100}
+                                    padding={36}
+                                    radius={60}
+                                    bg={colors.primary}
+                                    animateIn={animateIn}
+                                    animateOut={animateOut}
+                                >
+                                    <span style={{}}>
+                                        During<br />the research
+                                    </span>
+                                </Card>
+                            </div>
+                            <Card
+                                h={100}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <div style={{color: colors.primary, width: 40, height: 40}}>
+                                    <RightArrowLargeIcon size={24} />
+                                </div>
+                            </Card>
+                            <Card
+                                h={100}
+                                padding={36}
+                                radius={60}
+                                bg={colors.white}
+                                borderWidth={2}
+                                borderColor={colors.primary}
+                                animateIn={animateIn}
+                                animateOut={animateOut}
+                            >
+                                <span>
+                                    After<br />the research
+                                </span>
+                            </Card>
+                        </div>
+                    </div>
                 )
             },
         ])},
