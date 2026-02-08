@@ -1482,7 +1482,7 @@ const cbeasy = createProject({
                             }}>
                                 Team project ／ Sep. - Dec. 2025
                                 <br />
-                                My role: Led UX design (overall structure & key strategies), built before-during-after framework
+                                My role: Led UI design (overall structure & key strategies), built before-during-after framework
                                 <br /><br />
                                 Teammates: Yinglan Deng, Nuoxi Li, Lieke Rooijackers (TU/e)
                                 <br />
