@@ -26,10 +26,10 @@ import InfoLabel from "../../../components/InfoLabel";
 
 const exploreInVirtualLight = createProject({
     titleWithLineBreak: 'Explore in \nVirtual Light',
-    subtitle: 'A gamified digital exhibition service for personal cultural narratives',
+    subtitle: 'Gamified digital exhibition service for personal cultural narratives',
     cover: cover,
     coverColored: coverColored,
-    coverAlt: '',
+    coverAlt: 'Image showing a visitor interacting with a body game with the help of a mobile phone app, and five UI of the app. The UI include a luminous interactive pattern for interaction and story-telling.',
     color: {primary: '#FA6400', primaryLight: '#FF934A', secondary: '#333333', secondaryLight: '#666666', neon: '#66FFFF'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.7, y: 0.5},
@@ -64,7 +64,7 @@ const exploreInVirtualLight = createProject({
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
-                                A gamified digital exhibition service<br />for personal cultural narratives
+                                Gamified digital exhibition service<br />for personal cultural narratives
                             </span>
                             <span style={{
                                 color: colors.primary,
@@ -1016,9 +1016,9 @@ const exploreInVirtualLight = createProject({
                                 <br />
                                 My role: Led concept development and service & UX design
                                 <br /><br />
-                                Supervisor: Assoc. Prof. Jing Wang, Haoran Li
-                                <br />
                                 Teammates: Haoyue Lei, Shaojian Deng, Yaran He, Er Zhuo (Tianjin University)
+                                <br />
+                                Supervisor: Assoc. Prof. Jing Wang, Haoran Li
                             </span>
                         </div>
                     </CardStack>

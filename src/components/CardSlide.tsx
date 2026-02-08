@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import {colors} from "../styles/theme";
 import Card from "./Card";
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 
 interface CardSlideProps {
     interval: number
@@ -19,6 +19,8 @@ interface CardSlideProps {
     animateIn?: boolean
     animateOut?: boolean
     onAnimationComplete?: () => void
+    delayOut?: boolean
+    visiblePlaceholder?: number
 }
 
 const CardSlide = ({
@@ -37,6 +39,8 @@ const CardSlide = ({
                        animateIn,
                        animateOut,
                        onAnimationComplete,
+                       delayOut = false,
+                       visiblePlaceholder,
                    }: CardSlideProps) => {
 
     const [index, setIndex] = useState(0)
@@ -50,71 +54,123 @@ const CardSlide = ({
         return () => clearInterval(timer)
     }, [interval, children.length])
 
+    if (delayOut) {
+        return (
+            <Card
+                radius={radius}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
+                bg={bg}
+                w={w}
+                h={h}
+                padding={padding}
+                horizon={horizon}
+                vertical={vertical}
+                initialHiding={initialHiding}
+                animateIn={animateIn}
+                animateOut={animateOut}
+                onAnimationComplete={onAnimationComplete}
+            >
+                <div style={{ position: 'relative'}}>
+                    <AnimatePresence>
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3, ease: 'easeInOut' }}
+                            style={{
+                                position: 'absolute',
+                                zIndex: 1,
+                                display: 'flex',
+                                alignItems: 'center',
+                            }}
+                        >
+                            {children[index]}
+                        </motion.div>
+                    </AnimatePresence>
 
-    return (
-        <Card
-            radius={radius}
-            borderColor={borderColor}
-            borderWidth={borderWidth}
-            bg={bg}
-            w={w}
-            h={h}
-            padding={padding}
-            horizon={horizon}
-            vertical={vertical}
-            initialHiding={initialHiding}
-            animateIn={animateIn}
-            animateOut={animateOut}
-            onAnimationComplete={onAnimationComplete}
-        >
-            <div style={{ position: 'relative' }}>
-                {/* Existing card */}
-                {prevIndex !== index && (
+                    {/* Placeholder for stable card size */}
                     <div
+                        style={{
+                            position: 'relative',
+                            visibility: visiblePlaceholder === undefined ? 'hidden' : 'visible',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        {children[visiblePlaceholder === undefined ? 0 : visiblePlaceholder]}
+                    </div>
+                </div>
+            </Card>
+        )
+
+    } else {
+        return (
+            <Card
+                radius={radius}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
+                bg={bg}
+                w={w}
+                h={h}
+                padding={padding}
+                horizon={horizon}
+                vertical={vertical}
+                initialHiding={initialHiding}
+                animateIn={animateIn}
+                animateOut={animateOut}
+                onAnimationComplete={onAnimationComplete}
+            >
+                <div style={{position: 'relative'}}>
+                    {/* Existing card */}
+                    {prevIndex !== index && (
+                        <div
+                            style={{
+                                position: 'absolute',
+                                zIndex: 1,
+                                display: 'flex',
+                                alignItems: 'center'
+                            }}
+                        >
+                            {children[prevIndex]}
+                        </div>
+                    )}
+
+                    {/* Entering card */}
+                    <motion.div
+                        key={index}
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{duration: 0.3, ease: 'easeInOut'}}
                         style={{
                             position: 'absolute',
                             zIndex: 1,
                             display: 'flex',
                             alignItems: 'center'
                         }}
+                        onAnimationComplete={() => {
+                            setPrevIndex(index)
+                        }}
                     >
-                        {children[prevIndex]}
+                        {children[index]}
+                    </motion.div>
+
+                    {/* Placeholder for stable card size */}
+                    <div
+                        style={{
+                            position: 'relative',
+                            visibility: 'hidden',
+                            display: 'flex',
+                            alignItems: 'center'
+                        }}
+                    >
+                        {children[0]}
                     </div>
-                )}
-
-                {/* Entering card */}
-                <motion.div
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    style={{
-                        position: 'absolute',
-                        zIndex: 1,
-                        display: 'flex',
-                        alignItems: 'center'
-                    }}
-                    onAnimationComplete={() => {
-                        setPrevIndex(index)
-                    }}
-                >
-                    {children[index]}
-                </motion.div>
-
-                {/* Placeholder for stable card size */}
-                <div
-                    style={{
-                        position: 'relative',
-                        visibility: 'hidden',
-                        display: 'flex',
-                        alignItems: 'center'
-                    }}
-                >
-                    {children[0]}
                 </div>
-            </div>
-        </Card>
-    )
+            </Card>
+        )
+    }
 }
 
 export default CardSlide

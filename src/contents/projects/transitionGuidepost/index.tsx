@@ -35,7 +35,7 @@ const transitionGuidepost = createProject({
     subtitle: 'GAHT tracking and support platform leveraging community mutual aid',
     cover: cover,
     coverColored: coverColored,
-    coverAlt: 'GAHT tracking and support platform leveraging community mutual aid',
+    coverAlt: 'Mobile phone UI for hormone level and medication visualization and logging, and community data analysis.',
     color: {primary: '#EA005F', primaryLight: '#F7468A', secondary: '#006AEA', secondaryLight: '#0074E8', neon: '#66FFFF'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.5, y: 0.5},

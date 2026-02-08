@@ -15,7 +15,6 @@ import ui8 from "./img/ui8.png";
 import ui9 from "./img/ui9.png";
 import ui10 from "./img/ui10.png";
 import highlight1a from "./img/highlight1a.png";
-//import highlight1b from "./img/highlight1b.png";
 import highlight2 from "./img/highlight2.png";
 import React from "react";
 import Card from "../../../components/Card";
@@ -29,7 +28,7 @@ const smartMedicalWriting = createProject({
     subtitle: 'UX/UI internship project: A smart medical report writing tool',
     cover: cover,
     coverColored: coverColored,
-    coverAlt: '',
+    coverAlt: 'Desktop UI for variable configuration and document management.',
     color: {primary: '#672CFF', primaryLight: '#976EFF', secondary: '#5D6576', secondaryLight: '#7C828E', neon: '#FFBEEC'},
     landscape: {x: 0.5, y: 0.5},
     portrait: {x: 0.7, y: 0.5},
