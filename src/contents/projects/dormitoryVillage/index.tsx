@@ -383,7 +383,7 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <div style={{color: colors.white, width: 20, height: 20, rotate: '135deg'}}>
+                            <div style={{color: colors.white, width: 20, height: 20}}>
                                 <RightArrowLargeIcon size={20} />
                             </div>
                         </Card>
@@ -994,7 +994,7 @@ const dormitoryVillage = createProject({
                     </Card>
                 )
             },
-            ])},
+        ])},
     ]
 })
 
