@@ -52,7 +52,7 @@ const WorkRouter = () => {
                     <Route path="product" element={<WorkCategory type={ProjectType.PRODUCT} />} />
                     <Route path="space" element={<WorkCategory type={ProjectType.SPACE} />} />
                     <Route path="visualization" element={<WorkCategory type={ProjectType.VISUALIZATION} />} />
-                    <Route path=":projectUrl" element={<ProjectDetail ref={scrollRef} setScrollX={setScrollX} cleanScroll={cleanScroll} />} />
+                    <Route path=":projectUrl" element={<ProjectDetail ref={scrollRef} navigateSlide={navigateSlide} setScrollX={setScrollX} cleanScroll={cleanScroll} />} />
                 </Routes>
             </div>
         </div>

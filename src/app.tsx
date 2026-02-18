@@ -43,24 +43,27 @@ const App = () => {
         <PageSwitchContext.Provider value={{ pageSwitchPhase, setPageSwitchPhase }}>
             <HashRouter>
                 <HistoryContainer>
-                    <ThemeProvider>
-                        <ScalingContainer>
-                            <div style={{
-                                height: `${ORIGINAL_HEIGHT}px`,
-                                fontFamily: `${fontFamily}`,
-                                display: 'flex',
-                                flexDirection: 'column',
-                            }}>
-                                <div style={{ flex: 1, position: 'relative' }}>
-                                    <Router />
+                    <div style={{
+                        fontFamily: `${fontFamily}`,
+                    }}>
+                        <ThemeProvider>
+                            <ScalingContainer>
+                                <div style={{
+                                    height: `${ORIGINAL_HEIGHT}px`,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                }}>
+                                    <div style={{ flex: 1, position: 'relative' }}>
+                                        <Router />
+                                    </div>
+                                    <MainNav />
                                 </div>
-                                <MainNav />
-                            </div>
-                            <div style={{pointerEvents: 'none', position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: `${ORIGINAL_HEIGHT}px`}}>
-                                <Bg />
-                            </div>
-                        </ScalingContainer>
-                    </ThemeProvider>
+                                <div style={{pointerEvents: 'none', position: 'absolute', zIndex: -1, top: 0, left: 0, width: '100%', height: `${ORIGINAL_HEIGHT}px`}}>
+                                    <Bg />
+                                </div>
+                            </ScalingContainer>
+                        </ThemeProvider>
+                    </div>
                 </HistoryContainer>
             </HashRouter>
         </PageSwitchContext.Provider>

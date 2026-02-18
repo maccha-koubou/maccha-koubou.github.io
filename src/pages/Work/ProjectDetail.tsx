@@ -6,6 +6,7 @@ import {Navigate, useParams} from "react-router-dom";
 import projects from "../../contents/projects";
 
 interface ProjectDetailProps {
+    navigateSlide: (index: number) => void;
     setScrollX: (x: number) => void;
     cleanScroll: () => void;
 }
@@ -53,6 +54,7 @@ const ProjectDetail = React.forwardRef<ScrollWrapperHandle, ProjectDetailProps>(
                     <ProjectCanvas
                         project={project}
                         canvasWidth={canvasWidth}
+                        navigateSlide={props.navigateSlide}
                         setScrollX={props.setScrollX}
                         cleanScroll={props.cleanScroll}
                     />

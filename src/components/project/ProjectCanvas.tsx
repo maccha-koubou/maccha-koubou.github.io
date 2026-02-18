@@ -16,18 +16,19 @@ import ReactDOM from "react-dom";
 import {useScroll} from "../ScrollWrapper";
 import {usePageSwitch} from "../../app";
 import SlideCanvas from "./SlideCanvas";
-import {RightArrowLargeIcon} from "../../assets/icons/RightArrowLargeIcon";
 import {useHistory} from "../../router/HistoryContainer";
 import {useLocation, useNavigate} from "react-router-dom";
+import RightArrowAnimation from "../../assets/icons/RightArrowAnimation";
 
 interface ProjectCanvasProps {
     project: Project
     canvasWidth: number;
+    navigateSlide: (index: number) => void;
     setScrollX: (x: number) => void;
     cleanScroll: () => void;
 }
 
-const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, setScrollX, cleanScroll }) => {
+const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, navigateSlide, setScrollX, cleanScroll }) => {
 
     const overallWidth = PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH + PROJECT_GAP + (PROJECT_WIDTH + PROJECT_GAP) * (project.slides.length)
     const beginX = -64 // The X coord and round corner radius of the cover
@@ -121,18 +122,32 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, set
                         isPassThrough={true}
                     >
                         {/* The arrow above the cover */}
-                        <div style={{position: 'absolute', zIndex: 1, top: coverRect.height / 2 - coverRect.height / 16, left: coverRect.width - coverRect.height / 32}}>
+                        <div
+                            style={{position: 'absolute', zIndex: 1, top: coverRect.height / 2 - coverRect.height / 16, right: - coverRect.height / 20, cursor: 'pointer'}}
+                            onClick={() => {navigateSlide(-0.7)}}
+                        >
                             <Card
-                                w={coverRect.height / 16}
-                                h={coverRect.height / 16}
+                                padding={coverRect.height / 48}
                                 bg={colors.primary}
                                 radius={coverRect.radius}
                                 embodiedBorder={true}
-                                interactable={false}
+                                animateIn={true}
                                 animateOut={pageSwitchPhase === 'exit'}
                             >
-                                <div style={{color: colors.white, width: coverRect.height / 24, height: coverRect.height / 24}}>
-                                    <RightArrowLargeIcon size={coverRect.height / 24} />
+                                <div style={{
+                                    color: colors.white,
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    gap: coverRect.height / 48,
+                                }}>
+                                    <RightArrowAnimation size={coverRect.height / 32} />
+                                    <span style={{
+                                        fontWeight: 500,
+                                        fontSize: 24 * (window.innerHeight / ORIGINAL_HEIGHT),
+                                    }}>
+                                        Swipe for details
+                                    </span>
                                 </div>
                             </Card>
                         </div>
