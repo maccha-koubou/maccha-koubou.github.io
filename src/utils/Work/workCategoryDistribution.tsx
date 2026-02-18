@@ -124,6 +124,7 @@ export const genProjectCards = (
                                 } else {
                                     setActiveSubType([...activeSubType, subType1])
                                 }
+                                setActiveProject(null)
                                 break
                             case '2':
                                 setIsExit('false')
@@ -132,6 +133,7 @@ export const genProjectCards = (
                                 } else {
                                     setActiveSubType([...activeSubType, subType2])
                                 }
+                                setActiveProject(null)
                                 break
                             case 'false':
                                 break
