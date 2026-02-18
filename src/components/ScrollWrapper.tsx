@@ -73,6 +73,22 @@ const ScrollWrapper = React.forwardRef<ScrollWrapperHandle, ScrollWrapperProps>(
         requestAnimationFrame(step)
     }
 
+    // Scroll when there is horizontal scroll from the touchpad
+    useEffect(() => {
+        const element = internalRef.current;
+        if (!element) return;
+
+        const onWheel = (e: WheelEvent) => {
+            element.scrollLeft += e.deltaX * speed;
+        };
+
+        element.addEventListener('wheel', onWheel, { passive: false });
+
+        return () => {
+            element.removeEventListener('wheel', onWheel);
+        };
+    }, [scrollByDelta]);
+
     // Scroll to specific X
     const scrollToX = (x: number) => {
         const element = internalRef.current;
