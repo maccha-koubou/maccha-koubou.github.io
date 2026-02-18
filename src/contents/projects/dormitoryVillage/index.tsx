@@ -23,6 +23,8 @@ import final6 from "./img/final6.png";
 import final7 from "./img/final7.png";
 import video1 from "./img/video1.mp4";
 import video2 from "./img/video2.mp4";
+import video1Base from "./img/video1Base.png";
+import video2Base from "./img/video2Base.png";
 import ecosystem from "./img/ecosystem.png";
 import {RightArrowLargeIcon} from "../../../assets/icons/RightArrowLargeIcon";
 
@@ -779,7 +781,7 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <video src={video1} style={{height: '100%'}} autoPlay loop muted playsInline />
+                        <video src={video1} poster={video1Base} style={{height: '100%'}} autoPlay loop muted playsInline />
                     </Card>
                 )
             },
@@ -823,7 +825,7 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <video src={video2} style={{height: '100%'}} autoPlay loop muted playsInline />
+                        <video src={video2} poster={video2Base} style={{height: '100%'}} autoPlay loop muted playsInline />
                     </Card>
                 )
             },

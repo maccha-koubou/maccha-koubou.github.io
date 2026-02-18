@@ -34,6 +34,7 @@ import outcome3_6 from "./img/outcome3_6.png";
 import outcome3_7 from "./img/outcome3_7.png";
 import outcome3_8 from "./img/outcome3_8.png";
 import uiVideo1 from "./img/uivideo1.mp4";
+import uiVideo1Base from "./img/uivideo1_base.png";
 import {RightArrowLargeIcon} from "../../../assets/icons/RightArrowLargeIcon";
 import CardSlide from "../../../components/CardSlide";
 import InfoLabel from "../../../components/InfoLabel";
@@ -867,7 +868,7 @@ const cbeasy = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <video src={uiVideo1} style={{width: 480}} autoPlay loop muted playsInline />
+                        <video src={uiVideo1} poster={uiVideo1Base} style={{width: 480}} autoPlay loop muted playsInline />
                     </Card>
                 )
             },

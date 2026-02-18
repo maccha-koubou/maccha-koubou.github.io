@@ -120,27 +120,20 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut || allFinished}
                         >
-                            <div>
-
-                                <video
-                                    ref={el => {
-                                        if (el) videoRefs.current[0] = el
-                                    }}
-                                    src={uiVideo1}
-                                    style={{ width: 360 }}
-                                    muted
-                                    playsInline
-                                    preload="auto"
-                                    onEnded={() => {
-                                        setTimeout(() => {handleVideoEnded(0)}, 500)
-                                    }}
-                                />
-                                <img
-                                    src={uiVideo1Base}
-                                    style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360 }}
-                                    alt={'UI requiring users to click into each variable to check the value. Which caused double steps, more mouse movement, and interruptions.'}
-                                />
-                            </div>
+                            <video
+                                ref={el => {
+                                    if (el) videoRefs.current[0] = el
+                                }}
+                                src={uiVideo1}
+                                poster={uiVideo1Base}
+                                style={{ width: 360 }}
+                                muted
+                                playsInline
+                                preload="auto"
+                                onEnded={() => {
+                                    setTimeout(() => {handleVideoEnded(0)}, 500)
+                                }}
+                            />
                         </Card>
                     </div>
                 </div>
@@ -205,26 +198,20 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut || allFinished}
                         >
-                            <div>
-                                <video
-                                    ref={el => {
-                                        if (el) videoRefs.current[1] = el
-                                    }}
-                                   src={uiVideo2}
-                                   style={{ width: 360 }}
-                                   muted
-                                   playsInline
-                                   preload="auto"
-                                   onEnded={() => {
-                                       setTimeout(() => { handleVideoEnded(1) }, 500)
-                                   }}
-                                />
-                                <img
-                                    src={uiVideo2Base}
-                                    style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360}}
-                                    alt={'UI allowing variables to be checked in the list and then automatically fold. Which caused more development efforts and cognitive loads, especially when the value is long.'}
-                                />
-                            </div>
+                            <video
+                                ref={el => {
+                                    if (el) videoRefs.current[1] = el
+                                }}
+                               src={uiVideo2}
+                               poster={uiVideo2Base}
+                               style={{ width: 360 }}
+                               muted
+                               playsInline
+                               preload="auto"
+                               onEnded={() => {
+                                   setTimeout(() => { handleVideoEnded(1) }, 500)
+                               }}
+                            />
                         </Card>
                     </div>
                 </div>
@@ -289,26 +276,20 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut || allFinished}
                         >
-                            <div>
-                                <video
-                                    ref={el => {
-                                        if (el) videoRefs.current[2] = el
-                                    }}
-                                    src={uiVideo3}
-                                    style={{ width: 360 }}
-                                    muted
-                                    playsInline
-                                    preload="auto"
-                                    onEnded={() => {
-                                        setTimeout(() => {handleVideoEnded(2)}, 500)
-                                    }}
-                                />
-                                <img
-                                    src={uiVideo3Base}
-                                    style={{position: 'absolute', left: 0, top: 0, zIndex: -1, width: 360}}
-                                    alt={'UI adding only a previous & next variable button on the detail page. Which reduced the steps, mouse movement, and interruptions, as well as the development effort and cognitive loads.'}
-                                />
-                            </div>
+                            <video
+                                ref={el => {
+                                    if (el) videoRefs.current[2] = el
+                                }}
+                                src={uiVideo3}
+                                poster={uiVideo3Base}
+                                style={{ width: 360 }}
+                                muted
+                                playsInline
+                                preload="auto"
+                                onEnded={() => {
+                                    setTimeout(() => {handleVideoEnded(2)}, 500)
+                                }}
+                            />
                         </Card>
                     </div>
                 </div>

@@ -679,7 +679,7 @@ const exploreInVirtualLight = createProject({
                         animateOut={animateOut}
                     >
                         <div>
-                            <video src={uiVideo} style={{height: 720}} autoPlay loop muted playsInline />
+                            <video src={uiVideo} poster={ui1} style={{height: 720}} autoPlay loop muted playsInline />
                             <img
                                 src={ui1}
                                 style={{position: 'absolute', left: 0, top: 0, zIndex: -1, height: 720}}

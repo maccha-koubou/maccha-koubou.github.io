@@ -261,7 +261,7 @@ const smartMedicalWriting = createProject({
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
-                            Variable<br />position<br />pconfig
+                            Variable<br />position<br />config
                         </span>
                     </Card>
                 )
