@@ -622,7 +622,7 @@ const dormitoryVillage = createProject({
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
-                            Typical living unit
+                            Living unit
                         </span>
                         <span style={{
                             color: colors.secondary,
