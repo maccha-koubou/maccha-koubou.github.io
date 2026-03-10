@@ -192,7 +192,7 @@ const smartMedicalWriting = createProject({
             },
             {
                 x: 400,
-                y: 132,
+                y: 120,
                 z: 1,
                 children: (
                     <Card
@@ -218,7 +218,7 @@ const smartMedicalWriting = createProject({
                             }}>
                                 Users are required to confirm each imported variable. However, the original design brought unnecessary actions and interruptions.
                                 <br /><br />
-                                I improved this feature, halving steps with minimal development effort.
+                                I proposed an improvement of this feature, halving steps with minimal development effort.
                             </span>
                             <img src={highlight1a} width={600} alt={'Diagram showing a single modification helped reduce the steps, mouse movement, and interruptions of this feature.'} />
                         </div>

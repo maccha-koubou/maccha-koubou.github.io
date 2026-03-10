@@ -187,7 +187,7 @@ const Highlight1A = ({
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
-                                First version
+                                First proposal
                             </span>
                         </Card>
                         <Card
@@ -265,7 +265,7 @@ const Highlight1A = ({
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
-                                Final version
+                                Final proposal
                             </span>
                         </Card>
                         <Card
