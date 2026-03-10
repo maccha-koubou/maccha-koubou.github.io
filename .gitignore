@@ -9,3 +9,5 @@ yarn-error.log*
 .pnp.js
 
 .vscode/*
+/maccha-koubou.github.io.git.bfg-report/
+/maccha-koubou.github.io.git/
