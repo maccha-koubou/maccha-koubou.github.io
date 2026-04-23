@@ -145,6 +145,7 @@ const Home = () => {
 
 
     // Reselect one project every 1-8 seconds
+    /*
     useEffect(() => {
         let timer: number;
 
@@ -195,6 +196,8 @@ const Home = () => {
         selectNext();
         return () => clearTimeout(timer);
     }, []);
+
+     */
 
     // Reselect one deco every 1-8 seconds
     useEffect(() => {

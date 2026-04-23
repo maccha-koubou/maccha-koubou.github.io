@@ -43,11 +43,15 @@ const Button = ({
     const [refreshKey, setRefreshKey] = useState(0)
 
     return (
-        <div
+        <button
+            type="button"
             style={{
                 position: 'relative',
                 width: 'fit-content',
                 cursor: 'pointer',
+                background: 'none',
+                border: 'none',
+                padding: 0,
             }}
             onClick={onClick}
             onMouseEnter={() => {
@@ -56,6 +60,15 @@ const Button = ({
                 setIsHover(true)
             }}
             onMouseLeave={() => {
+                setIsHover(false)
+                setIsLeave(true)
+            }}
+            onFocus={() => {
+                setRefreshKey(refreshKey + 1)
+                setIsLeave(false)
+                setIsHover(true)
+            }}
+            onBlur={() => {
                 setIsHover(false)
                 setIsLeave(true)
             }}
@@ -135,7 +148,7 @@ const Button = ({
                     </span>
                 </Card>
             </div>
-        </div>
+        </button>
     )
 }
 

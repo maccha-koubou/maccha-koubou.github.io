@@ -8,11 +8,12 @@ interface NavBarProps {
     gap: number
     highlightNumber: number
     setHighlightNumber: (val: number) => void
+    description?: string
 }
 
-const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumber, setHighlightNumber }) => {
+const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumber, setHighlightNumber, description = "" }) => {
 
-    const buttonRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
 
     // Calculate the position of highlight
@@ -39,7 +40,10 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumbe
 
 
     return (
-        <div style={{ position: 'relative' }}>
+        <nav
+            style={{ position: 'relative' }}
+            aria-label={ description }
+        >
 
             {/* Unhighlighted buttons layer */}
             <div style={{
@@ -65,6 +69,7 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumbe
             {/* Highlighted buttons layer */}
 
                 <motion.div
+                    aria-hidden="true"
                     style={{
                         position: 'absolute',
                         top: '0px',
@@ -76,6 +81,7 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumbe
                         alignItems: 'flex-start',
                         flexDirection: `${direction}`,
                         gap: `${gap}px`,
+                        pointerEvents: 'none',
                     }}
                     animate={{
                         clipPath: `inset(
@@ -92,7 +98,7 @@ const NavBar: React.FC<NavBarProps> = ({ buttons, direction, gap, highlightNumbe
                         <NavButton key={button.id} {...button} highlighted={true} />
                     ))}
                 </motion.div>
-        </div>
+        </nav>
     )
 }
 

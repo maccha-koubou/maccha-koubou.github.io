@@ -16,6 +16,11 @@ body {
     align-items: flex-start;
 }
 
+button {
+    font-family: var(--font);
+    font-size: inherit;
+}
+
 @font-face {
     font-family: 'Plus Jakarta Sans';
     src: url('../assets/fonts/PlusJakartaSans-ExtraLight.ttf') format('truetype');

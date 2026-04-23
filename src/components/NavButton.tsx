@@ -20,7 +20,7 @@ export interface NavButtonProps {
     setHighlightNumber?: (number: number) => void
 }
 
-export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
+export const NavButton = React.forwardRef<HTMLButtonElement, NavButtonProps>(({
                   id,
                   h,
                   padding,
@@ -44,7 +44,8 @@ export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
     const finalSecondColor = highlighted ? colors.white : secondColor;
 
     return (
-        <div
+        <button
+            tabIndex={isGap || highlighted ? -1 : 0}
             ref={ref}
             style={{
                 display: 'flex',
@@ -58,6 +59,8 @@ export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
                 alignItems: 'center',
                 gap: `${gap}px`,
                 cursor: `${isGap ? 'default' : 'pointer'}`,
+                border: 'none',
+                pointerEvents: `${isGap ? 'none' : 'auto'}`,
             }}
             onClick={() => {
                 setHighlightNumber?.(index)
@@ -73,6 +76,6 @@ export const NavButton = React.forwardRef<HTMLDivElement, NavButtonProps>(({
             <div style={{color: finalSecondColor,}}>
                 {secondChildren}
             </div>
-        </div>
+        </button>
     )
 })
