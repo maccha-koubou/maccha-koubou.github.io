@@ -35,11 +35,13 @@ export const ScalingContainer = ({ children }: ScalingContainerProps) => {
     // Scaling should be based on the top left position, or there will be gaps on left and right sides
     return (
         <ScalingContainerContext.Provider value={containerElement}>
-            <div style={{
-                width: `${finalOuterWidth}px`,
-                margin: '0px',
-                overflowX: 'hidden',
+            <div
+                style={{
+                    width: `${finalOuterWidth}px`,
+                    margin: '0px',
+                    overflowX: 'hidden',
                 }}
+                tabIndex={-1}
             >
 
                 {/* Outer div is used to cut the overflowing part of inner div which was caused by the rescaling*/}
