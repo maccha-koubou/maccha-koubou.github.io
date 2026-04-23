@@ -56,28 +56,28 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Modular living unit for privacy, community,<br />and flexibilityin high-density dormitories
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Service ／ Changeable space ／ Modular product
-                            </span>
-                            <span style={{
+                            </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -85,8 +85,8 @@ const dormitoryVillage = createProject({
                                 Modular, changeable units enable both personal and social life within limited space and resources.
                                 <br /><br />
                                 Units form a dynamic village ecosystem where students live based on similar interests, share facilities, and manage their communities autonomously.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -102,7 +102,7 @@ const dormitoryVillage = createProject({
                 y: 100,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -113,13 +113,13 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Background & Problem
-                            </span>
+                            </h2>
                         </Card>
                         <Card
                             h={28}
@@ -129,15 +129,15 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Limited space and facilities lack both personal privacy and social interaction, and are crowded and inaccessible.
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -201,7 +201,7 @@ const dormitoryVillage = createProject({
                 y: 100,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -212,13 +212,13 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Strategy
-                        </span>
+                        </h2>
                         </Card>
                         <Card
                             h={28}
@@ -228,15 +228,15 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <p style={{
                             color: colors.primary,
                             fontWeight: 300,
                             fontSize: '20px',
                         }}>
                             Split large buildings into changeable & moveable units, moved by student freely to form interest-based villages.
-                        </span>
+                        </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -295,13 +295,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard1} style={{width: '100%'}} alt={'Image showing students with different interests living together.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Initial mixed dorm
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -332,13 +332,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard2} style={{width: '100%'}} alt={'Image showing 4 students who like games matches each other and form a village.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Hobby/habit-based match
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -369,13 +369,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard3} style={{width: '100%'}} alt={'Image showing a student applies a game interest unit on an app.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Apply for interest unit
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -435,13 +435,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard4} style={{width: '100%'}} alt={'Image showing a game interest unit is moved into the village.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Provide interest unit
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -472,13 +472,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard5} style={{width: '100%'}} alt={'Image showing students share the game interest unit in the village.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Share interest unit
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -509,13 +509,13 @@ const dormitoryVillage = createProject({
                             >
                                 <img src={storyboard6} style={{width: '100%'}} alt={'Image showing students discussing which interest unit to replace the existing one with.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Dynamically regroup
-                            </span>
+                            </p>
                         </div>
                         <div style={{width: 40, height: 40}}/>
                     </div>
@@ -533,7 +533,7 @@ const dormitoryVillage = createProject({
                 y: 12,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -544,13 +544,13 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                    <span style={{
-                        color: colors.primary,
-                        fontWeight: 600,
-                        fontSize: '36px',
-                    }}>
-                        Ecosystem
-                    </span>
+                            <h2 style={{
+                                color: colors.primary,
+                                fontWeight: 600,
+                                fontSize: '36px',
+                            }}>
+                                Ecosystem
+                            </h2>
                         </Card>
                         <Card
                             h={28}
@@ -560,15 +560,15 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                    <span style={{
-                        color: colors.primary,
-                        fontWeight: 300,
-                        fontSize: '20px',
-                    }}>
-                        Freely socialize and allocate limited resources through units, reducing dorms' neglect of student needs.
-                    </span>
+                            <p style={{
+                                color: colors.primary,
+                                fontWeight: 300,
+                                fontSize: '20px',
+                            }}>
+                                Freely socialize and allocate limited resources through units, reducing dorms' neglect of student needs.
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -611,26 +611,26 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         gap: '16px',
                     }}>
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Living unit
-                        </span>
-                        <span style={{
+                        </h2>
+                        <p style={{
                             color: colors.secondary,
                             fontSize: '20px',
                             fontWeight: 300,
                         }}>
                             Same footprint, larger bed, more privacy, own bathroom
-                        </span>
+                        </p>
                         <div style={{
                             display: 'flex',
                             flexDirection: 'row',
@@ -655,12 +655,12 @@ const dormitoryVillage = createProject({
                                 >
                                     <img src={final1} style={{height: '100%'}} alt={'Image showing typical loft bed in college dorms that is only 3.3m high, 2.2m long, and 1.65m wide.'} />
                                 </Card>
-                                <span style={{
+                                <p style={{
                                     color: colors.primary,
                                     fontWeight: 600,
                                 }}>
                                     Typical loft bed
-                                </span>
+                                </p>
                             </div>
                             <div style={{
                                 height: 200,
@@ -699,12 +699,12 @@ const dormitoryVillage = createProject({
                                 >
                                     <img src={final2} style={{height: '100%'}} alt={'Image showing the living unit with the same size as loft beds but with more facilities.'} />
                                 </Card>
-                                <span style={{
+                                <p style={{
                                     color: colors.primary,
                                     fontWeight: 600,
                                 }}>
                                     Changeable living unit
-                                </span>
+                                </p>
                             </div>
                         </div>
                         <Card
@@ -715,14 +715,14 @@ const dormitoryVillage = createProject({
                         >
                             <img src={final3} style={{height: '100%'}} alt={'Diagram showing the space of a living unit can be changed to adapt to diverse activities, including seating, lying, simple activities, and washing.'} />
                         </Card>
-                        <span style={{
+                        <p style={{
                             color: colors.secondary,
                             fontSize: '20px',
                             fontWeight: 300,
                         }}>
                             * Units can be customized for diverse access needs
-                        </span>
-                    </div>
+                        </p>
+                    </section>
                     </Card>
                 )
             },
@@ -758,13 +758,13 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Adjustable<br />bed & desk<br /><br />Foldable<br />bathroom
-                        </span>
+                        </h2>
                     </Card>
                 )
             },
@@ -802,13 +802,13 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                    <span style={{
+                    <h2 style={{
                         color: colors.primary,
                         fontWeight: 600,
                         fontSize: '36px',
                     }}>
                         Sliding<br />OLED<br />film door
-                    </span>
+                    </h2>
                     </Card>
                 )
             },
@@ -860,7 +860,7 @@ const dormitoryVillage = createProject({
                 y: 60,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -871,15 +871,15 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Interest Unit
-                            </span>
+                            </h2>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -911,7 +911,7 @@ const dormitoryVillage = createProject({
                 y: 120,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -922,15 +922,15 @@ const dormitoryVillage = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Large space system
-                        </span>
+                        </h2>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -969,21 +969,21 @@ const dormitoryVillage = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '24px',
                         }}>
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 500,
                             fontSize: '36px',
                         }}>
                             Credits
-                        </span>
-                            <span style={{
+                        </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -991,8 +991,8 @@ const dormitoryVillage = createProject({
                             Individual project ／ Jan. - Feb. 2021
                             <br />
                             Supervisor: Assoc. Prof. Jing Wang
-                        </span>
-                        </div>
+                        </p>
+                        </section>
                     </Card>
                 )
             },

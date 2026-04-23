@@ -109,15 +109,18 @@ const Button = ({
             </div>
 
             {/* Highlight layer of button */}
-            <div style={{
-                display: 'flex',
-                width: 'fit-content',
-                height: 'fit-content',
-                position: 'absolute',
-                left: '0px',
-                top: '0px',
-                zIndex: 1,
-            }}>
+            <div
+                style={{
+                    display: 'flex',
+                    width: 'fit-content',
+                    height: 'fit-content',
+                    position: 'absolute',
+                    left: '0px',
+                    top: '0px',
+                    zIndex: 1,
+                }}
+                aria-hidden="true"
+            >
                 <Card
                     key={refreshKey}
                     radius={radius}

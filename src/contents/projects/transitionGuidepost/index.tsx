@@ -58,28 +58,28 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 500,
                             fontSize: '36px',
                         }}>
                             GAHT tracking and support platform<br />leveraging community mutual aid
-                        </span>
-                            <span style={{
+                        </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                             Service ／ Mobile app ／ App development (Kotlin)
-                        </span>
-                            <span style={{
+                        </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -87,8 +87,8 @@ const transitionGuidepost = createProject({
                                 As GAHT (gender-affirming hormone therapy) knowledge is often inaccessible, users rely on scattered community experiences.
                                 <br /><br />
                                 This app helps users track and visualize their GAHT, turning personal tracking into a shared community medical guide for mutual support.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -126,7 +126,7 @@ const transitionGuidepost = createProject({
                 y: 200,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -137,13 +137,13 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Background
-                        </span>
+                        </h2>
                         </Card>
                         <Card
                             h={28}
@@ -153,15 +153,15 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Vital but challenging community information support under systemic inaccessibility
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -190,7 +190,7 @@ const transitionGuidepost = createProject({
                 y: 80,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -201,18 +201,18 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Research findings
-                        </span>
+                        </h2>
                         </Card>
                         <div style={{width: 1200, display: 'flex', justifyContent: 'center'}}>
                             <InfoLabel text={'Semi-structural interview with 8 people with diverse genders, communities, GAHT & surgery stages, parents\' attitudes, and ages'} animateIn={animateIn} animateOut={animateOut} />
                         </div>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -220,7 +220,7 @@ const transitionGuidepost = createProject({
                 y: 200,
                 z: 0,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-start',
@@ -247,14 +247,14 @@ const transitionGuidepost = createProject({
                                 gap: '24px',
                             }}>
                                 <img src={research1} width={'100%'} alt={'Diagram showing lack of reliable knowledge can deter trans people from starting GAHT and lead to impulsive and risky GAHT. Community experience can reduce this risk.'} />
-                                <span style={{
+                                <h3 style={{
                                     color: colors.primary,
                                     fontWeight: 500,
                                     fontSize: '24px',
                                     textAlign: 'center'
                                 }}>
                                     Impulsive & risky GAHT from fear
-                                </span>
+                                </h3>
                             </div>
                         </Card>
                         <Card
@@ -275,16 +275,16 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.white,
                                 fontWeight: 500,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Experience sharing<br />as important knowledge
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -292,7 +292,7 @@ const transitionGuidepost = createProject({
                 y: 200,
                 z: 0,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'flex-start',
@@ -319,14 +319,14 @@ const transitionGuidepost = createProject({
                                 gap: '24px',
                             }}>
                                 <img src={research2} width={'100%'} alt={'Diagram showing trans people pay more attention to GAHT because of unstable dosage and anxiety, but become forgetful as time goes by. '} />
-                                <span style={{
+                                <h3 style={{
                                     color: colors.primary,
                                     fontWeight: 500,
                                     fontSize: '24px',
                                     textAlign: 'center'
                                 }}>
                                     From adjusting to forgetting
-                                </span>
+                                </h3>
                             </div>
                         </Card>
                         <Card
@@ -347,16 +347,16 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.white,
                                 fontWeight: 500,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Importance of<br />personal experience tracking
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
         ])},
@@ -381,20 +381,20 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'left',
                             gap: '24px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Ideation
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -403,8 +403,8 @@ const transitionGuidepost = createProject({
                                 <br />
                                 <br />
                                 Turn individual experience into community medical guidance to support and empower more people.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -434,7 +434,7 @@ const transitionGuidepost = createProject({
                 y: 80,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -445,13 +445,13 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                    <span style={{
+                    <h2 style={{
                         color: colors.primary,
                         fontWeight: 600,
                         fontSize: '36px',
                     }}>
                         Ecosystem map
-                    </span>
+                    </h2>
                         </Card>
                         <Card
                             h={28}
@@ -461,16 +461,16 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <p style={{
                             color: colors.primary,
                             fontWeight: 300,
                             fontSize: '20px',
                             textAlign: 'center'
                         }}>
                             An app integrating personal tracking and community sharing as the key touchpoint
-                        </span>
+                        </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -506,7 +506,7 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <h2 style={{
                             width: 1200,
                             display: 'flex',
                             flexDirection: 'row',
@@ -534,7 +534,7 @@ const transitionGuidepost = createProject({
                             }}>
                                 Key innovation
                             </span>
-                        </div>
+                        </h2>
                     </Card>
                 )
             },
@@ -571,27 +571,27 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'flex-start',
                             gap: '16px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '52px',
                             }}>
                                 Track
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Track & compare trends<br />across multiple data
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -753,27 +753,27 @@ const transitionGuidepost = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <div style={{
+                            <section style={{
                                 display: 'flex',
                                 flexDirection: 'column',
                                 alignItems: 'flex-start',
                                 gap: '16px',
                             }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '52px',
                             }}>
                                 Library
-                            </span>
-                                <span style={{
+                            </h2>
+                                <p style={{
                                     color: colors.primary,
                                     fontWeight: 600,
                                     fontSize: '24px',
                                 }}>
                                 Gain insight from<br />community data sharing
-                            </span>
-                            </div>
+                            </p>
+                            </section>
                         </Card>
                     )
                 },
@@ -847,13 +847,13 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '24px',
                         }}>
                             Forum: discuss & compare with others' data
-                        </span>
+                        </h2>
                     </Card>
                 )
             },
@@ -920,13 +920,13 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                    <span style={{
+                    <h2 style={{
                         color: colors.primary,
                         fontWeight: 600,
                         fontSize: '24px',
                     }}>
                         Step-by-step guideline
-                    </span>
+                    </h2>
                     </Card>
                 )
             },
@@ -978,7 +978,7 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 100px 36px',
                             width: '100%',
                             height: '100%',
@@ -986,21 +986,21 @@ const transitionGuidepost = createProject({
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 500,
                             fontSize: '36px',
                         }}>
                             Realization
-                        </span>
-                            <span style={{
+                        </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 This app is in development with Kotlin and Jetpack Compose.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -1092,21 +1092,21 @@ const transitionGuidepost = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '24px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Credits
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -1114,8 +1114,8 @@ const transitionGuidepost = createProject({
                                 Individual project ／ Feb. - Mar. 2024
                                 <br />
                                 Supervisor: Lei Zhang
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },

@@ -122,9 +122,18 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, nav
                         isPassThrough={true}
                     >
                         {/* The arrow above the cover */}
-                        <div
-                            style={{position: 'absolute', zIndex: 1, top: coverRect.height / 2 - coverRect.height / 16, right: - coverRect.height / 20, cursor: 'pointer'}}
+                        <button
+                            style={{
+                                position: 'absolute',
+                                zIndex: 1,
+                                top: coverRect.height / 2 - coverRect.height / 16,
+                                right: - coverRect.height / 20,
+                                cursor: 'pointer',
+                                border: 'none',
+                                background: 'none',
+                            }}
                             onClick={() => {navigateSlide(-0.7)}}
+                            tabIndex={1}
                         >
                             <Card
                                 padding={coverRect.height / 48}
@@ -150,7 +159,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, nav
                                     </span>
                                 </div>
                             </Card>
-                        </div>
+                        </button>
                         <Card
                             w={coverRect.width}
                             h={coverRect.height}
@@ -188,7 +197,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, nav
                     animateIn={true}
                     animateOut={pageSwitchPhase === 'exit'}
                 >
-                    <span style={{
+                    <h1 style={{
                         color: colors.primary,
                         fontWeight: 500,
                         fontSize: '80px',
@@ -197,7 +206,7 @@ const ProjectCanvas: React.FC<ProjectCanvasProps> = ({ project, canvasWidth, nav
                         padding: '0px 0px 60px 0px',
                     }}>
                         {project.titleWithLineBreak}
-                    </span>
+                    </h1>
                 </Card>
             </CanvasItem>
 

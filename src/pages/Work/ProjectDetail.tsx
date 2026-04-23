@@ -8,6 +8,7 @@ import projects from "../../contents/projects";
 interface ProjectDetailProps {
     navigateSlide: (index: number) => void;
     setScrollX: (x: number) => void;
+    scrollX: number;
     cleanScroll: () => void;
 }
 
@@ -50,7 +51,7 @@ const ProjectDetail = React.forwardRef<ScrollWrapperHandle, ProjectDetailProps>(
     return (
         <div ref={measureRef} style={{width:'100%', height:'100%'}}>
             <div ref={parentRef}>
-                <ScrollWrapper ref={scrollWrapperRef as React.RefObject<ScrollWrapperHandle>} canvasWidth={canvasWidth} alignment={'left'} speed={3}>
+                <ScrollWrapper ref={scrollWrapperRef as React.RefObject<ScrollWrapperHandle>} canvasWidth={canvasWidth} alignment={'left'} speed={3} navigateSlide={props.navigateSlide} scrollX={props.scrollX}>
                     <ProjectCanvas
                         project={project}
                         canvasWidth={canvasWidth}

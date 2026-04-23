@@ -54,7 +54,18 @@ const ByTab = ({
     ]
 
     return (
-        <TabCanvas items={items} />
+        <section aria-labelledby="by-title">
+            <h2 style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                overflow: 'hidden',
+                clip: 'rect(0 0 0 0)'
+            }}>
+                I Design by
+            </h2>
+            <TabCanvas items={items} />
+        </section>
     )
 }
 

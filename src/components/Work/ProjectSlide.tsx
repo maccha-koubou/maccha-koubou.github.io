@@ -78,13 +78,16 @@ const ProjectSlide = ({ type, width, height }: ProjectSlideProps) => {
 
 
     return (
-        <div style={{
-            width: `${width}px`,
-            height: `${height}px`,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
+        <div
+            style={{
+                width: `${width}px`,
+                height: `${height}px`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+            aria-hidden="true"
+        >
             <div style={{
                 position: "relative",
                 width: `${slideSize}px`,

@@ -40,23 +40,23 @@ const UXTab = ({
             y: topDistance,
             z: 1,
             children: (
-                <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard1}>
+                <article style={{width: 'fit-content', height: 'fit-content'}} ref={refCard1}>
                     <CardStack
                         w={720}
                         animateIn={animateIn}
                         animateOut={animateOut}
                         onAnimationComplete={onAnimationComplete}
                     >
-                        <span style={{
+                        <p style={{
                             padding: '40px',
                             fontWeight: '300',
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
                             My focus goes beyond interfaces and functions. With human-centric perspectives and logical thinking, I design for marginalized users and complex scenarios, aiming to create smooth experiences that bridge entire ecosystems.
-                        </span>
+                        </p>
                     </CardStack>
-                </div>
+                </article>
             )
         },
         {
@@ -65,22 +65,22 @@ const UXTab = ({
             y: topDistance + cardGap + card1Height,
             z: 1,
             children: (
-                <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard2}>
+                <article style={{width: 'fit-content', height: 'fit-content'}} ref={refCard2}>
                     <CardStack
                         w={720}
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             padding: '40px',
                             fontWeight: '300',
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
                             I'm also interested in technology. I believe technologies are non-neutral, and I aim to mitigate their biases and structural inequalities, leveraging their potential for accessibility and empowerment
-                        </span>
+                        </p>
                     </CardStack>
-                </div>
+                </article>
             )
         },
         {
@@ -114,7 +114,18 @@ const UXTab = ({
     ]
 
     return (
-        <TabCanvas items={items} />
+        <section aria-labelledby="ux-title">
+            <h2 style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                overflow: 'hidden',
+                clip: 'rect(0 0 0 0)'
+            }}>
+                UX Designer
+            </h2>
+            <TabCanvas items={items} />
+        </section>
     )
 }
 

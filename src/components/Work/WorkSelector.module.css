@@ -10,10 +10,10 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.selector:hover .card1 {
+.card1Hover {
     transform: translate(0px, 50px);
 }
 
-.selector:hover .card2 {
+.card2Hover {
     transform: translate(0px, 100px);
 }

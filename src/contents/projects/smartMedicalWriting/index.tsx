@@ -51,35 +51,35 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 UX/UI internship work:<br />A smart medical report writing system
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Enterprise UX ／ Complex Systems
-                            </span>
-                            <span style={{
+                            </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 As a UX/UI intern on a smart medical report writing system, I focused on how to use clear workflow logic and the detailed interactions within complex interconnected features, providing higher efficiency with lower interruption and risk of errors.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -96,7 +96,7 @@ const smartMedicalWriting = createProject({
                 y: 120,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -107,14 +107,14 @@ const smartMedicalWriting = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                                 textAlign: 'center'
                             }}>
                                 Background:<br />Reduce repetitive writing work by a variable system
-                            </span>
+                            </h2>
                         </Card>
                         <Card
                             h={28}
@@ -124,16 +124,16 @@ const smartMedicalWriting = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <p style={{
                             color: colors.primary,
                             fontWeight: 300,
                             fontSize: '20px',
                             textAlign: 'center'
                         }}>
                             A Word plug-in is used to config and generate variables, and a web platform is used to manage this process.
-                        </span>
+                        </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -166,27 +166,27 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'flex-start',
                             gap: '24px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                             }}>
                                 Highlight 1<br />(word plugin)
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Variable import
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -211,7 +211,7 @@ const smartMedicalWriting = createProject({
                             alignItems: 'center',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -219,7 +219,7 @@ const smartMedicalWriting = createProject({
                                 Users are required to confirm each imported variable. However, the original design brought unnecessary actions and interruptions.
                                 <br /><br />
                                 I proposed an improvement of this feature, halving steps with minimal development effort.
-                            </span>
+                            </p>
                             <img src={highlight1a} width={600} alt={'Diagram showing a single modification helped reduce the steps, mouse movement, and interruptions of this feature.'} />
                         </div>
                     </Card>
@@ -256,13 +256,13 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Variable<br />position<br />config
-                        </span>
+                        </h2>
                     </Card>
                 )
             },
@@ -279,13 +279,13 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             color: colors.secondary,
                             fontWeight: 300,
                             fontSize: '20px',
                         }}>
                             Detail improvements:<br />＞integrated flow<br />＞low interruption<br />＞consequence-aware
-                        </span>
+                        </p>
                     </Card>
                 )
             },
@@ -294,7 +294,7 @@ const smartMedicalWriting = createProject({
                 y: 60,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -304,14 +304,14 @@ const smartMedicalWriting = createProject({
                             animateIn={true}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Original design
-                            </span>
+                            </h3>
                         </Card>
                         <CardSlide
                             interval={3000}
@@ -328,7 +328,7 @@ const smartMedicalWriting = createProject({
                                 <img src={ui3} width={360} alt={'Variable list with a disabled delete button, showing a tooltip indicating only variables without positions and dependent variables can be deleted.'} />
                             )]}
                         />
-                    </div>
+                    </section>
                 )
             },
             {
@@ -355,7 +355,7 @@ const smartMedicalWriting = createProject({
                 y: 60,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -365,14 +365,14 @@ const smartMedicalWriting = createProject({
                             animateIn={true}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Final version
-                            </span>
+                            </h3>
                         </Card>
                         <CardSlide
                             interval={3000}
@@ -389,7 +389,7 @@ const smartMedicalWriting = createProject({
                                 <img src={ui6} width={360} alt={'Warning pop-up showing a list of dependencies and indicating deleting this variable will delete all of them.'} />
                             )]}
                         />
-                    </div>
+                    </section>
                 )
             },
         ])},
@@ -408,27 +408,27 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'flex-start',
                             gap: '24px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                             }}>
                                 Highlight 2<br />(web platform)
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Version control<br />Approval process<br />Access control
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -452,7 +452,7 @@ const smartMedicalWriting = createProject({
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -460,7 +460,7 @@ const smartMedicalWriting = createProject({
                                 I owned their UX, integrating them into the template/report detail pages.
                                 <br /><br />
                                 I also discussed edge cases with the PM (e.g. if the first version is withdrawn), and clarified which actions are available to different roles at different stages.
-                            </span>
+                            </p>
                             <img src={highlight2} width={'100%'} alt={'Diagram showing three originally separate features were integrated into a loop, reducing development effort and enabling a roles and stages-based control.'} />
                         </div>
                     </Card>
@@ -549,21 +549,21 @@ const smartMedicalWriting = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '24px',
                         }}>
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 500,
                             fontSize: '36px',
                         }}>
                             Credits
-                        </span>
-                        <span style={{
+                        </h2>
+                        <p style={{
                             color: colors.secondary,
                             fontWeight: 300,
                             fontSize: '20px',
@@ -571,8 +571,8 @@ const smartMedicalWriting = createProject({
                             UX/UI intern ／ Mar. - Jun. 2025
                             <br /><br />
                             All sensitive information has been anonymized or removed with PM consent.
-                        </span>
-                        </div>
+                        </p>
+                        </section>
                     </Card>
                 )
             },

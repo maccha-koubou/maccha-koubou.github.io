@@ -171,6 +171,7 @@ const AboutNav = ({ setActiveTab}: AboutNavProps) => {
                     gap={0}
                     highlightNumber={highlightNumber}
                     setHighlightNumber={setHighlightNumber}
+                    description={'Self-introduction navigation'}
                 />
             </Card>
         </div>

@@ -45,11 +45,13 @@ const Toggle = ({
     const [refreshKey, setRefreshKey] = useState(0)
 
     return (
-        <div
+        <button
             style={{
                 position: 'relative',
                 width: 'fit-content',
                 cursor: 'pointer',
+                border: 'none',
+                background: 'none',
             }}
             onClick={onClick}
             onMouseEnter={() => {
@@ -58,6 +60,15 @@ const Toggle = ({
                 setIsHover(true)
             }}
             onMouseLeave={() => {
+                setIsHover(false)
+                setIsLeave(true)
+            }}
+            onFocus={() => {
+                setRefreshKey(refreshKey + 1)
+                setIsLeave(false)
+                setIsHover(true)
+            }}
+            onBlur={() => {
                 setIsHover(false)
                 setIsLeave(true)
             }}
@@ -98,15 +109,18 @@ const Toggle = ({
             </div>
 
             {/* Highlight layer of the toggle */}
-            <div style={{
-                display: 'flex',
-                width: 'fit-content',
-                height: 'fit-content',
-                position: 'absolute',
-                left: '0px',
-                top: '0px',
-                zIndex: 2,
-            }}>
+            <div
+                style={{
+                    display: 'flex',
+                    width: 'fit-content',
+                    height: 'fit-content',
+                    position: 'absolute',
+                    left: '0px',
+                    top: '0px',
+                    zIndex: 2,
+                }}
+                aria-hidden="true"
+            >
                 <Card
                     key={refreshKey}
                     radius={radius}
@@ -137,7 +151,7 @@ const Toggle = ({
                     </span>
                 </Card>
             </div>
-        </div>
+        </button>
     )
 }
 

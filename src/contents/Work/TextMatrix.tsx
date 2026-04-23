@@ -5,15 +5,18 @@ import styles from './TextMatrix.module.css'
 
 const TextMatrix = ({ width }: { width: number }) => {
     return (
-        <div style={{
-            width: `${width}px`,
-            height: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: '120px 140px 120px 160px',
-            color: colors.primary,
-        }}>
+        <div
+            style={{
+                width: `${width}px`,
+                height: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                padding: '120px 140px 120px 160px',
+                color: colors.primary,
+            }}
+             aria-hidden="true"
+        >
             <div className={styles.textMatrix}>
                 {content}{content}{content}
             </div>

@@ -87,21 +87,32 @@ const IntroTab = ({
                     animateIn={animateIn}
                     animateOut={animateOut}
                 >
-                    <span style={{
+                    <article style={{
                         padding: '40px 40px 40px 160px',
                         fontWeight: '300',
                         fontSize: '20px',
                         color: colors.secondary,
                     }}>
                         I am a UX & space designer. From digital services to physical spaces, I believe design can connect technology, society, and people. Through thoughtful, empathetic practice, I aim to respond to complex and systemic challenges with inclusion and connection.
-                    </span>
+                    </article>
                 </CardStack>
             )
         }
     ]
 
     return (
-        <TabCanvas items={items} />
+        <section aria-labelledby="intro-title">
+            <h2 style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                overflow: 'hidden',
+                clip: 'rect(0 0 0 0)'
+            }}>
+                About Evelyn (She/they)
+            </h2>
+            <TabCanvas items={items} />
+        </section>
     )
 }
 

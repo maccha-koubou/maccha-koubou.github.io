@@ -33,30 +33,30 @@ const IntroCard = () => {
                     justifyContent: 'center',
                     gap: '32px',
                 }}>
-                    <span style={{
+                    <h1 style={{
                         color: colors.secondary,
                         fontWeight: 600,
                         fontSize: '20px',
                         textAlign: 'center'
                     }}>
                         Evelyn
-                    </span>
-                    <span style={{
+                    </h1>
+                    <p style={{
                         color: colors.primary,
                         fontWeight: 500,
                         fontSize: '40px',
                         textAlign: 'center'
                     }}>
                         Thoughtful design for<br />care & change.
-                    </span>
-                    <span style={{
+                    </p>
+                    <p style={{
                         color: colors.secondary,
                         fontWeight: 300,
                         fontSize: '20px',
                         textAlign: 'center'
                     }}>
                         Products  /  Spaces
-                    </span>
+                    </p>
                 </div>
             </Card>
         </div>

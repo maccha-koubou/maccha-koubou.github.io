@@ -1,6 +1,6 @@
 import React, {createContext, useContext, useEffect, useRef, useState} from "react";
 import styles from './ScrollWrapper.module.css'
-import {PROJECT_HEIGHT} from "../config/Size";
+import {PROJECT_COVER_WIDTH, PROJECT_GAP, PROJECT_HEIGHT, PROJECT_TITLE_WIDTH, PROJECT_WIDTH} from "../config/Size";
 
 export interface ScrollState {
     scrollX: number;
@@ -15,6 +15,8 @@ interface ScrollWrapperProps {
     canvasWidth: number,
     alignment?: 'center' | 'left',
     speed?: number,
+    navigateSlide?: (index: number) => void;
+    scrollX?: number;
 }
 
 export interface ScrollWrapperHandle {
@@ -26,7 +28,9 @@ const ScrollWrapper = React.forwardRef<ScrollWrapperHandle, ScrollWrapperProps>(
     children,
     canvasWidth,
     alignment = 'center',
-    speed = 1
+    speed = 1,
+    navigateSlide = null,
+    scrollX = null,
 }, ref) => {
     const internalRef = useRef<HTMLDivElement>(null)
     const [scroll, setScroll] = useState<ScrollState>({ scrollX: 0, scrollY: 0 });
@@ -95,6 +99,26 @@ const ScrollWrapper = React.forwardRef<ScrollWrapperHandle, ScrollWrapperProps>(
         if (!element) return;
         scrollByDelta(x - element.scrollLeft, true);
     };
+
+    // Scroll to prev/next page by arrow keys when there is navigateSlide() and scrollX
+    useEffect(() => {
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (navigateSlide && scrollX !== null) {
+                const currentSlideIndex = Math.floor((scrollX - (-64 + PROJECT_COVER_WIDTH + PROJECT_GAP + PROJECT_TITLE_WIDTH)) / (PROJECT_WIDTH + PROJECT_GAP))
+                if (e.key === 'ArrowLeft') {
+                    console.log(scrollX)
+                    navigateSlide(currentSlideIndex-1)
+                }
+                if (e.key === 'ArrowRight') {
+                    console.log(scrollX)
+                    navigateSlide(currentSlideIndex+1)
+                }
+            }
+        }
+
+        window.addEventListener('keydown', onKeyDown)
+        return () => window.removeEventListener('keydown', onKeyDown)
+    }, [navigateSlide, scrollX])
 
     React.useImperativeHandle(ref, () => ({
         scrollByDelta,

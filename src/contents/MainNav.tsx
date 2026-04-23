@@ -103,6 +103,7 @@ const MainNav = () => {
                 gap={40}
                 highlightNumber={highlightNumber}
                 setHighlightNumber={setHighlightNumber}
+                description={'Main Navigation'}
             />
         </div>
     )

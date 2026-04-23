@@ -157,12 +157,14 @@ const ProjectCard = ({
 
 
     return (
-        <div
+        <button
             style={{
                 width:`${w}px`,
                 height:`${h}px`,
                 overflow: 'visible',
                 cursor: 'pointer',
+                background: 'none',
+                border: 'none',
             }}
             onClick={isClickable
                 ? () => {
@@ -170,6 +172,27 @@ const ProjectCard = ({
                     handleCardClick()
                 }
                 : () => {}}
+            onFocus={() => {
+                setIsHover(true)
+                setIsCardSizeChange(true)
+                onMouseEnter?.()
+                setTheme({
+                    primary: project.color.primary,
+                    primaryLight: project.color.primaryLight,
+                    secondary: project.color.secondary,
+                    secondaryLight: project.color.secondaryLight,
+                    neon: project.color.neon,
+                }, 0.4)
+            }}
+            onBlur={() => {
+                setIsHover(false)
+                setIsCardSizeChange(true)
+                setIsClickable(false)
+                onMouseLeave?.()
+                if (!isCoverExpanding) { // Only reset the theme color when the card is no expanding (namely, the page is no switching)
+                    resetTheme()
+                }
+            }}
         >
             {/* Portal layer & main content of cover */}
             {coverRect && targetRect &&
@@ -305,6 +328,7 @@ const ProjectCard = ({
                                     display: 'block',
                                 }}
                                 alt={''}
+                                aria-hidden="true"
                             />
                             <motion.img
                                 src={project.coverColored}
@@ -321,6 +345,7 @@ const ProjectCard = ({
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: isHover ? 1 : 0 }}
                                 transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                aria-hidden="true"
                             />
                         </div>
                     </Card>
@@ -368,7 +393,7 @@ const ProjectCard = ({
                 </Card>
             </div>
 
-        </div>
+        </button>
     )
 }
 

@@ -52,28 +52,28 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 100px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Gamified digital exhibition service<br />for personal cultural narratives
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Service ／ Gamification ／ Mobile app ／ Interactive programming
-                            </span>
-                            <span style={{
+                            </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -81,8 +81,8 @@ const exploreInVirtualLight = createProject({
                                 Reimagining cultural exhibition as a personal narratives network, rather than a fixed route.
                                 <br /><br />
                                 Digital media combined with the physical exhibition lets visitors explore along their own paths, turning the exhibition into a gamified journey.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -123,28 +123,28 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '12px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Problem
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                             }}>
                                 How to design an exhibition hall in limited space, but for diverse visitor perspectives on a rich culture?
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -162,28 +162,28 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '12px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Strategy
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                             }}>
                                 Integrate digital media to enable rich personal narratives in limited space, empowering visitors to explore freely
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -217,13 +217,13 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Strategies
-                        </span>
+                        </h2>
                     </Card>
                 )
             },
@@ -242,7 +242,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '16px 36px 48px 36px',
                             width: '100%',
                             height: '100%',
@@ -253,23 +253,23 @@ const exploreInVirtualLight = createProject({
                             gap: '12px',
                         }}>
                             <img src={strategy1} width={'100%'} alt={'Diagram showing a network with multiple nodes. Two users pass through different nodes through different paths.'} />
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Networked space
-                            </span>
-                            <span style={{
+                            </h3>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 textAlign: 'center'
                             }}>
                                 Within the same exhibition, freely explore different scenarios.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -307,7 +307,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '16px 36px 48px 36px',
                             width: '100%',
                             height: '100%',
@@ -318,23 +318,23 @@ const exploreInVirtualLight = createProject({
                             gap: '12px',
                         }}>
                             <img src={strategy2} width={'100%'} alt={'Diagram showing digital media in the space that reacts differently to different people.'} />
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Digital media in space
-                            </span>
-                            <span style={{
+                            </h3>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 textAlign: 'center'
                             }}>
                                 Within the same scenario, have personalized experiences.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -372,7 +372,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '16px 36px 48px 36px',
                             width: '100%',
                             height: '100%',
@@ -383,23 +383,23 @@ const exploreInVirtualLight = createProject({
                             gap: '12px',
                         }}>
                             <img src={strategy3} width={'100%'} alt={'Diagram showing an app that connects different exhibition contents into a line.'} />
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Digital media in app
-                            </span>
-                            <span style={{
+                            </h3>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                                 textAlign: 'center'
                             }}>
                                 Gamified guidance connects separate experiences into a personalized narrative.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             }
@@ -415,7 +415,7 @@ const exploreInVirtualLight = createProject({
                 y: 140,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -426,13 +426,13 @@ const exploreInVirtualLight = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Gamified user flow
-                            </span>
+                            </h2>
                         </Card>
                         <Card
                             h={28}
@@ -442,15 +442,15 @@ const exploreInVirtualLight = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Digital media guides users explore the exhibition, toward personalized experiences and memories
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -467,7 +467,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             fontWeight: 300,
                             fontSize: '20px',
                             width: '100%',
@@ -475,7 +475,7 @@ const exploreInVirtualLight = createProject({
                             textAlign: 'center'
                         }}>
                             Get a random role & point of view
-                        </span>
+                        </p>
                     </Card>
                 )
             },
@@ -493,7 +493,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             fontWeight: 300,
                             fontSize: '20px',
                             width: '100%',
@@ -501,7 +501,7 @@ const exploreInVirtualLight = createProject({
                             textAlign: 'center'
                         }}>
                             Interact with media across space & app
-                        </span>
+                        </p>
                     </Card>
                 )
             },
@@ -519,7 +519,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             fontWeight: 300,
                             fontSize: '20px',
                             width: '100%',
@@ -527,7 +527,7 @@ const exploreInVirtualLight = createProject({
                             textAlign: 'center'
                         }}>
                             Complete quests & write your own story
-                        </span>
+                        </p>
                     </Card>
                 )
             },
@@ -545,7 +545,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             fontWeight: 300,
                             fontSize: '20px',
                             width: '100%',
@@ -553,7 +553,7 @@ const exploreInVirtualLight = createProject({
                             textAlign: 'center'
                         }}>
                             Your journey generates a unique souvenir
-                        </span>
+                        </p>
                     </Card>
                 )
             },
@@ -570,16 +570,16 @@ const exploreInVirtualLight = createProject({
                             fontSize: '80px',
                             color: colors.primaryLight,
                         }}>
-                            <div style={{width: 316}}>
+                            <div style={{width: 316}} aria-hidden={'true'}>
                                 1
                             </div>
-                            <div style={{width: 316}}>
+                            <div style={{width: 316}} aria-hidden={'true'}>
                                 2
                             </div>
-                            <div style={{width: 316,}}>
+                            <div style={{width: 316,}} aria-hidden={'true'}>
                                 3
                             </div>
-                            <div>
+                            <div aria-hidden={'true'}>
                                 4
                             </div>
                         </div>
@@ -620,7 +620,7 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 100px 36px',
                             width: '100%',
                             height: '100%',
@@ -628,14 +628,14 @@ const exploreInVirtualLight = createProject({
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Key touchpoint:<br />virtual lantern app
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -647,8 +647,8 @@ const exploreInVirtualLight = createProject({
                                 <br />
                                 <br />
                                 The pattern provides quests, supports interactions, and upgrades through exploration, finally becoming a unique pattern shaped by each user's journey.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -747,19 +747,19 @@ const exploreInVirtualLight = createProject({
                 y: 420,
                 z: 2,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 16
                     }}>
                         <Card animateIn={animateIn} animateOut={animateOut}>
-                            <div style={{
+                            <h2 style={{
                                 fontWeight: 600,
                                 fontSize: '48px',
                                 color: colors.primary,
                             }}>
                                 1
-                            </div>
+                            </h2>
                         </Card>
                         <Card
                             w={360}
@@ -771,15 +771,15 @@ const exploreInVirtualLight = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.white,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 I can't figure out the answer to this "pose & guess" riddle.<br />Let me ask the app for hints!
-                            </span>
+                            </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -787,7 +787,7 @@ const exploreInVirtualLight = createProject({
                 y: 560,
                 z: 2,
                 children: (
-                    <div style={{
+                    <section style={{
                         display: 'flex',
                         flexDirection: 'row',
                         gap: 16
@@ -802,24 +802,24 @@ const exploreInVirtualLight = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <p style={{
                                 color: colors.white,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Oh! The answer ends with "er"!
-                            </span>
+                            </p>
                         </Card>
                         <Card animateIn={animateIn} animateOut={animateOut}>
-                            <div style={{
+                            <h2 style={{
                                 fontWeight: 600,
                                 fontSize: '48px',
                                 color: colors.primary,
                             }}>
                                 2
-                            </div>
+                            </h2>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
         ])},
@@ -993,21 +993,21 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '24px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Team & credits
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -1019,8 +1019,8 @@ const exploreInVirtualLight = createProject({
                                 Teammates: Haoyue Lei, Shaojian Deng, Yaran He, Er Zhuo (Tianjin University)
                                 <br />
                                 Supervisor: Assoc. Prof. Jing Wang, Haoran Li
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -1039,13 +1039,13 @@ const exploreInVirtualLight = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h3 style={{
                                 position: "absolute",
                                 zIndex: 1,
                                 color: colors.primary,
@@ -1053,9 +1053,9 @@ const exploreInVirtualLight = createProject({
                                 fontSize: '20px',
                             }}>
                                 How we cooperated?
-                            </span>
+                            </h3>
                             <img src={team} width={'100%'} alt={'Diagram showing role distribution between teamwork (2022) and individual extension (2024), highlighting my responsibility for concept and architectural & urban design in the 2022, and service & UX design in 2024.'} />
-                        </div>
+                        </section>
                     </CardStack>
                 )
             },

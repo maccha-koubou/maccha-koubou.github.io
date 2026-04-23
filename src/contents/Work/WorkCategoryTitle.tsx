@@ -72,9 +72,34 @@ const WorkCategoryTitle = ({
                 width: '100%',
                 height: '48px'
             }}>
-                <Button
-                    text={`${activeProject.subtitle}`}
-                />
+                <div style={{
+                    display: 'flex',
+                    width: 'fit-content',
+                    height: 'fit-content',
+                    zIndex: 0,
+                }}>
+                    <Card
+                        radius={24}
+                        bg={colors.primary}
+                        w={'fit-content'}
+                        h={48}
+                        padding={[12, 16, 12, 16]}
+                        horizon={'flex-start'}
+                        vertical={'center'}
+                    >
+                        <p style={{
+                            display: 'flex',
+                            fontSize: `${20}px`,
+                            fontWeight: 300,
+                            color: colors.white,
+                            whiteSpace: 'nowrap',
+                            justifyContent: 'center',
+                            gap: '8px'
+                        }}>
+                            {activeProject.subtitle}
+                        </p>
+                    </Card>
+                </div>
             </div>
         )
     } else {
@@ -139,7 +164,7 @@ const WorkCategoryTitle = ({
             gap: '24px',
         }}>
             <Card animateIn={true}>
-                <div style={{
+                <h1 style={{
                     display: 'flex',
                     flexDirection: 'row',
                     gap: `${titleGap}px`,
@@ -165,7 +190,7 @@ const WorkCategoryTitle = ({
                     }}>
                         {titleEnd}
                     </span>
-                </div>
+                </h1>
             </Card>
             {bottomItem}
         </div>

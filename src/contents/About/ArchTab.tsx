@@ -40,23 +40,23 @@ const ArchTab = ({
             y: topDistance,
             z: 1,
             children: (
-                <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard1}>
+                <article style={{width: 'fit-content', height: 'fit-content'}} ref={refCard1}>
                     <CardStack
                         w={720}
                         animateIn={animateIn}
                         animateOut={animateOut}
                         onAnimationComplete={onAnimationComplete}
                     >
-                        <span style={{
+                        <p style={{
                             padding: '40px',
                             fontWeight: '300',
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
                             My background in urban design helps me look beyond individual buildings. I see public spaces as links between urban systems. Going beyond form and efficiency, I aim to connect communities and promote public life.
-                        </span>
+                        </p>
                     </CardStack>
-                </div>
+                </article>
             )
         },
         {
@@ -65,22 +65,22 @@ const ArchTab = ({
             y: topDistance + cardGap + card1Height,
             z: 1,
             children: (
-                <div style={{width: 'fit-content', height: 'fit-content'}} ref={refCard2}>
+                <article style={{width: 'fit-content', height: 'fit-content'}} ref={refCard2}>
                     <CardStack
                         w={720}
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <span style={{
+                        <p style={{
                             padding: '40px',
                             fontWeight: '300',
                             fontSize: '20px',
                             color: colors.secondary,
                         }}>
                             I focus on how people interact with space. Through a human-centric perspective and behavioral observation, I design inclusive, supportive environments for the real needs of diverse people.
-                        </span>
+                        </p>
                     </CardStack>
-                </div>
+                </article>
             )
         },
         {
@@ -114,7 +114,18 @@ const ArchTab = ({
     ]
 
     return (
-        <TabCanvas items={items} />
+        <section aria-labelledby="arch-title">
+            <h2 style={{
+                position: 'absolute',
+                width: 1,
+                height: 1,
+                overflow: 'hidden',
+                clip: 'rect(0 0 0 0)'
+            }}>
+                Space Designer
+            </h2>
+            <TabCanvas items={items} />
+        </section>
     )
 }
 

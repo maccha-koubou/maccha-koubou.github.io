@@ -91,7 +91,7 @@ const Highlight1A = ({
                     top: 60,
                     zIndex: 0,
                 }}>
-                    <div style={{
+                    <section style={{
                         width: '100%',
                         height: '100%',
                         display: 'flex',
@@ -103,14 +103,14 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Original design
-                            </span>
+                            </h3>
                         </Card>
                         <Card
                             w={360}
@@ -135,7 +135,7 @@ const Highlight1A = ({
                                 }}
                             />
                         </Card>
-                    </div>
+                    </section>
                 </div>
             }
             {visibleCount >= 2 &&
@@ -169,7 +169,7 @@ const Highlight1A = ({
                     top: 60,
                     zIndex: 0,
                 }}>
-                    <div style={{
+                    <section style={{
                         width: '100%',
                         height: '100%',
                         display: 'flex',
@@ -181,14 +181,14 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 First proposal
-                            </span>
+                            </h3>
                         </Card>
                         <Card
                             w={360}
@@ -213,7 +213,7 @@ const Highlight1A = ({
                                }}
                             />
                         </Card>
-                    </div>
+                    </section>
                 </div>
             }
             {visibleCount >= 3 &&
@@ -247,7 +247,7 @@ const Highlight1A = ({
                     top: 60,
                     zIndex: 0,
                 }}>
-                    <div style={{
+                    <section style={{
                         width: '100%',
                         height: '100%',
                         display: 'flex',
@@ -259,14 +259,14 @@ const Highlight1A = ({
                             animateIn={true}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h3 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                                 textAlign: 'center'
                             }}>
                                 Final proposal
-                            </span>
+                            </h3>
                         </Card>
                         <Card
                             w={360}
@@ -291,7 +291,7 @@ const Highlight1A = ({
                                 }}
                             />
                         </Card>
-                    </div>
+                    </section>
                 </div>
             }
         </div>

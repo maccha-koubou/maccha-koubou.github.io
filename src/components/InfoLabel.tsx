@@ -42,6 +42,9 @@ const InfoLabel = ({
                     display: 'flex',
                     justifyContent: 'center',
                 }}
+                tabIndex={0}
+                onFocus={() => setIsHover(true)}
+                onBlur={() => setIsHover(false)}
                 onMouseEnter={() => setIsHover(true)}
                 onMouseLeave={() => setIsHover(false)}
             >

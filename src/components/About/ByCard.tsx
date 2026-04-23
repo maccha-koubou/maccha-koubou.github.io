@@ -23,14 +23,23 @@ const ByCard = ({
     const finalAnimateOut = animateOut || isHover
 
     return (
-        <div style={{
+        <article
+            style={{
                 position: 'relative',
                 width: 'fit-content'
             }}
+            tabIndex={0}
             onMouseEnter={() => {
                 setIsHover(true)
             }}
             onMouseLeave={() => {
+                setIsHover(false)
+                setRefreshKey(refreshKey + 1)
+            }}
+            onFocus={() => {
+                setIsHover(true)
+            }}
+            onBlur={() => {
                 setIsHover(false)
                 setRefreshKey(refreshKey + 1)
             }}
@@ -102,7 +111,7 @@ const ByCard = ({
                     </span>
                 </Card>
             </div>
-        </div>
+        </article>
     )
 }
 

@@ -176,6 +176,7 @@ const WorkNav = ({navigateSlide, scrollX, cleanScroll}: WorkNavProps) => {
                     gap={isProject ? 40 : 0}
                     highlightNumber={highlightNumber}
                     setHighlightNumber={() => {}} // Highlight is directly controlled by the scroll position
+                    description={'Project Navigation'}
                 />
             </Card>
         </div>

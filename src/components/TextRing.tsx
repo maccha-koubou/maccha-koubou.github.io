@@ -29,13 +29,16 @@ const TextRing = ({
     const spanSize = 30
 
     return (
-        <div style={{
-            width: `${width}px`,
-            height: `${height}px`,
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-        }}>
+        <div
+            style={{
+                width: `${width}px`,
+                height: `${height}px`,
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
+            aria-hidden="true"
+        >
             <div style={{
                 position: 'relative',
                 width: `${radius * 2 + spanSize}px`,

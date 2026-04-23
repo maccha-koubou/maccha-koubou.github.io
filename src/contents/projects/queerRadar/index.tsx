@@ -49,28 +49,28 @@ const queerRadar = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Digital modular keychain<br />to show diverse LGBTQIA+ pride safely
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Interactive product ／ Modular product
-                            </span>
-                            <span style={{
+                            </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -78,8 +78,8 @@ const queerRadar = createProject({
                                 Queer Radar is a modular keychain that can be freely assembled, with unit colors customizable to show various pride flags.
                                 <br /><br />
                                 With the help of a companion app, users can show diverse identities, connect to nearby allies with safe, and map the presence of queers.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -96,7 +96,7 @@ const queerRadar = createProject({
                 y: 100,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -107,13 +107,13 @@ const queerRadar = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <h2 style={{
                             color: colors.primary,
                             fontWeight: 600,
                             fontSize: '36px',
                         }}>
                             Background & Problem
-                        </span>
+                        </h2>
                         </Card>
                         <Card
                             h={28}
@@ -123,15 +123,15 @@ const queerRadar = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                        <span style={{
+                        <p style={{
                             color: colors.primary,
                             fontWeight: 300,
                             fontSize: '20px',
                         }}>
                             Accessories can help queers show identities and find peers, but may also bring visibility and safety problems.
-                        </span>
+                        </p>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -139,7 +139,7 @@ const queerRadar = createProject({
                 y: 220,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         height: 360,
                         display: 'flex',
@@ -181,13 +181,13 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <span style={{
+                                <h3 style={{
                                     color: colors.primary,
                                     fontWeight: 600,
                                     fontSize: '20px',
                                 }}>
                                     Significance
-                                </span>
+                                </h3>
                             </Card>
                             <Card
                                 padding={8}
@@ -196,7 +196,7 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <div style={{
+                                <p style={{
                                     width: 240,
                                     height: 72,
                                     display: 'flex',
@@ -209,7 +209,7 @@ const queerRadar = createProject({
                                     <span>
                                         Build<br />connection
                                     </span>
-                                </div>
+                                </p>
                             </Card>
                             <Card
                                 padding={8}
@@ -228,9 +228,9 @@ const queerRadar = createProject({
                                     gap: '12px',
                                 }}>
                                     <img src={background3} style={{height: '100%'}} alt={''} />
-                                    <span>
+                                    <p>
                                         Improve<br />visibility
-                                    </span>
+                                    </p>
                                 </div>
                             </Card>
                             <Card
@@ -250,9 +250,9 @@ const queerRadar = createProject({
                                     gap: '12px',
                                 }}>
                                     <img src={background4} style={{height: '100%'}} alt={''} />
-                                    <span>
+                                    <p>
                                         Affirm<br />identity
-                                    </span>
+                                    </p>
                                 </div>
                             </Card>
                         </div>
@@ -283,13 +283,13 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <span style={{
+                                <h3 style={{
                                     color: colors.primary,
                                     fontWeight: 600,
                                     fontSize: '20px',
                                 }}>
                                     Problems
-                                </span>
+                                </h3>
                             </Card>
                             <Card
                                 padding={8}
@@ -300,9 +300,9 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <span>
+                                <p>
                                     Difficulty in<br />finding peers
-                                </span>
+                                </p>
                             </Card>
                             <Card
                                 padding={8}
@@ -313,9 +313,9 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <span>
+                                <p>
                                     Censorship<br />& safety
-                                </span>
+                                </p>
                             </Card>
                             <Card
                                 padding={8}
@@ -326,12 +326,12 @@ const queerRadar = createProject({
                                 animateIn={animateIn}
                                 animateOut={animateOut}
                             >
-                                <span>
+                                <p>
                                     Limited<br />choices
-                                </span>
+                                </p>
                             </Card>
                         </div>
-                    </div>
+                    </section>
                 )
             },
         ])},
@@ -346,7 +346,7 @@ const queerRadar = createProject({
                 y: 140,
                 z: 1,
                 children: (
-                    <div style={{
+                    <section style={{
                         width: 1200,
                         display: 'flex',
                         flexDirection: 'column',
@@ -356,15 +356,15 @@ const queerRadar = createProject({
                             animateIn={animateIn}
                             animateOut={animateOut}
                         >
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Strategy
-                            </span>
+                            </h2>
                         </Card>
-                    </div>
+                    </section>
                 )
             },
             {
@@ -423,13 +423,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard1} style={{width: '100%'}} alt={'Image showing the user adjust the color of each unit to form a pride flag pattern on the app.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                             Set colors in the app
-                        </span>
+                        </p>
                         </div>
                         <Card
                             w={32}
@@ -460,13 +460,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard2} style={{width: '100%'}} alt={'Image showing the queer radar light up when there is another user nearby.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                             Light up near peers
-                        </span>
+                        </p>
                         </div>
                         <Card
                             w={32}
@@ -497,13 +497,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard3} style={{width: '100%'}} alt={'Image showing the user can see the other user\'s radar color, but cannot see the other user\'s name or position on the app.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                             Privacy protected
-                        </span>
+                        </p>
                         </div>
                         <Card
                             w={32}
@@ -563,13 +563,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard4} style={{width: '100%'}} alt={'Image showing the user asks the other user a question to see whether the other user is trustworthy on the app.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Verify by secret questions
-                            </span>
+                            </p>
                         </div>
                         <Card
                             w={32}
@@ -600,13 +600,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard5} style={{width: '100%'}} alt={'Image showing the user turns off the light display of the queer radar.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                             Turn off when unsafe
-                        </span>
+                        </p>
                         </div>
                         <Card
                             w={40}
@@ -632,13 +632,13 @@ const queerRadar = createProject({
                             >
                                 <img src={storyboard6} style={{width: '100%'}} alt={'Image showing places that users have been can be colored by queer colors.'} />
                             </Card>
-                            <span style={{
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '24px',
                             }}>
                                 Queer color mapping
-                            </span>
+                            </p>
                         </div>
                         <div style={{width: 40, height: 40}}/>
                     </div>
@@ -663,27 +663,27 @@ const queerRadar = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'flex-start',
                             gap: '12px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 600,
                                 fontSize: '36px',
                             }}>
                                 Modular keychain
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Freely assembled tetrahedral units<br />form customizable pride flag patterns.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
@@ -769,21 +769,21 @@ const queerRadar = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 48px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '24px',
                         }}>
-                    <span style={{
+                    <h2 style={{
                         color: colors.primary,
                         fontWeight: 500,
                         fontSize: '36px',
                     }}>
                         Credits
-                    </span>
-                            <span style={{
+                    </h2>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -791,8 +791,8 @@ const queerRadar = createProject({
                         Individual project ／ Feb. 2024
                         <br />
                         No supervisor
-                    </span>
-                        </div>
+                    </p>
+                        </section>
                     </Card>
                 )
             },

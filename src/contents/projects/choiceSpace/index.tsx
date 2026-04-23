@@ -46,28 +46,28 @@ const choiceSpace = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 100px 36px',
                             width: '100%',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '36px',
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 color: colors.primary,
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
                                 Gamified and nonlinear exhibition hall<br />activating urban participation
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 color: colors.primary,
                                 fontWeight: 300,
                                 fontSize: '20px',
                             }}>
                                 Architectural design ／ Urban design ／ Exhibition hall ／ Gamification
-                            </span>
-                            <span style={{
+                            </p>
+                            <p style={{
                                 color: colors.secondary,
                                 fontWeight: 300,
                                 fontSize: '20px',
@@ -75,8 +75,8 @@ const choiceSpace = createProject({
                                 By framing the city and the building itself as exhibition, this exhibition hall shows real public life and activates urban space through participation.
                                 <br /><br />
                                 A spatial network replaces conventional linear exhibition circulation, enabling visitors to navigate freely and create personalized, gamified journeys.
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </CardStack>
                 )
             },
@@ -323,7 +323,7 @@ const choiceSpace = createProject({
                         animateIn={animateIn}
                         animateOut={animateOut}
                     >
-                        <div style={{
+                        <section style={{
                             padding: '36px 36px 100px 36px',
                             width: '100%',
                             display: 'flex',
@@ -333,19 +333,19 @@ const choiceSpace = createProject({
                             whiteSpace: 'pre-line',
                             color: colors.primary,
                         }}>
-                            <span style={{
+                            <h2 style={{
                                 fontWeight: 500,
                                 fontSize: '80px',
                             }}>
                                 Details<br />coming<br />soon
-                            </span>
-                            <span style={{
+                            </h2>
+                            <p style={{
                                 fontWeight: 300,
                                 fontSize: '48px',
                             }}>
                                 Space design part in progress
-                            </span>
-                        </div>
+                            </p>
+                        </section>
                     </Card>
                 )
             },
