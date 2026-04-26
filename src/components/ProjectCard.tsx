@@ -317,7 +317,7 @@ const ProjectCard = ({
                                 }}
                                 alt={project.coverAlt}
                             />
-                            <img
+                            {/*<img
                                 src={texture}
                                 style={{
                                     position: 'absolute',
@@ -329,7 +329,7 @@ const ProjectCard = ({
                                 }}
                                 alt={''}
                                 aria-hidden="true"
-                            />
+                            />*/}
                             <motion.img
                                 src={project.coverColored}
                                 alt=""
