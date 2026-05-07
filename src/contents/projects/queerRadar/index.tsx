@@ -23,7 +23,7 @@ import final3 from "./img/final3.png";
 
 const queerRadar = createProject({
     titleWithLineBreak: 'Queer Radar',
-    subtitle: 'Digital modular keychain to show diverse LGBTQIA+ pride safely',
+    subtitle: 'Digital modular pride keychain that balances visibility and safety in public space',
     cover: cover,
     coverColored: coverColored,
     coverAlt: 'Image showing a keychain composed of multiple luminous tetrahedral units showing the color of the pride flag.',
@@ -61,7 +61,7 @@ const queerRadar = createProject({
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
-                                Digital modular keychain<br />to show diverse LGBTQIA+ pride safely
+                                Digital modular pride keychain that<br />balances visibility & safety in public space
                             </h2>
                             <p style={{
                                 color: colors.primary,
