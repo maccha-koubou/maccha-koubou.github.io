@@ -68,7 +68,7 @@ const dormitoryVillage = createProject({
                                 fontWeight: 500,
                                 fontSize: '36px',
                             }}>
-                                Modular living unit for privacy, community,<br />and flexibilityin high-density dormitories
+                                Modular living unit for privacy, community,<br />and flexibility in high-density dormitories
                             </h2>
                             <p style={{
                                 color: colors.primary,
